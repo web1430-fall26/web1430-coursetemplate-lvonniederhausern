@@ -1,33 +1,33 @@
 # Lab 01 – Inspection Notes
 
-## Site 1: [URL]
+## Site 1: [https://www.weber.edu/]
 
 ### Elements found (5)
 
-| Tag | Semantic? | Purpose |
-|-----|-----------|---------|
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
+| Tag      | Semantic?    | Purpose |
+|----------|--------------|---------|
+| <html>   | semantic     | a top container that encloses all visible and invisible elements on a page |
+| <head>   | semantic     | stores metadata on webpage that is not directly displayed to users |
+| <meta>   | semantic     | to provide metadata on an HTML document |
+| <script> | non-semantic | allows a developer to add executable Java script code |
+| <link>   | semantic     | allows a developer to link a CS style sheet to improve the website display |
 
 ### Live text edit
-[Describe what you changed and paste a screenshot reference here]
+[I changed welcome wildcats to What do you call a well-balanced horse? Stable.![screen shot of my live text edit](<Screenshot 2026-09-01 203408.png>)]
 
 ### Page structure
-- `<main>` present?
-- `<h1>` present?
-- `<nav>` present?
-- Images with `alt` attributes?
+- `<main>` present? yes
+- `<h1>` present? yes
+- `<nav>` present? yes
+- Images with `alt` attributes? yes 
 
 ### Console results
 
 | Expression | Result | What it tells you |
 |-----------|--------|------------------|
-| `document.title` | | |
-| `document.querySelectorAll('a').length` | | |
-| `document.querySelectorAll('img[alt=""]').length` | | |
+| `document.title` | 'Weber State University' | returns the text inside the webpage's <title> element |
+| `document.querySelectorAll('a').length` | 175 | this website has 175 <a> elements on the webpage |
+| `document.querySelectorAll('img[alt=""]').length` | 25 | the weber state website has 25 images with no alt text. this is a disability issue|
 
 ### Network: first request
 
