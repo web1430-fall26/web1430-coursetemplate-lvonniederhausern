@@ -4,8 +4,8 @@
 
 ### Elements found (5)
 
-| Tag      | Semantic?    | Purpose |
-|----------|--------------|---------|
+| Tag | Semantic? | Purpose |
+|-----|-----------|---------|
 | <html> | semantic | a top container that encloses all visible and invisible elements on a page |
 | <head> | semantic | stores metadata on webpage that is not directly displayed to users |
 | <meta> | semantic | to provide metadata on an HTML document |
@@ -40,25 +40,25 @@
 
 ---
 
-## Site 2: [URL]
+## Site 2: [https://www.youtube.com/]
 
 ### Elements found (5)
 
 | Tag | Semantic? | Purpose |
 |-----|-----------|---------|
-| | | |
-| | | |
-| | | |
-| | | |
-| | | |
+| <svg> | non-schematic | acts as a container that defines a new coordinate system and viewport for creating scalable vector graphics |
+| <iron-iconset-svg> | non-schematic | defines a custom group of scalable vector graphic (SVG) icons for use with Polymer web components |
+| <iframe> | non-schematic | embeds an external webpage, video, map, or interactive tool directly inside the current webpage |
+| <ytd-app> | non-schematic | s a custom HTML custom element that wraps and represents the entire YouTube web application interface |
+| <style> | schematic | holds CSS code to design and format the web page |
 
 ### Console results
 
 | Expression | Result | What it tells you |
 |-----------|--------|------------------|
-| `document.title` | | |
-| `document.querySelectorAll('a').length` | | |
-| `document.querySelectorAll('img[alt=""]').length` | | |
+| `document.title` | 'YouTube' | returns the text inside the webpage's <title> element |
+| `document.querySelectorAll('a').length` | 122 | this website has 122 links on the webpage |
+| `document.querySelectorAll('img[alt=""]').length` | 63 | Youtube has 63 images with no descriptions |
 
 ### Network: first request
 
