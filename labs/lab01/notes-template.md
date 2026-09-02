@@ -6,11 +6,11 @@
 
 | Tag      | Semantic?    | Purpose |
 |----------|--------------|---------|
-| <html>   | semantic     | a top container that encloses all visible and invisible elements on a page |
-| <head>   | semantic     | stores metadata on webpage that is not directly displayed to users |
-| <meta>   | semantic     | to provide metadata on an HTML document |
+| <html> | semantic | a top container that encloses all visible and invisible elements on a page |
+| <head> | semantic | stores metadata on webpage that is not directly displayed to users |
+| <meta> | semantic | to provide metadata on an HTML document |
 | <script> | non-semantic | allows a developer to add executable Java script code |
-| <link>   | semantic     | allows a developer to link a CS style sheet to improve the website display |
+| <link> | semantic | allows a developer to link a CS style sheet to improve the website display |
 
 ### Live text edit
 [I changed welcome wildcats to What do you call a well-balanced horse? Stable.![screen shot of my live text edit](<Screenshot 2026-09-01 203408.png>)]
