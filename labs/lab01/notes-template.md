@@ -49,7 +49,7 @@
 | <svg> | non-schematic | acts as a container that defines a new coordinate system and viewport for creating scalable vector graphics |
 | <iron-iconset-svg> | non-schematic | defines a custom group of scalable vector graphic (SVG) icons for use with Polymer web components |
 | <iframe> | non-schematic | embeds an external webpage, video, map, or interactive tool directly inside the current webpage |
-| <ytd-app> | non-schematic | s a custom HTML custom element that wraps and represents the entire YouTube web application interface |
+| '<ytd-app>' | non-schematic | s a custom HTML custom element that wraps and represents the entire YouTube web application interface |
 | <style> | schematic | holds CSS code to design and format the web page |
 
 ### Console results
