@@ -13,7 +13,7 @@
 | <link> | semantic | allows a developer to link a CS style sheet to improve the website display |
 
 ### Live text edit
-[I changed welcome wildcats to What do you call a well-balanced horse? Stable.![screen shot of my live text edit](<Screenshot 2026-09-01 203408.png>)]
+[I changed welcome wildcats to What do you call a well-balanced horse? Stable.![screen shot of my live text edit](labs\lab01\screenshots\Screenshot 2026-09-01 203408.png)]
 
 ### Page structure
 - `<main>` present? yes
@@ -77,6 +77,7 @@
 - Error message text: Uncaught TypeError: Cannot read properties of undefined (reading 'bar') at <anonymous>:1:32
 - What the error message tells you: That the page was looking for an object but the object type was wrong and the object itself was undefined.
 
+![screenshot of the error in the Console ](labs\lab01\screenshots\Screenshot 2026-09-03 191921.png)
 
 ---
 
