@@ -77,7 +77,7 @@
 - Error message text: Uncaught TypeError: Cannot read properties of undefined (reading 'bar') at <anonymous>:1:32
 - What the error message tells you: That the page was looking for an object but the object type was wrong and the object itself was undefined.
 
-![screenshot of the error in the Console ](labs\lab01\screenshots\Screenshot 2026-09-03 191921.png)
+![screenshot of the error in the Console ](screenshots\Screenshot 2026-09-03 191921.png)
 
 ---
 
