@@ -30,13 +30,12 @@
 | `document.querySelectorAll('img[alt=""]').length` | 25 | the weber state website has 25 images with no alt text. this is a disability issue|
 
 ### Network: first request
-
-- URL:
-- HTTP method:
-- Status code:
-- Content-Type:
-- Total page requests (approx):
-- Total page weight:
+- URL: https://www.weber.edu/
+- HTTP method: GET
+- Status code: 200 OK
+- Content-Type: text/html; charset=utf-8
+- Total page requests (approx): 110
+- Total page weight: 71.3 kB transferred
 
 ---
 
@@ -49,7 +48,7 @@
 | <svg> | non-schematic | acts as a container that defines a new coordinate system and viewport for creating scalable vector graphics |
 | <iron-iconset-svg> | non-schematic | defines a custom group of scalable vector graphic (SVG) icons for use with Polymer web components |
 | <iframe> | non-schematic | embeds an external webpage, video, map, or interactive tool directly inside the current webpage |
-| <ytd-app> | non-schematic | s a custom HTML custom element that wraps and represents the entire YouTube web application interface |
+| <ytd-app> | non-schematic | is a custom HTML element that wraps and represents the entire YouTube web application interface |
 | <style> | schematic | holds CSS code to design and format the web page |
 
 ### Console results
@@ -62,19 +61,22 @@
 
 ### Network: first request
 
-- URL:
-- HTTP method:
-- Status code:
-- Content-Type:
+- URL: https://www.youtube.com/
+- HTTP method: GET
+- Status code: 200 OK
+- Content-Type: text/html; charset=utf-8
+
+
 
 ---
 
 ## My page (lab00/index.html)
 
-- `document.querySelector('h1').textContent` returned:
-- TypeError produced by: `document.querySelector('p').foo.bar`
-- Error message text:
-- What the error message tells you:
+- `document.querySelector('h1').textContent` returned: 'WEB 1430 – Lab 00'
+- TypeError produced by: `document.querySelector('p').foo.bar` VM77:1 Uncaught TypeError: Cannot read properties of undefined (reading 'bar') at <anonymous>:1:33
+- Error message text: Uncaught TypeError: Cannot read properties of undefined (reading 'bar') at <anonymous>:1:32
+- What the error message tells you: That the page was looking for an object but the type was wrong and the object itself was undefined.
+
 
 ---
 
@@ -82,4 +84,4 @@
 
 What surprised you? What does DevTools tell you that you couldn't learn by just looking at the page?
 
-[Your answer here — 3–5 sentences]
+Using the Devtools was a lot more complex than i initally thought. It took me a second to recognize what i was looking for. But i was able to see a lot more of what actualy goes on behing the sceens. How a page is formated with tags that help organize the data in user friendly ways. Finding out that Youtube has ytd-app tag as a custom HTML element to show its page properly was intresting. i wasnt aware you could make custom tags for website design. 
