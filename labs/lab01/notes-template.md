@@ -75,7 +75,7 @@
 - `document.querySelector('h1').textContent` returned: 'WEB 1430 – Lab 00'
 - TypeError produced by: `document.querySelector('p').foo.bar` VM77:1 Uncaught TypeError: Cannot read properties of undefined (reading 'bar') at <anonymous>:1:33
 - Error message text: Uncaught TypeError: Cannot read properties of undefined (reading 'bar') at <anonymous>:1:32
-- What the error message tells you: That the page was looking for an object but the type was wrong and the object itself was undefined.
+- What the error message tells you: That the page was looking for an object but the object type was wrong and the object itself was undefined.
 
 
 ---
