@@ -161,9 +161,27 @@ footer {
   }
 
   nav {
-  /*For the life of me, I cannot figure out how to make the nav bar horizontal. I tried using flexbox and grid but it just doesn't work. I will keep trying to figure it out. */
-   
-  }
+    /*it took a VERY LONG time to figure this out */
+    display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px 30px;
+}
+nav .brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #ffffff;
+  text-decoration: none;
+}
+
+/* 3. Horizontal List Layout */
+nav ul {
+  display: flex;                 
+  gap: 20px;                     
+  list-style: none;               
+  margin: 0;
+  padding: 0;
+}
 
   .contact-form-wrapper {
     max-width: 600px;
