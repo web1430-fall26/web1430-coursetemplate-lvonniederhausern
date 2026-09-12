@@ -12,10 +12,10 @@
 
 /* ─── Design tokens ──────────────────────────────────────────────────────── */
 :root {
-  --color-brand:      /* TODO: your brand color */;
-  --color-text:       /* TODO: dark text color */;
-  --color-bg:         /* TODO: page background */;
-  --color-surface:    /* TODO: card/section background */;
+  --color-brand:      #492365;
+  --color-text:       #0b0b0e;
+  --color-bg:         #f3f0f4;
+  --color-surface:    #cbc3dc;
 
   --space-sm:  0.5rem;
   --space-md:  1rem;
@@ -68,80 +68,106 @@ img {
 
 /* ─── Header & nav ───────────────────────────────────────────────────────── */
 header {
-  /* TODO */
+  border : 5px solid var(--color-brand);
+  background-color : #a595c4;
+
+
 }
 
 nav {
-  /* TODO */
+  background-color : #a595c4;
+  a:visited { color: var(--color-brand); }
+  a:hover { color: white; }
+
 }
 
 /* ─── Hero ───────────────────────────────────────────────────────────────── */
 .hero {
-  /* TODO */
+  color: var(--color-brand);
+  font-size: var(--font-size-l);
+  text-align: center;
 }
 
 /* ─── Button ─────────────────────────────────────────────────────────────── */
 .btn-primary {
-  /* TODO: style as a button-like link */
+  border : 3px solid #a275b3;
+  margin : 3px;
+  padding : 3px;
+  font-weight: bold;
 }
 
 /* ─── Hike card ──────────────────────────────────────────────────────────── */
 .hike-card {
-  /* TODO */
+  background-color : var(--color-surface);
 }
 
 /* ─── Member grid — single column on mobile ──────────────────────────────── */
 .member-grid {
   list-style: none;
-  /* TODO: single column layout */
+  color: #363537;
+  display: grid;
+  grid-template-columns: 1fr; 
+  row-gap: 20px; 
 }
 
 .member-card {
-  /* TODO */
+  background-color : var(--color-surface);
 }
 
 /* ─── Contact form ───────────────────────────────────────────────────────── */
 .field-group {
-  /* TODO */
+  display: flex;
+  flex-direction: column;
+  margin-bottom: var(--space-md);
 }
 
 label {
-  /* TODO */
+  font-family: system-ui, sans-serif;
 }
 
 input,
 textarea {
-  /* TODO */
+  border : 3px solid #000000;
 }
 
 button[type="submit"] {
-  /* TODO */
+  border : 3px solid #000000;
+  margin : 3px;
+  padding : 3px;
+  font-weight: bold;
+  font-size: var(--font-size-sm);
 }
 
 /* ─── Footer ─────────────────────────────────────────────────────────────── */
 footer {
-  /* TODO */
+   color: #737373;
 }
 
 /* ─── Responsive: tablet (600px+) ───────────────────────────────────────── */
 @media (min-width: 600px) {
   .member-grid {
-    /* TODO: two-column grid */
+  display: grid;
+  grid-template-columns: 1fr 1fr; 
+  gap: 16px; 
   }
 }
 
 /* ─── Responsive: desktop (900px+) ──────────────────────────────────────── */
 @media (min-width: 900px) {
   .member-grid {
-    /* TODO: three-column grid */
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 16px;
   }
 
   nav {
-    /* TODO: horizontal nav links */
+  /*For the life of me, I cannot figure out how to make the nav bar horizontal. I tried using flexbox and grid but it just doesn't work. I will keep trying to figure it out. */
+   
   }
 
   .contact-form-wrapper {
     max-width: 600px;
     margin-inline: auto;
   }
+  
 }
