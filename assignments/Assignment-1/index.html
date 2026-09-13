@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 1: Responsive Content Page</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main>
+    <h1>The Organization of Hamburgers</h1>
+    <!-- idk why i made this up. i was hungry  -->
+  </main>
+
+  <header>
+    <a href="#main-content">Skip to main content</a>
+    <nav>
+      <a href="#" class="brand">The Organization of Hamburgers</a>
+      <ul>
+        <li><a href="#restaurants">Local Hamburger Restaurants</a></li>
+        <li><a href="#toppings">Favorite Toppings</a></li>
+        <li><a href="#feedback">Your Feedback</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="restaurants">
+      <h2>Local Hamburger Restaurants</h2>
+      <article class="location-card">
+        <h3>Locations in Syracuse UT.</h3>
+        <p><strong>In-N-Out Burger:</strong> 1977 N 1200 W, Layton, UT 84041</p>
+        <p><strong>Wendy's:</strong> 1598 W 1200 N, Syracuse, UT 84075</p>
+        <p><strong>Iceberg Drive Inn:</strong> 1792 S 2000 W, Syracuse, UT 84075</p>
+        <p><strong>McDonald's:</strong> 867 W 1700 S, Syracuse, UT 84075</p>
+      </article>
+    </section>
+
+    <section id="toppings">
+      <h2>Favorite Toppings</h2>
+      <ul class="topping-grid">
+        <li class="top-card">
+          <h3>Cheese</h3>
+          <p>Nothing beats a good cheeseburger!</p>
+        </li>
+        <li class="top-card">
+          <h3>Ketchup</h3>
+          <p>The classic choice for any burger!</p>
+        </li>
+        <li class="top-card">
+          <h3>Lettuce</h3>
+          <p>Gives a fresh and crisp bite to a burger!</p>
+        </li>
+        <li class="top-card">
+          <h3>Onions</h3>
+          <p>They taste best grilled!</p>
+        </li>
+         <li class="top-card">
+          <h3>Tomatoes</h3>
+          <p>They add a juicy sweetness to a burger!</p>
+        </li>
+         <li class="top-card">
+          <h3>Pickles</h3>
+          <p>They add a nice tangy flavor to any burger!</p>
+        </li>
+        </li>
+         <li class="top-card">
+          <h3>Mayo</h3>
+          <p>A creamy condiment that adds richness to the burger!</p>
+        </li>
+      </ul>
+    </section>
+
+    <section id="feedback">
+      <h2>Your Feedback</h2>
+      
+      <form>
+        <div class="field-group">
+          <label for="feedback-name">Your Name</label>
+          <input type="text" id="feedback-name" name="name" autocomplete="name">
+        </div>
+        <p>What is your favorite hamburger topping?</p>
+        <div class="field-group">
+          <label for="feedback-message">Topping Feedback</label>
+          <textarea id="feedback-message" name="message" rows="4"></textarea>
+        </div>
+        <button type="submit">Send Feedback</button>
+      </form>
+    </section>
+
+     <footer>
+    <p>&copy; 2026 Lauren von Niederhausern</p>
+  </footer>
+
+</body>
+</html>
