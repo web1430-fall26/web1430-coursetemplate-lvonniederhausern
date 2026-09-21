@@ -1,4 +1,4 @@
-Part 1: Console experiments:
+Console experiments:
 
 '5' + 3 returns '53' because when you use the + operator in java script with a  string and a number the computer does a type coercion. it converts the number into a string and concatenates them.
 '5' - 3 returns 2 because the javascript operator of - only makes sense in a math sense. so the computer does another type coercion changing the string into a number to do the math.
@@ -22,3 +22,23 @@ typeof {} returns 'object' because a plain set of curly braces creates a plain o
 'hello world'.toUpperCase() returns 'HELLO WORLD' because .toUpperCase makes all the letters capitalized.
 'hello world'.replace('world', 'JavaScript') returns 'hello JavaScript' because .replace replaces a word with a slected word. 
 'hello'.length returns 5 because .length checks how long a string is. in this case hello has 5 letters.
+
+Debugging:
+Spelling error with variable name: changed nextYeer to nextYear on line 12 so that it matches the variable name.
+return `Hi ${name}! You are ${numericAge} years old. Next year you will be ${nextYear} years old.`; 
+Uncaught ReferenceError ReferenceError: nextYeer is not defined was the error code that pointed out nextYEER.
+
+Spelling error with variable name: changed mesage to message on line 16 so that it matches the variable name.
+console.log(message);
+ at <anonymous> (<node_internals>/internal/modules/cjs/loader:1651:16) this was the error code that had me check line 16.
+
+Changed text to say strict equality instead of loose equality on line 20 because == is loose equality and === is strict equality. Changed to match the case.
+console.log('Age matched with strict equality');
+there was no error code. but this message wasnt displayed till it was fixed.
+
+Process reflection:
+Which type coercion result surprised you most, and why?
+i think the - operation was the most suprising. mainly because the + worked very different from it. usualy + and - are direct oposites. but with + the computer just converted them to a string first before concatinating them while the - converted them to numbers before doing the math.
+
+What was the hardest bug to find in Part 3, and what clue in the error message led you to it?
+i had a hard time reading the error messages. they were long and pretty technical. most of the time i looked at the numbers and the line number that corresponded. The 3rd error was the one that took the most thought. once i noticed that the text and operator didn't match up all it took was a quick google of the definitions to fix the mistake.
