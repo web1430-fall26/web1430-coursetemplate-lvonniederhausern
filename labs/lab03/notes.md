@@ -37,8 +37,11 @@ console.log('Age matched with strict equality');
 there was no error code. but this message wasnt displayed till it was fixed.
 
 Process reflection:
+
 Which type coercion result surprised you most, and why?
-i think the - operation was the most suprising. mainly because the + worked very different from it. usualy + and - are direct oposites. but with + the computer just converted them to a string first before concatinating them while the - converted them to numbers before doing the math.
+
+I think the - operation was the most surprising. Mainly because the + worked very differently from it. Usually, + and - are direct opposites. But with +, the computer just converted them to a string first before concatenating them, while the - converted them to numbers before doing the math.
 
 What was the hardest bug to find in Part 3, and what clue in the error message led you to it?
-i had a hard time reading the error messages. they were long and pretty technical. most of the time i looked at the numbers and the line number that corresponded. The 3rd error was the one that took the most thought. once i noticed that the text and operator didn't match up all it took was a quick google of the definitions to fix the mistake.
+
+I had a hard time reading the error messages. They were long and pretty technical. Most of the time, I looked at the numbers and the line number that corresponded. The 3rd error was the one that took the most thought. Once I noticed that the text and operator didn't match up, all it took was a quick Google of the definitions to fix the mistake.
