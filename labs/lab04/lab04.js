@@ -52,7 +52,7 @@ function validateInputs(level, maxDistance, maxHours) {
 // Returns the first trail matching all three criteria, or null if none match.
 function findTrail(level, maxDistance, maxHours) {
   for (const trail of trails) {
-    if (trail.level == level && trail.distance == maxDistance && trail.hours == maxHours) { // check if a trail matches criteria
+    if (trail.level == level && trail.distance <= maxDistance && trail.hours <= maxHours) { // check if a trail matches criteria
       //debugOutputText.textContent = "matching trail: " + trail.name; // debug message if a trail is found
       //debugOutputText.appendChild(document.createTextNode(" Trail Name: " + trail.name + ", Distance: " + trail.distance + " miles, Hours: " + trail.hours + ", Difficulty: " + trail.level)); // debug message if a trail is found
       return trail; // return the first matching trail
@@ -130,7 +130,23 @@ function renderTable(increment, rows) {
     tableOutputDiv.textContent = 'Invalid increment. Must be at least 0.1.';
     return;
   }
-  //ASK
+  else {
+    // --- for astetic purposes, I added a title to the table as well.
+    tableOutputDiv.textContent = 'Miles: --- Kilometers:'; // title of the table
+  //  debugOutputText.textContent = 'Increment: ' + increment + ', Rows: ' + rows; // debug message for increment and rows
+    for (let i = 0; i < rows; i++) {
+      const miles = increment * (i + 1); // calculate miles based on increment and row number
+      const kilometers = milesToKm(miles); // convert miles to kilometers
+      const row = document.createElement('tr'); // create a new table row
+      const milesCell = document.createElement('td'); // create a new table cell for miles
+      milesCell.textContent = miles.toFixed(2) +" --- "; // set the text content of the miles cell to the calculated miles, rounded to 2 decimal places
+      const kilometersCell = document.createElement('td'); // create a new table cell for kilometers
+      kilometersCell.textContent = kilometers; // set the text content of the kilometers cell to the calculated kilometers
+      row.appendChild(milesCell); // append the miles cell to the row
+      row.appendChild(kilometersCell); // append the kilometers cell to the row
+      tableOutputDiv.appendChild(row); // append the row to the table output div
+    }
+  }
 }
 
 generateBtn.addEventListener('click', () => {
