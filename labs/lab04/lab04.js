@@ -21,6 +21,7 @@ const incrementInput  = document.getElementById('increment');
 const rowCountInput   = document.getElementById('row-count');
 const generateBtn     = document.getElementById('generate-btn');
 const tableOutputDiv  = document.getElementById('table-output');
+const debugOutputText = document.getElementById('debug-output-text');// debug output text
 
 // ─── Part 3: Trail recommender functions ─────────────────────────────────
 
@@ -31,12 +32,35 @@ const tableOutputDiv  = document.getElementById('table-output');
 //        maxHours must be 1–8
 function validateInputs(level, maxDistance, maxHours) {
   // TODO
+  if (!['beginner', 'intermediate', 'advanced'].includes(level)) { // check if level is valid input
+    //debugOutputText.textContent = "invalid level"; // debug message if level is invalid
+    return 'Invalid level. Must be beginner, intermediate, or advanced.';
+  }
+  if (isNaN(maxDistance) || maxDistance < 1 || maxDistance > 20) { // check if maxDistance is a number and between the range of 1 and 20 miles
+      //debugOutputText.textContent = "invalid max distance"; // debug message if maxDistance is invalid
+    return 'Invalid max distance. Must be between 1 and 20 miles.';
+  }
+  if (isNaN(maxHours) || maxHours < 1 || maxHours > 8) { // check if maxHours is a number and within the range of 1 to 8 hours
+    //debugOutputText.textContent = "invalid max hours"; // debug message if maxHours is invalid
+    return 'Invalid max hours. Must be between 1 and 8 hours.';
+  }
+  //debugOutputText.textContent = "All inputs are valid."; // debug message if all inputs are valid
+  return null; // all inputs are valid
 }
 
 // findTrail(level, maxDistance, maxHours)
 // Returns the first trail matching all three criteria, or null if none match.
 function findTrail(level, maxDistance, maxHours) {
-  // TODO
+  for (const trail of trails) {
+    if (trail.level == level && trail.distance == maxDistance && trail.hours == maxHours) { // check if a trail matches criteria
+      //debugOutputText.textContent = "matching trail: " + trail.name; // debug message if a trail is found
+      //debugOutputText.appendChild(document.createTextNode(" Trail Name: " + trail.name + ", Distance: " + trail.distance + " miles, Hours: " + trail.hours + ", Difficulty: " + trail.level)); // debug message if a trail is found
+      return trail; // return the first matching trail
+    }
+  }
+  //debugOutputText.textContent = "no matching trail found"; // debug message 
+  return null;
+  
 }
 
 // renderRecommendation(trail)
@@ -46,12 +70,41 @@ function findTrail(level, maxDistance, maxHours) {
 // Use createElement + textContent — no innerHTML.
 function renderRecommendation(trail) {
   recommendationDiv.innerHTML = ''; // clear previous result
-  // TODO
+  if (trail === null) {
+    const trailnotfound = document.createElement('p');
+    trailnotfound.textContent = "No trail matches your criteria. Try adjusting your distance or time.";
+    recommendationDiv.appendChild(trailnotfound);
+    //debugOutputText.textContent = "no trail found render recommendation"; // debug message if no trail is found
+
+  }
+  else if (trail != null) {
+    //debugOutputText.textContent = "found trail render recommendation: " + trail.name; // debug message if a trail is found
+    const trailfound = document.createElement('p');
+    trailfound.textContent = "Trail Name: " + trail.name + ", Distance: " + trail.distance + " miles, Hours: " + trail.hours + ", Difficulty: " + trail.level;
+    recommendationDiv.appendChild(trailfound);
+  }
+  else { // i know this is redundant but i wanted to make sure that if the trail is null, it will return null
+    return null;
+  }
+  return null;
+
 }
 
 // Button handler
 findBtn.addEventListener('click', () => {
   // TODO: read values → validate → findTrail → renderRecommendation
+  for (const trail of trails) {
+    const level = experienceSelect.value;
+    const maxDistance = parseFloat(maxDistanceInput.value);
+    const maxHours = parseFloat(maxHoursInput.value);
+    const validationCheck = validateInputs(level, maxDistance, maxHours); // returns error message if any input is invalid, or null if all valid
+    if (validationCheck !== null) { // if any input is invalid, display error message and return
+      recommendationDiv.textContent = validationCheck;
+      return;
+    }
+    const trailFound = findTrail(level, maxDistance, maxHours);
+    renderRecommendation(trailFound); // render recommendation based on trail found
+  }
 });
 
 // ─── Part 4: Distance converter functions ────────────────────────────────
@@ -59,7 +112,8 @@ findBtn.addEventListener('click', () => {
 // milesToKm(miles)
 // Returns miles converted to kilometers (miles × 1.60934), rounded to 2 decimal places.
 function milesToKm(miles) {
-  // TODO
+  kilometers = miles * 1.60934; //convert miles to kilometers
+  return kilometers.toFixed(2); //returns and rounds kilometers to 2 decimal places
 }
 
 // renderTable(increment, rows)
@@ -68,7 +122,15 @@ function milesToKm(miles) {
 // Renders into tableOutputDiv.
 function renderTable(increment, rows) {
   tableOutputDiv.innerHTML = ''; // clear previous result
-  // TODO
+  if (rows < 1 || rows > 20) { // check if rows is between 1 and 20
+    tableOutputDiv.textContent = 'Invalid row count. Must be between 1 and 20.';
+    return;
+  }
+  else if (increment < 0.1) { // check if increment is at least 0.1
+    tableOutputDiv.textContent = 'Invalid increment. Must be at least 0.1.';
+    return;
+  }
+  //ASK
 }
 
 generateBtn.addEventListener('click', () => {
