@@ -11,4 +11,4 @@ i triggered an error message that sugessted what was wrong with my submission an
 
 What would need to change if you wanted to add a fourth trail difficulty level?
 
-you would most likely need to add it as a suggested option and then make it so it doesnt trigger an invalid level. you would have to add it to the exeptions list along with beginner, intermediate, or advanced. Also if this difficulty level covered a longer distance or time you would have to change the bounderies of the time and distance. 
+you would most likely need to add it as a suggested option and then make it so it doesnt trigger an invalid level. you would have to add it to the exeptions list along with beginner, intermediate, or advanced.  if this difficulty level covered a longer distance or time you would have to change the bounderies of the time and distance. then you need to add at least 2 hikes that are in this difficulty level.
