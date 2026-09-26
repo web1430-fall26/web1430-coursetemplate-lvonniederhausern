@@ -34,16 +34,29 @@ function validateInputs(mealTotal, tipPercentage, numPeople) {
     mealTotal = mealTotal.toFixed(2); //makes it so if they type below 2 decimal places and it will round to 2 decimal places
     if (isNaN(mealTotal) || mealTotal <= 0) {//Total cant be below 0 and must be a number
         //debugOutputText.textContent = "Meal total less than 0."; // debug message if meal total is invalid
-        return "Meal total must be more than $0.00.";
+        mealTotalInput.setAttribute('aria-invalid', 'true');
+        return "Meal total must be a number and be more than $0.00.";
+    }
+    else{
+        mealTotalInput.setAttribute('aria-invalid', 'false');
     }
     if (isNaN(tipPercentage) || tipPercentage < 0 || tipPercentage > 100) {// Tip percentage must be between 0 and 100 and must be a number
         //debugOutputText.textContent = "Tip percentage out of bounds."; // debug message if tip percentage is invalid
+        tipPercentageInput.setAttribute('aria-invalid', 'true');
         return "Tip percentage must be a number between 0 and 100.";
+    }
+    else{
+        tipPercentageInput.setAttribute('aria-invalid', 'false');
     }
     if (isNaN(numPeople) || numPeople <= 0 || !Number.isInteger(numPeople)) {// Number of people must be a positive integer and must be a number
         //debugOutputText.textContent = "Invalid number of people."; // debug message if number of people is invalid
+        numPeopleInput.setAttribute('aria-invalid', 'true');
         return "Number of people must be a positive integer.";
     }
+    else{    
+        numPeopleInput.setAttribute('aria-invalid', 'false');
+    }
+
     return null; // No errors
 }
 

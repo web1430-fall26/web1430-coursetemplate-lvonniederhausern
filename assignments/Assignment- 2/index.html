@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Assignment 2 Interactive Calculator</title>
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <main>
@@ -12,19 +13,19 @@
     <section class="tip-calculator">
       <h2>Tip and Bill Calculator</h2>
 
-      <div class="field-group">
+      <div class="field-group" >
         <label for="meal-total">Meal Total ($)</label>
-        <input type="number" id="meal-total" min="0" step="0.01" value="0.00">
+        <input type="number" id="meal-total" aria-describedby="total-price-input" aria-invalid="false" min="0" step="0.01" value="0.00">
       </div>
 
-      <div class="field-group">
+      <div class="field-group" >
         <label for="tip-percentage">Tip Percentage (%)</label>
-        <input type="number" id="tip-percentage" min="0" max="100" value="15">
+        <input type="number" id="tip-percentage" aria-describedby="tip-percent-input" aria-invalid="false" min="0" max="100" value="15">
       </div>
 
       <div class="field-group">
         <label for="num-people">Number of People</label>
-        <input type="number" id="num-people" min="1" value="1">
+        <input type="number" id="num-people" aria-describedby="number-of-people-input" aria-invalid="false" min="1" value="1">
       </div>
 
       <button type="button" id="calculate-btn">Calculate</button>
