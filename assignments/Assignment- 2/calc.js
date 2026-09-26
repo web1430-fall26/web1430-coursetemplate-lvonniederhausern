@@ -1,5 +1,4 @@
-//Tip and bill splitter Lauren von Niederhausern//
-//takes a meal total, tip percentage, and number of people; outputs each person's share//
+//Lauren von Niederhausern: Tip and bill splitter takes a meal total, tip percentage, and number of people; outputs each person's share//
 
 //values input by user
 const mealTotalInput = document.getElementById('meal-total');
@@ -8,7 +7,7 @@ const numPeopleInput = document.getElementById('num-people');
 const calculateButton = document.getElementById('calculate-btn');
 const resultDiv = document.getElementById('result-output');
 const debugOutputText = document.getElementById('debug-output-text');// debug output text
-//const lastResults = document.getElementById('past-results');// used to print last results
+const lastResults = document.getElementById('past-results');// used to print last results
 
 
 // Required functions — each must be named and in its own const or function declaration:
@@ -66,7 +65,6 @@ function renderResult(result) {
     const [totalAmount, tipAmount, totalAmountPerPerson] = result; // destructure the result array into individual variables
     //debugOutputText.textContent = 'total:' + totalAmount + " tip: "+ tipAmount + " per person: "+ totalAmountPerPerson + " DEBUG";
     resultDiv.innerHTML = `<br>Total Amount with Tip: $${totalAmount}<br>Tip Amount: $${tipAmount}<br>Total Amount Per Person: $${totalAmountPerPerson}`; // render the result in the DOM
-    
 
 }
 
@@ -84,6 +82,7 @@ calculateButton.addEventListener('click', () => {
     }
     const totals = pureCalculation(total, tip, people );
     renderResult(totals); // present total + tip, tip itself, and the price per person
+
     //  calcHistory += totals;
     //  const history = displayLastResults(calcHistory);
     //save result
