@@ -69,7 +69,6 @@ function renderResult(result) {
 }
 
 //A click handler that orchestrates: read inputs → validate → calculate → render (or show error)
-//TODO: Support keyboard submission (pressing Enter in any input field triggers the calculation)
 calculateButton.addEventListener('click', () => {
     const total = parseFloat(mealTotalInput.value);
     const tip = parseFloat(tipPercentageInput.value);
@@ -80,31 +79,48 @@ calculateButton.addEventListener('click', () => {
       resultDiv.textContent = validationCheck;
       return;
     }
-    const totals = pureCalculation(total, tip, people );
+    const totals = pureCalculation(total, tip, people);
     renderResult(totals); // present total + tip, tip itself, and the price per person
-
-    //  calcHistory += totals;
-    //  const history = displayLastResults(calcHistory);
-    //save result
-    //document.getElementById('result-output').textContent = result;
-    //sessionStorage.setItem('lastCalculation', result);
+    const result = totals;
+    addCalculation(result[0],result[2])
+    document.getElementById('past-results').textContent = "Previous Total: $"+ result[0]+ " Previous Amount Per Person: $"+ result[2];
+    sessionStorage.setItem('lastTotal', result[0]);     //Save to sessionStorage
+    sessionStorage.setItem('lastPart', result[2]);
 });
 
-//TO DO:Store the last calculation result in sessionStorage and restore it on page reload
-// 1. Restore the result when the page loads
-// document.addEventListener('DOMContentLoaded', () => {
-//     const savedResult = sessionStorage.getItem('lastCalculation');
+//TO DO:Store the last result in sessionStorage and restore it on page reload
+document.addEventListener('DOMContentLoaded', () => {
+    const savedResult = sessionStorage.getItem('lastTotal');
+    const savedPortion = sessionStorage.getItem('lastPart');
     
-//     if (savedResult !== null) {
-//         document.getElementById('result-output').textContent = savedResult;
-//     }
-// });
+    if (savedResult !== null && savedPortion !== null) {
+        document.getElementById('past-results').textContent = "Previous Total: $"+ savedResult + " Previous Amount Per Person: $"+ savedPortion;
+    }
+});
 
 //TODO: Add a "calculation history" list showing the last three results
-// const calcHistory = [];
-// function displayLastResults(calcHistory){
-//     for (results in calcHistory){
-//         lastResults.innerHTML = 'last results: '+ results;
-//     }
-// }
+let calculationHistory = [];
 
+function addCalculation(billTotal, pricePerPerson) {
+  const entry = { bill: billTotal, price: pricePerPerson };
+  calculationHistory.unshift(entry); // add new entry
+  if (calculationHistory.length > 3) {
+    calculationHistory.pop(); // delete oldest item from the end
+  }
+  updateHistoryDisplay();
+}
+
+function updateHistoryDisplay() {
+  const historyList = document.getElementById('history-list');
+  historyList.innerHTML = ''; // Clear current list
+  
+  // Loop through the history array and create <li> elements
+  calculationHistory.forEach(item => {
+    const li = document.createElement('li');
+    li.textContent = `Total Bill: ${item.bill}    Price Per Person: ${item.price}`;
+    historyList.appendChild(li);
+  });
+}
+
+//TODO: Support keyboard submission (pressing Enter in any input field triggers the calculation)
+//not enough time to figure this part out. 
