@@ -34,7 +34,7 @@ function validateInputs(mealTotal, tipPercentage, numPeople) {
     mealTotal = mealTotal.toFixed(2); //makes it so if they type below 2 decimal places and it will round to 2 decimal places
     if (isNaN(mealTotal) || mealTotal <= 0) {//Total cant be below 0 and must be a number
         //debugOutputText.textContent = "Meal total less than 0."; // debug message if meal total is invalid
-        return "Meal total must be more than 0.";
+        return "Meal total must be more than $0.00.";
     }
     if (isNaN(tipPercentage) || tipPercentage < 0 || tipPercentage > 100) {// Tip percentage must be between 0 and 100 and must be a number
         //debugOutputText.textContent = "Tip percentage out of bounds."; // debug message if tip percentage is invalid
