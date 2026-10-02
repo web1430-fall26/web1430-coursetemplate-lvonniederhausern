@@ -11,8 +11,15 @@
   <main>
     <h1>Campus Store</h1>
 
-    <div class="controls">
-      <div id="filter-bar" aria-label="Filter by category"></div> <!-- a div id="filter-bar"> for the category filter buttons -->
+    <div class="controls"> <!-- a div id="filter-bar"> for the category filter buttons -->
+      <div id="filter-bar" aria-label="Filter by category">
+        <!--<label for="filter-bar">Filter by category</label>
+        <button class="filter-btn active" data-category="all">All</button>
+        <button class="filter-btn" data-category="Books">Books</button>
+        <button class="filter-btn" data-category="Apparel">Apparel</button>
+        <button class="filter-btn" data-category="Electronics">Electronics</button>
+        <button class="filter-btn" data-category="Accessories">Accessories</button>-->
+      </div> 
       <div class="field-group">
         <label for="sort-order">Sort by price</label>
         <select id="sort-order"> <!-- a select id="sort-order"> with options "Price: Low to High" and "Price: High to Low" -->
@@ -20,6 +27,7 @@
           <option value="desc">Price: High to Low</option>
         </select>
       </div>
+      <!--<button id="checkout">Add to Cart</button> --> <!-- a button for the checkout action -->
     </div>
 
     <div id="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
