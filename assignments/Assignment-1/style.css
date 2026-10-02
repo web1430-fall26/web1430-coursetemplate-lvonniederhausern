@@ -10,6 +10,7 @@
   --color-text:       #27272f;
   --color-bg:         #f3f0f4;
   --color-surface:    #e9b39c;
+  /*add variables for unique colors in the root: no hardcoded values.ADD MORE CONSTRAST IN 900PX*/
 
   --space-sm:  0.5rem;
   --space-md:  1rem;
