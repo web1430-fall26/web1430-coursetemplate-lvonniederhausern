@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+<!-- In labs/lab05/index.html, create a page with: -->
 <html lang="en">
 <head>
   <meta charset="UTF-8">
@@ -11,31 +12,19 @@
     <h1>Campus Store</h1>
 
     <div class="controls">
-      <div id="filter-bar" aria-label="Filter by category"></div>
+      <div id="filter-bar" aria-label="Filter by category"></div> <!-- a div id="filter-bar"> for the category filter buttons -->
       <div class="field-group">
         <label for="sort-order">Sort by price</label>
-        <select id="sort-order">
+        <select id="sort-order"> <!-- a select id="sort-order"> with options "Price: Low to High" and "Price: High to Low" -->
           <option value="asc">Price: Low to High</option>
           <option value="desc">Price: High to Low</option>
         </select>
       </div>
     </div>
 
-    <div id="product-grid" aria-live="polite"></div>
+    <div id="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
   </main>
 
   <script src="lab05.js" defer></script>
 </body>
 </html>
-
-<!-- //In labs/lab05/index.html, create a page with:
-
-A <div id="filter-bar"> for the category filter select
-A <select id="sort-order"> with options "Price: Low to High" and "Price: High to Low"
-A <div id="product-grid"> for the product cards
-In labs/lab05/lab05.js, on DOMContentLoaded:
-
-Call renderCategoryFilter(getCategories(products), filterBar) to populate the filter
-Call renderProductList(products, productGrid) to show all products initially
-Add a change listener to the category filter: when it changes, filter the products and re-render the list
-Add a change listener to the sort select: when it changes, apply the sort and re-render (preserving any active category filter) -->
