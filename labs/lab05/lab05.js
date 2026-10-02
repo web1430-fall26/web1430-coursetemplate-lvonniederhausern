@@ -2,7 +2,7 @@
 import { products } from './data.js';
 const productList = products;
 // filterByCategory(productList, category)
-// Returns a new array containing only products where product.category === category. If category is 'All', returns the full list unchanged.ff
+// Returns a new array containing only products where product.category === category. If category is 'All', returns the full list unchanged.
 function filterByCategory (productList, category) {
   if (category === 'All') {
     return productList;
@@ -33,7 +33,7 @@ function sortByPrice (productList, direction) {
   const sorted = productList.slice().sort((a, b) => {
     if (direction === 'asc') {
       return a.price - b.price;
-    } else {
+    } else if (direction === 'desc') {
       return b.price - a.price;
     }
   });
@@ -47,7 +47,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     
     // Call renderProductList(products, productGrid) to show all products initially
     renderProductList(products, productGrid);
-    
+
     // Add a change listener to the category filter: when it changes, filter the products and re-render the list
     categoryFilter.addEventListener('change', (event) => {
         const selectedCategory = event.target.value;
@@ -64,8 +64,27 @@ document.addEventListener("DOMContentLoaded", (event) => {
     });
 
     // Add a change listener to the sort select: when it changes, apply the sort and re-render (preserving any active category filter)
-
+    sortSelect.addEventListener('change', (event) => {
+        const sortOrder = sortSelect.value;
+        const selectedCategory = categoryFilter.value;
+        let filtered;
+        if (selectedCategory === 'all') {
+            filtered = products;
+        } else {
+            filtered = products.filter(product => product.category === selectedCategory);
+        }
+        const sorted = sortByPrice(filtered, sortOrder);
+        renderProducts(sorted);
+    });
+        //check if this is better:
+        //  const selectedCategory = event.target.value;
+        // const sortOrder = sortSelect.value;
+        // if (selectedCategory === 'all') {
+        //     renderProducts(sortByPrice(products, sortOrder));
+        // } else {
+        //     const filtered = products.filter(product => product.category === selectedCategory);
+        //     renderProducts(sortByPrice(filtered, sortOrder));
+        // }
+        // renderProducts(filtered);
 });
-
-
 
