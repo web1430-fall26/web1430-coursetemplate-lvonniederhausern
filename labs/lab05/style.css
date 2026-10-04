@@ -4,16 +4,28 @@ Product cards display in a responsive grid (one column on mobile, three columns 
 Out-of-stock cards have a visually distinct appearance (e.g., reduced opacity, a strikethrough price, or a muted color scheme)
 The "Add to Cart" button looks disabled when the product is out of stock */
 
-filter-bar {
+/* filter-bar {
 
 }
 
 sort-order {
 
-}
+} */
 
-product-grid {
+.product-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 20px;
+}
+
+@media (min-width: 900px){
+  .product-grid {
+    display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 16px;
+  }
+}
+.product-card{
+  border: 1px;
+   border-color :red;
 }

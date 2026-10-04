@@ -1,11 +1,19 @@
 //In labs/lab05/lab05.js, write the following functions. Each must be a pure function — it should not modify products or any global state.
-import { products } from './data.js';
 
-const productList = products;
+//tried exporting products from data.js but it didn't work, so I just linked through the html file instead.
+
+
+// ─── DOM references ───────────────────────────────────────────────────────
+//const coolBtn = document.getElementById('cool-btn'); //debug button
+const filterBar = document.getElementById('filter-bar');
+const sortOrder = document.getElementById('sort-order');
+const productGrid = document.getElementById('product-grid');
+// const categoryFilter = document.getElementById('category-filter');
+
 // filterByCategory(productList, category)
 // Returns a new array containing only products where product.category === category. If category is 'All', returns the full list unchanged.
 function filterByCategory (productList, category) {
-  if (category === 'All') {
+  if (category == 'All') {
     return productList;
   }
   return productList.filter(product => product.category === category);
@@ -17,7 +25,7 @@ function filterByCategory (productList, category) {
 // Hint: use a Set to deduplicate: [...new Set(productList.map(p => p.category))]
 function getCategories (productList) {
   const categories = [...new Set(productList.map(p => p.category))];
-  return ['All', ...categories];
+  return [...categories];
 }
 
 // formatPrice(amount)
@@ -38,55 +46,6 @@ function sortByPrice (productList, direction) {
   });
   return sorted;
 };
-
-// In labs/lab05/lab05.js, on DOMContentLoaded:
-document.addEventListener("DOMContentLoaded", (event) => {
-    // Call renderCategoryFilter(getCategories(products), filterBar) to populate the filter
-    renderCategoryFilter(getCategories(products), filterBar);
-    
-    // Call renderProductList(products, productGrid) to show all products initially
-    renderProductList(products, productGrid);
-
-    // Add a change listener to the category filter: when it changes, filter the products and re-render the list
-    categoryFilter.addEventListener('change', (event) => {
-        const selectedCategory = event.target.value;
-
-        // Filter products based on selection 
-        let filtered;
-        if (selectedCategory === 'all') {
-            filtered = products;
-        } else {
-            filtered = products.filter(product => product.category === selectedCategory);
-        }
-        // Re-render the list
-        //renderProducts(filtered);
-        renderProductList(filtered, productGrid);
-    });
-
-    // Add a change listener to the sort select: when it changes, apply the sort and re-render (preserving any active category filter)
-    sortSelect.addEventListener('change', (event) => {
-        const sortOrder = sortSelect.value;
-        const selectedCategory = categoryFilter.value;
-        let filtered;
-        if (selectedCategory === 'all') {
-            filtered = products;
-        } else {
-            filtered = products.filter(product => product.category === selectedCategory);
-        }
-        const sorted = sortByPrice(filtered, sortOrder);
-        renderProducts(sorted);
-    });
-        //check if this is better:
-        //  const selectedCategory = event.target.value;
-        // const sortOrder = sortSelect.value;
-        // if (selectedCategory === 'all') {
-        //     renderProducts(sortByPrice(products, sortOrder));
-        // } else {
-        //     const filtered = products.filter(product => product.category === selectedCategory);
-        //     renderProducts(sortByPrice(filtered, sortOrder));
-        // }
-        // renderProducts(filtered);
-});
 
 // renderProductCard(product)
 // Creates and returns an <article> element with class product-card containing:
@@ -113,8 +72,13 @@ function renderProductCard(product) {
 
     // A stock status indicator: a <span> reading "In Stock" or "Out of Stock", with class in-stock or out-of-stock accordingly
     const stockStatus = document.createElement('span');
-    stockStatus.classList.add(product.inStock ? 'in-stock' : 'out-of-stock');
-    stockStatus.textContent = product.inStock ? 'In Stock' : 'Out of Stock';
+    if (product.inStock) {
+        stockStatus.classList.add('in-stock');
+        stockStatus.textContent = 'In Stock';
+    } else {
+        stockStatus.classList.add('out-of-stock');
+        stockStatus.textContent = 'Out of Stock';
+    }
     card.appendChild(stockStatus);
 
     // A <button> reading "Add to Cart" that is disabled when inStock is false
@@ -138,11 +102,20 @@ function renderProductList(productList, container) {
         const noProducts = document.createElement('p');
         noProducts.textContent = 'No products found.';
         container.appendChild(noProducts);
-    } else {
-        productList.forEach(product => {
-            container.appendChild(renderProductCard(product));
-        });
+        return;
     }
+    const fragment = document.createDocumentFragment();
+    productList.forEach(product => {
+        fragment.appendChild(renderProductCard(product));
+    });
+    container.appendChild(fragment);
+
+    // } else {
+    //     productList.forEach(product => {
+    //         container.appendChild(renderProductCard(product));
+    //     });
+    // }
+    // return container;
 }
 
 // renderCategoryFilter(categories, container)
@@ -165,3 +138,45 @@ function renderCategoryFilter(categories, container) {
 
     container.appendChild(select);
 }
+
+// In labs/lab05/lab05.js, on DOMContentLoaded:
+document.addEventListener("DOMContentLoaded", (event) => {
+    console.log('content loaded');
+    // Call renderCategoryFilter(getCategories(products), filterBar) to populate the filter
+    renderCategoryFilter(getCategories(products), filterBar);
+    
+    // Call renderProductList(products, productGrid) to show all products initially
+    renderProductList(products, productGrid);
+
+    // Add a change listener to the category filter: when it changes, filter the products and re-render the list
+    filterBar.addEventListener('change', (event) => {
+        const selectedCategory = event.target.value;
+        const sortOrder = document.getElementById('sort-order').value;
+        // Filter products based on selection 
+        let filtered;
+        if (selectedCategory === 'all') {
+            filtered = products;
+        } else {
+            filtered = products.filter(product => product.category === selectedCategory);
+        }
+        // Re-render the list
+        //renderProducts(filtered);
+        const sorted = sortByPrice(filtered, sortOrder);
+        renderProductList(sorted, productGrid);
+    });
+
+    // Add a change listener to the sort select: when it changes, apply the sort and re-render (preserving any active category filter)
+    sortOrder.addEventListener('change', (event) => {
+        const sortOrder = event.target.value;
+        const selectedCategory = document.getElementById('category-filter').value;
+
+        let filtered;
+        if (selectedCategory === 'all') {
+            filtered = products;
+        } else {
+            filtered = products.filter(product => product.category === selectedCategory);
+        }
+        const sorted = sortByPrice(filtered, sortOrder);
+        renderProductList(sorted, productGrid); // this is throwing an ERROR
+    });
+});

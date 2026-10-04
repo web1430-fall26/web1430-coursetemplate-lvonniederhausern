@@ -4,7 +4,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 05 – Campus Store</title>
+  <title>Lab 05 - Campus Store</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -13,12 +13,6 @@
 
     <div class="controls"> <!-- a div id="filter-bar"> for the category filter buttons -->
       <div id="filter-bar" aria-label="Filter by category">
-        <!--<label for="filter-bar">Filter by category</label>
-        <button class="filter-btn active" data-category="all">All</button>
-        <button class="filter-btn" data-category="Books">Books</button>
-        <button class="filter-btn" data-category="Apparel">Apparel</button>
-        <button class="filter-btn" data-category="Electronics">Electronics</button>
-        <button class="filter-btn" data-category="Accessories">Accessories</button>-->
       </div> 
       <div class="field-group">
         <label for="sort-order">Sort by price</label>
@@ -28,11 +22,13 @@
         </select>
       </div>
       <!--<button id="checkout">Add to Cart</button> --> <!-- a button for the checkout action -->
+      <!--<button type="button" id="cool-btn">Cool-Button</button> -->
     </div>
 
-    <div id="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
+    <div id="product-grid" class="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
   </main>
 
   <script src="lab05.js" defer></script>
+  <script src="data.js"></script>
 </body>
 </html>

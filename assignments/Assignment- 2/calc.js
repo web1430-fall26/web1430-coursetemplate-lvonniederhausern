@@ -1,4 +1,4 @@
-//Lauren von Niederhausern: Tip and bill splitter takes a meal total, tip percentage, and number of people; outputs each person's share//
+document//Lauren von Niederhausern: Tip and bill splitter takes a meal total, tip percentage, and number of people; outputs each person's share//
 
 //values input by user
 const mealTotalInput = document.getElementById('meal-total');

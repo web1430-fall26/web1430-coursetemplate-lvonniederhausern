@@ -1,7 +1,7 @@
 // Lab 05 – Product data (do not modify)
 // Reference this array in lab05.js
 
-export const products = [
+const products = [
   { id: 1,  name: 'WEB 1430 Textbook',       category: 'Books',       price: 54.99, inStock: true },
   { id: 2,  name: 'Campus Hoodie',            category: 'Apparel',     price: 39.99, inStock: true },
   { id: 3,  name: 'Mechanical Keyboard',      category: 'Electronics', price: 89.99, inStock: false },
