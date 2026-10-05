@@ -1,3 +1,8 @@
+
+/*TODO: No var or eval, and descriptive names. Style issues: the click and DOMContentLoaded handlers are anonymous; 
+calculationHistory is declared with let but never reassigned (use const); 
+validateInputs reassigns its mealTotal parameter to a string via toFixed; 
+and id="larger" is used three times (W3C validator: Duplicate ID). Use a class for repeated styling.*/
 h1 {
   color: darkgreen;
   background-color: beige;

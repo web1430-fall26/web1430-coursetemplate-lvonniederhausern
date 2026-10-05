@@ -29,6 +29,13 @@ function pureCalculation(mealTotal, tipPercentage, numPeople) {
 }
 
 //A validation function that checks inputs and returns either null (valid) or an error message string
+//TODO: All required conditions are caught with field-named messages (tested empty, non-numeric, negative, tip over 100, 0 and 2.5 people), 
+// and aria-invalid is set. However, each input's aria-describedby points to an id (total-price-input, tip-percent-input, number-of-people-input) 
+// that doesn't exist; errors go into #result-output instead.
+// Add an error <span> with that id next to each input and put the message there.
+//TODO: aria-live="polite" on #result-output works well. Missing: the error spans that aria-describedby should reference 
+// (those ids don't exist in index.html). Also, validateInputs returns at the first error,
+//  so a later field can keep a stale aria-invalid="true" after it's fixed; reset all three before validating.
 function validateInputs(mealTotal, tipPercentage, numPeople) {
     mealTotal = mealTotal.toFixed(2); //makes it so if they type below 2 decimal places and it will round to 2 decimal places
     if (isNaN(mealTotal) || mealTotal <= 0) {//Total cant be below 0 and must be a number
@@ -69,6 +76,9 @@ function renderResult(result) {
 }
 
 //A click handler that orchestrates: read inputs → validate → calculate → render (or show error)
+//TODO: pureCalculation, validateInputs, and renderResult are cleanly separated. 
+// But the click handler is an anonymous arrow function that also writes #past-results, calls addCalculation, and saves to sessionStorage. 
+// Move that work into named functions (e.g. handleCalculate, saveResult) so the handler only orchestrates.
 calculateButton.addEventListener('click', () => {
     const total = parseFloat(mealTotalInput.value);
     const tip = parseFloat(tipPercentageInput.value);

@@ -1,3 +1,5 @@
+(TODO: Clear answers on what you built, edge cases, and extensions (the point about not capping tips is a good insight). The separation answer only says it makes code cleaner; explain why it matters, e.g. pureCalculation can be tested without the page, and the display can change without touching the math.)
+
 Rationale (in rationale.md)
 Write 4–6 sentences addressing:
 
