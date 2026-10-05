@@ -3,7 +3,10 @@ Project context — the fictional product or organization, and its audience
 My fictional product will be painted rocks sold as paperweights for desks and other surfaces. The audience would mainly be desk workers. Workers, people who are at their desk for long periods of time and want some decoration to make it feel a bit more homey. It will also add some much-needed decoration and a burst of color to their otherwise paper-covered desks.
 
 Colour palette — at least four named colours with hex values and confirmed contrast ratios
-#4AAFD5 #91B187 #E7A339 #F88379
+#4AAFD5 Contrast Ratio 2.5:1
+#91B187 Contrast Ratio 2.37:1
+#E7A339 Contrast Ratio 2.16:1
+#F88379 Contrast Ratio 2.46:1
 
 Typography plan — font families and a scale in rem
   Consolas, Courier New, and monospace. 
