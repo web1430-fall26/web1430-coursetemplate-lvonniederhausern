@@ -1,4 +1,4 @@
-(TODO: Clear answers on what you built, edge cases, and extensions (the point about not capping tips is a good insight). The separation answer only says it makes code cleaner; explain why it matters, e.g. pureCalculation can be tested without the page, and the display can change without touching the math.)
+
 
 Rationale (in rationale.md)
 Write 4–6 sentences addressing:
@@ -9,7 +9,11 @@ I built the tip and bill splitter. It's for people trying to evenly split the bi
 
 How did you separate calculation logic from rendering logic, and why does that separation matter?
 
-I calculated the total in a separate function that returned the totals; those totals were then displayed with a separate function. Keeping the calculations and renderings separate. It makes your code much cleaner if you separate your code into functions.
+I calculated the total in a separate function that returned the totals; those totals were then displayed with a separate function. Keeping the calculations and renderings separate. It makes your code much cleaner if you separate your code into functions. 
+
+(Clear answers on what you built, edge cases, and extensions (the point about not capping tips is a good insight). The separation answer only says it makes code cleaner; explain why it matters, e.g. pureCalculation can be tested without the page, and the display can change without touching the math.)
+
+It keeps your core data/algorithms completely seperare from the interface or screen. This seperation matters because it allows for better testablility, reusablility and maintenance. It makes sure that the visual aspects dont effect the math. 
 
 What edge cases did your validation catch, and did you discover any you hadn't anticipated?
 
