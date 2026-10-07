@@ -26,8 +26,6 @@ function initFaq(faqContainer) {
             }
         }
     });
-    
-// Specifically, for the clicked button:
 // Toggle aria-expanded between "true" and "false" (as strings — ARIA attributes are always strings)
 // Toggle the hidden attribute on the associated answer panel (use answerEl.hidden = !answerEl.hidden or toggleAttribute('hidden'))
 // For all other questions: set aria-expanded="false" and hidden = true (only one answer open at a time).
@@ -35,12 +33,23 @@ function initFaq(faqContainer) {
 
 //part 2
 // Write a function initTabs(tabListContainer) that handles both mouse and keyboard.
+function initTabs(tabListContainer) {
+    // Add a click listener to tabListContainer
+    tabListContainer.addEventListener('click', (event) => {
+        // When a [role="tab"] button is clicked:
+        if (event.target.matches('[role="tab"]')) {
+            // Set aria-selected="false" on all tab buttons
+            const tabs = tabListContainer.querySelectorAll('[role="tab"]');
+            tabs.forEach(tab => {
+                tab.setAttribute('aria-selected', 'false');
+                tab.tabIndex = -1; // Remove from tab order
+            });
+        }
 
-// Click behaviour
+        });
+        
 
-// Add a click listener to tabListContainer
-// When a [role="tab"] button is clicked:
-// Set aria-selected="false" on all tab buttons
+}
 // Hide all tab panels (set hidden = true)
 // Set aria-selected="true" on the clicked tab
 // Show the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
@@ -63,11 +72,10 @@ function initFaq(faqContainer) {
 
 //part 3
 // At the bottom of your script (or in a DOMContentLoaded handler):
-
 // initFaq(document.querySelector('.faq'));
 // initTabs(document.querySelector('.tab-list'));
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log('content loaded');
     initFaq(document.querySelector('.faq'));
-    //initTabs(document.querySelector('.tab-list'));
+    initTabs(document.querySelector('.tab-list'));
 });
