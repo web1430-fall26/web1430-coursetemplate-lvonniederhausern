@@ -1,0 +1,15 @@
+.faq-answer[hidden] {
+  display: none;
+}
+
+.faq-question[aria-expanded="true"] {
+  /* style the open state — e.g., different background, arrow rotation */
+}
+
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
+[role="tab"][aria-selected="true"] {
+  /* active tab styling */
+}
