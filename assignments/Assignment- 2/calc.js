@@ -36,6 +36,7 @@ function pureCalculation(mealTotal, tipPercentage, numPeople) {
 //TODO: aria-live="polite" on #result-output works well. Missing: the error spans that aria-describedby should reference 
 // (those ids don't exist in index.html). Also, validateInputs returns at the first error,
 //  so a later field can keep a stale aria-invalid="true" after it's fixed; reset all three before validating.
+//change if statements to a switch. described by and error messages more direct.
 function validateInputs(mealTotal, tipPercentage, numPeople) {
     mealTotal = mealTotal.toFixed(2); //makes it so if they type below 2 decimal places and it will round to 2 decimal places
     if (isNaN(mealTotal) || mealTotal <= 0) {//Total cant be below 0 and must be a number
@@ -89,8 +90,10 @@ calculateButton.addEventListener('click', () => {
       resultDiv.textContent = validationCheck;
       return;
     }
+    // handleCalculations 
     const totals = pureCalculation(total, tip, people);
     renderResult(totals); // present total + tip, tip itself, and the price per person
+    //save result function input totals
     const result = totals;
     addCalculation(result[0],result[2])
     document.getElementById('past-results').textContent = "Previous Total: $"+ result[0]+ " Previous Amount Per Person: $"+ result[2];
