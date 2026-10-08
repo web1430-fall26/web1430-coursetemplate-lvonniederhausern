@@ -13,8 +13,8 @@ I calculated the total in a separate function that returned the totals; those to
 
 What edge cases did your validation catch, and did you discover any you hadn't anticipated?
 
-It caught if your total was 0 or a negative number, which makes sense. It also had an edge case if your tip percentage was over 100 % or if you tried to enter the number of people as less than 0. I think personally the percentage shouldn't have an upper limit because people might want to overtip if they were really impressed with service.
+if the meal total was less than 0 or not a number it had an edge case. if the percentage wasnt a number or wasnt between 0 and 100 there would be an error. and if the number of people wasnt a number or less than 1 there was an error. i almost forgot about making sure the number of people was a whole number so i added that this time. I think personally the percentage shouldn't have an upper limit because people might want to overtip if they were really impressed with service.
 
 What would you add if you extended this tool?
 
-I want to make it more accessibility-friendly, but I struggle with programming that. If I wanted to get into more detail, I could make it so that if one person's meal was more expensive than the average, they had to pay a larger portion of the bill.
+ If I wanted to get into more detail, I could make it so that if one person's meal was more expensive than the average, they had to pay a larger portion of the bill. 
