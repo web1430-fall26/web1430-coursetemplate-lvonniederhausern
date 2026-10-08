@@ -1,26 +1,35 @@
 
-/*TODO: No var or eval, and descriptive names. Style issues: the click and DOMContentLoaded handlers are anonymous; 
+/*: No var or eval, and descriptive names. Style issues: the click and DOMContentLoaded handlers are anonymous; 
 calculationHistory is declared with let but never reassigned (use const); 
 validateInputs reassigns its mealTotal parameter to a string via toFixed; 
 and id="larger" is used three times (W3C validator: Duplicate ID). Use a class for repeated styling.*/
+:root {
+  --color-brand:      darkgreen;
+  --color-background-1:       beige;
+  --color-background-2:         #9dd99d;
+  --color-surface:    #e6f5dc;
+  --lettuce-color:    #10502b;
+  --money-color:    #3e4e22;;
+}
+
 h1 {
-  color: darkgreen;
-  background-color: beige;
+  color: var(--color-brand);
+  background-color: var(--color-background-1);
   width: 500px;
 }
 h2 {
-    color: rgb(16, 80, 43);
-    background-color: rgb(230, 245, 220);
+    color: var(--lettuce-color);
+    background-color: var(--color-surface);
     width: 250px;
 
 }
 #larger {
-    color: rgb(62, 78, 34);
+    color: var(--money-color);
     text-align: left;
      font-size: large;
 }
 button{
-    background-color: rgb(157, 217, 157);
-    font-size: large;
+    background-color: var(--color-background-2);
+    font-size: medium;
     margin: 10px;
 }

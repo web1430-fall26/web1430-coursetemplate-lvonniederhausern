@@ -28,43 +28,95 @@ function pureCalculation(mealTotal, tipPercentage, numPeople) {
 
 }
 
+function ariaInvalidReset() {
+    mealTotalInput.setAttribute('aria-invalid', 'false');
+    tipPercentageInput.setAttribute('aria-invalid', 'false');
+    numPeopleInput.setAttribute('aria-invalid', 'false');
+}
+
 //A validation function that checks inputs and returns either null (valid) or an error message string
-//TODO: All required conditions are caught with field-named messages (tested empty, non-numeric, negative, tip over 100, 0 and 2.5 people), 
+//: All required conditions are caught with field-named messages (tested empty, non-numeric, negative, tip over 100, 0 and 2.5 people), 
 // and aria-invalid is set. However, each input's aria-describedby points to an id (total-price-input, tip-percent-input, number-of-people-input) 
 // that doesn't exist; errors go into #result-output instead.
 // Add an error <span> with that id next to each input and put the message there.
-//TODO: aria-live="polite" on #result-output works well. Missing: the error spans that aria-describedby should reference 
+//: aria-live="polite" on #result-output works well. Missing: the error spans that aria-describedby should reference 
 // (those ids don't exist in index.html). Also, validateInputs returns at the first error,
 //  so a later field can keep a stale aria-invalid="true" after it's fixed; reset all three before validating.
 //change if statements to a switch. described by and error messages more direct.
 function validateInputs(mealTotal, tipPercentage, numPeople) {
-    mealTotal = mealTotal.toFixed(2); //makes it so if they type below 2 decimal places and it will round to 2 decimal places
-    if (isNaN(mealTotal) || mealTotal <= 0) {//Total cant be below 0 and must be a number
-        //debugOutputText.textContent = "Meal total less than 0."; // debug message if meal total is invalid
+    const mealTotalFixed = mealTotal.toFixed(2); //makes it so if they type below 2 decimal places and it will round to 2 decimal places
+    ariaInvalidReset(); // reset all aria-invalid attributes to false before validating
+    switch (true) {
+    case (isNaN(mealTotalFixed) ):
         mealTotalInput.setAttribute('aria-invalid', 'true');
-        return "Meal total must be a number and be more than $0.00.";
-    }
-    else{
-        mealTotalInput.setAttribute('aria-invalid', 'false');
-    }
-    if (isNaN(tipPercentage) || tipPercentage < 0 || tipPercentage > 100) {// Tip percentage must be between 0 and 100 and must be a number
-        //debugOutputText.textContent = "Tip percentage out of bounds."; // debug message if tip percentage is invalid
+        mealTotalInput.setAttribute('aria-describedby', 'Error: Meal total must be a number.');
+        return "Meal total must be a number.";
+    case (mealTotalFixed <= 0):
+        mealTotalInput.setAttribute('aria-invalid', 'true');
+        mealTotalInput.setAttribute('aria-describedby', 'Error: Meal total must be more than $0.00.');
+        return "Meal total must be more than $0.00.";
+    case (isNaN(tipPercentage)):
         tipPercentageInput.setAttribute('aria-invalid', 'true');
-        return "Tip percentage must be a number between 0 and 100.";
-    }
-    else{
-        tipPercentageInput.setAttribute('aria-invalid', 'false');
-    }
-    if (isNaN(numPeople) || numPeople <= 0 || !Number.isInteger(numPeople)) {// Number of people must be a positive integer and must be a number
-        //debugOutputText.textContent = "Invalid number of people."; // debug message if number of people is invalid
+        tipPercentageInput.setAttribute('aria-describedby', 'Error: Tip percentage must be a number.');
+        return "Tip percentage must be a number.";
+    case ( tipPercentage < 0):
+        tipPercentageInput.setAttribute('aria-invalid', 'true');
+        tipPercentageInput.setAttribute('aria-describedby', 'Error: Tip percentage must be greater than 0.');
+        return "Tip percentage must be greater than 0. Its rude to not tip.";
+    case ( tipPercentage > 100):
+        tipPercentageInput.setAttribute('aria-invalid', 'true');
+        tipPercentageInput.setAttribute('aria-describedby', 'Error: Tip percentage must be less than or equal to 100.');
+        return "Tip percentage must be less than or equal to 100.";
+    case (isNaN(numPeople)):
         numPeopleInput.setAttribute('aria-invalid', 'true');
+        numPeopleInput.setAttribute('aria-describedby', 'Error: Number of people must be a number.');
+        return "Number of people must be a number.";
+    case (numPeople <= 0):
+        numPeopleInput.setAttribute('aria-invalid', 'true');
+        numPeopleInput.setAttribute('aria-describedby', 'Error: Number of people must be a positive integer.');
         return "Number of people must be a positive integer.";
-    }
-    else{    
+    case (numPeople % 1 !== 0):
+        numPeopleInput.setAttribute('aria-invalid', 'true');
+        numPeopleInput.setAttribute('aria-describedby', 'Error: Number of people must be a whole number.');
+        return "Number of people must be a whole number. You can't split a person in half...";
+    default:
+        mealTotalInput.setAttribute('aria-invalid', 'false');
+        tipPercentageInput.setAttribute('aria-invalid', 'false');
         numPeopleInput.setAttribute('aria-invalid', 'false');
+        mealTotalInput.setAttribute('aria-describedby', 'total-price-input');
+        tipPercentageInput.setAttribute('aria-describedby', 'tip-percent-input');
+        numPeopleInput.setAttribute('aria-describedby', 'number-of-people-input');
+        return null;
     }
 
-    return null; // No errors
+    // if (isNaN(mealTotal) || mealTotal <= 0) {//Total cant be below 0 and must be a number
+    //     //debugOutputText.textContent = "Meal total less than 0."; // debug message if meal total is invalid
+    //     mealTotalInput.setAttribute('aria-invalid', 'true');
+    //     return "Meal total must be a number and be more than $0.00.";
+    // }
+    // else{
+    //     mealTotalInput.setAttribute('aria-invalid', 'false');
+    // }
+
+    // if (isNaN(tipPercentage) || tipPercentage < 0 || tipPercentage > 100) {// Tip percentage must be between 0 and 100 and must be a number
+    //     //debugOutputText.textContent = "Tip percentage out of bounds."; // debug message if tip percentage is invalid
+    //     tipPercentageInput.setAttribute('aria-invalid', 'true');
+    //     return "Tip percentage must be a number between 0 and 100.";
+    // }
+    // else{
+    //     tipPercentageInput.setAttribute('aria-invalid', 'false');
+    // }
+
+    // if (isNaN(numPeople) || numPeople <= 0 || !Number.isInteger(numPeople)) {// Number of people must be a positive integer and must be a number
+    //     //debugOutputText.textContent = "Invalid number of people."; // debug message if number of people is invalid
+    //     numPeopleInput.setAttribute('aria-invalid', 'true');
+    //     return "Number of people must be a positive integer.";
+    // }
+    // else{    
+    //     numPeopleInput.setAttribute('aria-invalid', 'false');
+    // }
+
+    // return null; // No errors
 }
 
 //A render function that accepts the result and updates the DOM — no calculation logic inside this function
@@ -76,8 +128,23 @@ function renderResult(result) {
 
 }
 
+function handleCalculate(total, tip, people) {
+    const totals = pureCalculation(total, tip, people);
+    renderResult(totals);
+    saveResult(totals); // present total + tip, tip itself, and the price per person
+}
+
+function saveResult(totals) {
+    //save result function input totals
+    const result = totals;
+    addCalculation(result[0],result[2])
+    document.getElementById('past-results').textContent = "Previous Total: $"+ result[0]+ " Previous Amount Per Person: $"+ result[2];
+    sessionStorage.setItem('lastTotal', result[0]);     //Save to sessionStorage
+    sessionStorage.setItem('lastPart', result[2]);
+}
+
 //A click handler that orchestrates: read inputs → validate → calculate → render (or show error)
-//TODO: pureCalculation, validateInputs, and renderResult are cleanly separated. 
+//pureCalculation, validateInputs, and renderResult are cleanly separated. 
 // But the click handler is an anonymous arrow function that also writes #past-results, calls addCalculation, and saves to sessionStorage. 
 // Move that work into named functions (e.g. handleCalculate, saveResult) so the handler only orchestrates.
 calculateButton.addEventListener('click', () => {
@@ -91,17 +158,11 @@ calculateButton.addEventListener('click', () => {
       return;
     }
     // handleCalculations 
-    const totals = pureCalculation(total, tip, people);
-    renderResult(totals); // present total + tip, tip itself, and the price per person
-    //save result function input totals
-    const result = totals;
-    addCalculation(result[0],result[2])
-    document.getElementById('past-results').textContent = "Previous Total: $"+ result[0]+ " Previous Amount Per Person: $"+ result[2];
-    sessionStorage.setItem('lastTotal', result[0]);     //Save to sessionStorage
-    sessionStorage.setItem('lastPart', result[2]);
+    handleCalculate(total, tip, people);
+    
 });
 
-//TO DO:Store the last result in sessionStorage and restore it on page reload
+//Store the last result in sessionStorage and restore it on page reload
 document.addEventListener('DOMContentLoaded', () => {
     const savedResult = sessionStorage.getItem('lastTotal');
     const savedPortion = sessionStorage.getItem('lastPart');
@@ -111,8 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 });
 
-//TODO: Add a "calculation history" list showing the last three results
-let calculationHistory = [];
+//calculation history list showing the last three results
+const calculationHistory = [];
 
 function addCalculation(billTotal, pricePerPerson) {
   const entry = { bill: billTotal, price: pricePerPerson };
