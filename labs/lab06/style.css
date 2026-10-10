@@ -1,15 +1,60 @@
+:root {
+  --color-brand:      #22539d;
+  --color-h2:       #003200;
+  --color-h3: #2f0000;
+  --color-bg-1:       #d99d9d;
+  --color-bg-2:         #9dd99d;
+  --color-bg-3:     #f2dee1;
+  --color-surface:    #e6f5dc;
+  --color1:         #bed3f1;
+  --color2:         #dcdada;
+  --color3:         #dcf9f9;
+
+}
+
+h1{
+  color: var(--color-brand);
+  background-color: var(--color1);
+}
+
+h2{
+  color: var(--color-h2);
+}
+
+h3{
+  color: var(--color-h3);
+}
+
 .faq-answer[hidden] {
   display: none;
 }
 
 .faq-question[aria-expanded="true"] {
   /* style the open state — e.g., different background, arrow rotation */
+  background-color: var(--color-surface);
+}
+
+.faq-question[aria-expanded="false"] {
+  background-color: var(--color2);
+}
+
+.faq-answer{
+  background-color: var(--color3);
 }
 
 [role="tabpanel"][hidden] {
   display: none;
 }
 
+[role="tabpanel"]{
+  background-color: var(--color-bg-3);
+}
+
 [role="tab"][aria-selected="true"] {
   /* active tab styling */
+  background-color: var(--color-bg-1);
+}
+
+[role="tab"][aria-selected="false"] {
+  background-color: var(--color-bg-2);
 }

@@ -43,32 +43,75 @@ function initTabs(tabListContainer) {
             tabs.forEach(tab => {
                 tab.setAttribute('aria-selected', 'false');
                 tab.tabIndex = -1; // Remove from tab order
+                // Hide all tab panels (set hidden = true) TODO: simplify this
+                const library = document.getElementById("panel-library");
+                library.hidden = true;
+                const gym = document.getElementById("panel-gym");
+                gym.hidden = true;
+                const dinning = document.getElementById("panel-dining");
+                dinning.hidden = true;
             });
+            event.target.setAttribute('aria-selected', 'true'); // Set aria-selected="true" on the clicked tab
+            const tabId = event.target.getAttribute('aria-controls');
+            tabId.tabIndex = 0; // Keep exactly one tab in the tab order: the selected tab gets tabIndex = 0, every other tab gets tabIndex = -1. Update this every time the selection changes — including on click.
+            const panelEl = document.getElementById(tabId);
+            console.log(tabId, panelEl);
+            if (panelEl.hidden){
+                panelEl.hidden = false; // Show the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
+            }else{
+                panelEl.hidden = true;
+            }
+
         }
 
         });
-        
+// Sets aria-selected="false" on all tab buttons
+// Hides all tab panels (set hidden = true)
+// Sets aria-selected="true" on the clicked tab
+// Shows the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
 
-}
-// Hide all tab panels (set hidden = true)
-// Set aria-selected="true" on the clicked tab
-// Show the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
+
 // Keyboard behaviour — roving tabindex
 
-// Because these buttons carry role="tab" inside a role="tablist", they are one composite widget, not three separate buttons. Assistive technology users expect one Tab press to enter the tablist, arrow keys to move between tabs, and the next Tab press to leave. See the roving-tabindex section of the Week 06 lecture notes for the reasoning and the full pattern.
+// Because these buttons carry role="tab" inside a role="tablist", they are one composite widget, not three separate buttons. 
+// Assistive technology users expect one Tab press to enter the tablist, arrow keys to move between tabs, and the next Tab press to leave.
+// See the roving-tabindex section of the Week 06 lecture notes for the reasoning and the full pattern.
 
-// Keep exactly one tab in the tab order: the selected tab gets tabIndex = 0, every other tab gets tabIndex = -1. Update this every time the selection changes — including on click.
+    tabListContainer.addEventListener("keydown", (event) => {
+        const tabs = Array.from(tabListContainer.querySelectorAll('[role="tab"]'));
+        const current = tabs.indexOf(document.activeElement);
+        if (current === -1) return;
+
+        let next = null;
+        if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+        if (event.key === "ArrowLeft")  next = (current - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home")       next = 0;
+        if (event.key === "End")        next = tabs.length - 1;
+
+        if (next !== null) {
+            event.preventDefault();   // stop the arrow key from scrolling the page
+            const panels = [document.getElementById("panel-library"),document.getElementById("panel-gym"),document.getElementById("panel-dining")]
+            setActiveTab(tabs, panels, next);
+        }
+    });
+}
 // Add a keydown listener to tabListContainer. On ArrowRight / ArrowLeft, move the selection one tab forward or backward and wrap around at the ends. On Home / End, jump to the first or last tab.
 // Call event.preventDefault() when you handle an arrow key, so the page does not scroll.
 // Call .focus() on the newly selected tab, so focus and selection stay together.
 // Factor the shared work into one selectTab(index) helper and call it from both the click and the keydown paths — the two should not have separate copies of the logic.
 
-// Do not apply roving tabindex to the accordion in Part 1. Each accordion header is an independent toggle, so all of them stay in the natural tab order.
+// Only the active tab is reachable by Tab; the rest are removed from the tab order.
+// tabindex="-1" means "not in the tab order, but still focusable by script".
+function setActiveTab(tabs, panels, newIndex) {
+  tabs.forEach((tab, i) => {
+    const selected = i === newIndex;
+    tab.setAttribute("aria-selected", String(selected));
+    tab.tabIndex = selected ? 0 : -1;      // roving tabindex
+    panels[i].hidden = !selected;
+  });
+  tabs[newIndex].focus();                   // move focus with the selection
+}
 
-// Sets aria-selected="false" on all tab buttons
-// Hides all tab panels (set hidden = true)
-// Sets aria-selected="true" on the clicked tab
-// Shows the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
 
 //part 3
 // At the bottom of your script (or in a DOMContentLoaded handler):
