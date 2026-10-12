@@ -146,27 +146,40 @@ function initFilter() {
         prankItems.forEach ((item) => {
             //use prankItems.includes()
             if (Number(searchText)<9 && Number(searchText)>0){
-                if (item.id == searchText){
+                if (item.id == Number(searchText)){
                     const Products = document.createElement('p');
                     Products.textContent = item.name;
                     container.appendChild(Products);
+                     console.log("triggered: 1");
                 }
                 else{
                      const noProducts = document.createElement('p');
                      noProducts.textContent = 'No products found.';
                     container.appendChild(noProducts);
+                     console.log("triggered: 2");
                 }
             }
             else {
-                if (item.name == searchText.lowercase || item.category == searchText.lowercase){
+                // if (prankItems.includes(searchText.lowercase )){
+                //     console.log('triggered');
+                // }
+                if (item.name.lowercase === searchText.lowercase){
                     const Products = document.createElement('p');
                     Products.textContent = item.name;
                     container.appendChild(Products);
+                     console.log("triggered: 3");
                 }
-                else{
+                else if (item.category == searchText.lowercase){
+                    const Products = document.createElement('p');
+                    Products.textContent = item.name;
+                    container.appendChild(Products);
+                     console.log("triggered: 4");
+
+                }else{
                     const noProducts = document.createElement('p');
                      noProducts.textContent = 'No products found.';
                     container.appendChild(noProducts);
+                     console.log("triggered: 5");
                 }
 
             } //else {
