@@ -16,8 +16,32 @@
 // aria-expanded="true"/"false" on the trigger button reflects open/closed state
 // aria-controls on the button points to the answer panel's id
 // The answer panel has id matching the aria-controls value
-// lob 06 part 1 matches this. just use header instead of div
-function initAccordion() {
+// lab 06 part 1 matches this. just use header instead of div
+function initAccordion(faqContainer) {
+    // Adds a single click listener to faqContainer (event delegation)
+   faqContainer.addEventListener('click', (event) => {
+        if (event.target.matches('.faq-question')) { // When a click is detected, checks if event.target.matches('.faq-question') 
+            //if the selected element is a faq-question go through all the qs and find the matching answer.
+            //grab aria-controls value of the clicked question
+            const answerId = event.target.getAttribute('aria-controls');
+            const answerEl = document.getElementById(answerId);
+            // Toggles the clicked question open or closed
+            if (answerEl.hidden) { //if the answer is hidden open it
+                answerEl.hidden = false;
+                event.target.setAttribute('aria-expanded', 'true');
+                // Finds all other open questions and closes them (removes the hidden attribute trick: toggle hidden on the answer div, set aria-expanded to the correct string)
+                for (const answer of document.getElementsByClassName("faq-answer")) {
+                    if (answer !== answerEl) {
+                        answer.hidden = true;
+                        answer.setAttribute('aria-expanded', 'false');
+                    }
+                }
+            } else { //if the answer is open, close it
+                answerEl.hidden = true;
+                event.target.setAttribute('aria-expanded', 'false');
+            }
+        }
+    });
 
 }
 
@@ -29,9 +53,68 @@ function initAccordion() {
 // Arrow key navigation: Left/Right arrow keys move focus between tabs (keyboard users should not have to Tab through every tab to reach the content)
 // The active tab is visually distinct from inactive tabs
 //browser tab vibe. clicking between website tabs. part 2 lab 06.
-function initTabs() {
+function initTabs(tabListContainer) {
+    // Add a click listener to tabListContainer
+    tabListContainer.addEventListener('click', (event) => {
+        // When a [role="tab"] button is clicked:
+        if (event.target.matches('[role="tab"]')) {
+            // Set aria-selected="false" on all tab buttons
+            const tabs = tabListContainer.querySelectorAll('[role="tab"]');
+            tabs.forEach(tab => {
+                tab.setAttribute('aria-selected', 'false');
+                tab.tabIndex = -1; // Remove from tab order
+                // Hide all tab panels (set hidden = true) TODO: simplify this
+                const library = document.getElementById("panel-library");
+                library.hidden = true;
+                const gym = document.getElementById("panel-gym");
+                gym.hidden = true;
+                const dinning = document.getElementById("panel-dining");
+                dinning.hidden = true;
+            });
+            event.target.setAttribute('aria-selected', 'true'); // Set aria-selected="true" on the clicked tab
+            const tabId = event.target.getAttribute('aria-controls');
+            tabId.tabIndex = 0; // Keep exactly one tab in the tab order: the selected tab gets tabIndex = 0, every other tab gets tabIndex = -1. Update this every time the selection changes — including on click.
+            const panelEl = document.getElementById(tabId);
+            console.log(tabId, panelEl);
+            if (panelEl.hidden){
+                panelEl.hidden = false; // Show the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
+            }else{
+                panelEl.hidden = true;
+            }
 
+        }
+
+    });
+
+    tabListContainer.addEventListener("keydown", (event) => {
+        const tabs = Array.from(tabListContainer.querySelectorAll('[role="tab"]'));
+        const current = tabs.indexOf(document.activeElement);
+        if (current === -1) return;
+
+        let next = null;
+        if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+        if (event.key === "ArrowLeft")  next = (current - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home")       next = 0;
+        if (event.key === "End")        next = tabs.length - 1;
+
+        if (next !== null) {
+            event.preventDefault();   // stop the arrow key from scrolling the page
+            const panels = [document.getElementById("panel-library"),document.getElementById("panel-gym"),document.getElementById("panel-dining")]
+            setActiveTab(tabs, panels, next);
+        }
+    });
 }
+
+function setActiveTab(tabs, panels, newIndex) {
+  tabs.forEach((tab, i) => {
+    const selected = i === newIndex;
+    tab.setAttribute("aria-selected", String(selected));
+    tab.tabIndex = selected ? 0 : -1;      // roving tabindex
+    panels[i].hidden = !selected;
+  });
+  tabs[newIndex].focus();                   // move focus with the selection
+}
+
 
 // Pattern 3: Live filter
 // A list of at least eight items (cards, names, products — your choice) with a text input that filters visible items as the user types. Rules:
@@ -41,16 +124,65 @@ function initTabs() {
 // Empty state: if no items match, display a "No results" message
 // Input is labelled with a <label> (not just a placeholder)
 // last lab orginizing live data. use event handlers, event listeners, and sutch. lab 05 has great resources. 
+//TODO: still need help here
 function initFilter() {
+    const prankItems = [
+  { id: 1,  name: 'Plastic Spider',       category: "a" },
+  { id: 2,  name: 'Whoopiee cushion',     category: "a" },
+  { id: 3,  name: 'Shock button',         category: "b" },
+  { id: 4,  name: 'Joke book',            category: "b" },
+  { id: 5,  name: 'Fake snow',            category: "c" },
+  { id: 6,  name: 'Magic kit',            category: "c" },
+  { id: 7,  name: 'Clingwrap',            category: "d" },
+  { id: 8,  name: 'Jumpscare kit',        category: "d" }
+];
+    const search = document.getElementById('searchbar');    
+    console.log(search);
+    search.addEventListener('change', (event) => { 
+         const searchText = event.target.value;
+         console.log(searchText);
+
+        for (item in prankItems){
+            if (item.isFinite(), true){
+                if (item.name() == searchText.lowercase() || item.category == searchText.lowercase()){
+                    const Products = document.createElement('p');
+                    Products.textContent = item.name();
+                    container.appendChild(Products);
+                }
+                else{
+                    const noProducts = document.createElement('p');
+                     noProducts.textContent = 'No products found.';
+                    container.appendChild(noProducts);
+                }
+            }
+            else {
+                if (item.id() == searchText){
+                    const Products = document.createElement('p');
+                    Products.textContent = item.name();
+                    container.appendChild(Products);
+                }
+                else{
+                     const noProducts = document.createElement('p');
+                     noProducts.textContent = 'No products found.';
+                    container.appendChild(noProducts);
+                }
+
+            } //else {
+            //      const noProducts = document.createElement('p');
+            //      noProducts.textContent = 'No products found.';
+            //      container.appendChild(noProducts);
+            // }
+        }
+
+    });
 
 }
 
 
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log('content loaded');
-    initAccordion();
-    initTabs();
+    initAccordion(document.querySelector('.faq'));
+    initTabs(document.querySelector('.tab-list'));
     initFilter();
 });
-
 

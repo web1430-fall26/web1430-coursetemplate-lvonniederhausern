@@ -15,11 +15,136 @@ A brief (1–2 sentence) description of each pattern above its demo-->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>DOM Pattern Library</h1>
-    <!--initAccordion(), initTabs(), initFilter() the content doesnt mattrer but the functionality does.-->
+<header>
 
+    <a href="#main-content">Skip to main content</a>
+    <nav>
+      <ul>
+        <li><a href="#accordion">Accordion: Funny Dad Jokes</a></li>
+        <li><a href="#tabbed">Tabbed Interface: Physical Health Benefits</a></li>
+        <li><a href="#livefilter">Live Filter: Prank Items</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <!--initAccordion(), initTabs(), initFilter() the content doesnt mattrer but the functionality does.-->
+ <h1 id = "main-content">DOM Pattern Library: The Benefits of Humor</h1>
+
+    <!-- ─── Accordion FAQ ──────────────────────────────────────── -->
+    <!--part 1-->
+    <!--// Pattern 1: Accordion / FAQ
+// An accordion with at least four question-answer pairs. Rules:
+// Only one answer can be open at a time (opening a new one closes the previous)
+// Each trigger is a <button> inside an <h3> (or <h2>) — not a bare <div>
+// aria-expanded="true"/"false" on the trigger button reflects open/closed state
+// aria-controls on the button points to the answer panel's id
+// The answer panel has id matching the aria-controls value
+// lab 06 part 1 matches this. just use header instead of div-->
+
+    <section class="faq">
+      <h2 id="accordion">Accordion: Funny Dad Jokes</h2>
+      <p>A verticaly stacked interface with buttons that users can click on to reveal or hide content pannels as a way to display infromation. It expands and contracts dynamically like an accordion. </p>
+
+      <h3 class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1">
+          What do you call a pile of cats?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-1" hidden>
+          <p>A MEOW-ntain.</p>
+        </h3>
+      </h3>
+
+      <h3 class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+          Why do cows wear bells?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-2" hidden>
+          <p>Because their horns don't work.</p>
+        </h3>
+      </h3>
+
+      <h3 class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+          What's the difference between a poorly dressed man on a tricycle and a well-dressed man on a bicycle?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-3" hidden>
+          <p>Attire.</p>
+        </h3>
+      </h3>
+
+      <h3 class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+          What do sprinters eat before they race?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-4" hidden>
+          <p>Nothing. They fast.</p>
+        </h3>
+      </h3>
+
+
+    <!-- ─── Tabbed panel ─────────────────────────────────────────── -->
+    <!--part 2-->
+    <!--/ Pattern 2: Tabbed interface
+// A tab component with at least three tabs. Rules:
+// Tabs use correct ARIA roles: role="tablist" on the container, role="tab" on each button, role="tabpanel" on each panel
+// aria-selected="true" on the active tab, aria-selected="false" on inactive tabs
+// Each tab has aria-controls pointing to its panel's id; each panel has aria-labelledby pointing to its tab's id
+// Arrow key navigation: Left/Right arrow keys move focus between tabs (keyboard users should not have to Tab through every tab to reach the content)
+// The active tab is visually distinct from inactive tabs
+//browser tab vibe. clicking between website tabs. part 2 lab 06.-->
+
+    <section class="tabs-section">
+      <h2 id="tabbed">Tabbed Interface: Physical Health Benefits</h2>
+      <p>A tabbed interface is a horizontal interface that orginizes content into seperate pannels letting users toggle between them to read the infomation.</p>
+
+      <div class="tab-list" role="tablist" aria-label="Campus resource tabs">
+        <button role="tab" aria-selected="true"  aria-controls="panel-library" id="tab-library">Lowers Stress</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-gym"     id="tab-gym">Offers Pain Relief</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-dining"  id="tab-dining">Improves Heart Health</button>
+      </div>
+
+      <div role="tabpanel" id="panel-library" aria-labelledby="tab-library">
+        <h3>Lowers Stress</h3>
+        <p>Laughter has been known to reduce stress and improve mood.</p>
+      </div>
+
+      <div role="tabpanel" id="panel-gym" aria-labelledby="tab-gym" hidden>
+        <h3>Offers Pain Relief</h3>
+        <p>Laughter has been found to be a natral pain killer reducing discomfort.</p>
+      </div>
+
+      <div role="tabpanel" id="panel-dining" aria-labelledby="tab-dining" hidden>
+        <h3>Improves Heart Health</h3>
+        <p>Laughter increases blood flow and heart rate, mimicking mild exercise.</p>
+      </div>
+    </section>
+
+    <!-- ─── Live filter ─────────────────────────────────────────── -->
+    <!--part 3-->
+    <!--// Pattern 3: Live filter
+// A list of at least eight items (cards, names, products — your choice) with a text input that filters visible items as the user types. Rules:
+// Filtering updates the DOM without a full re-render (use CSS class hidden + classList.toggle)
+// A count element below the input reads "Showing X of Y items" and updates on every keystroke
+// The count element has aria-live="polite"
+// Empty state: if no items match, display a "No results" message
+// Input is labelled with a <label> (not just a placeholder)
+// last lab orginizing live data. use event handlers, event listeners, and sutch. lab 05 has great resources.-->
+
+    <section>
+      <h2 id = "livefilter">Live Filter: Prank Items</h2>
+      <p>A live lilter is a user interface that dynamicly updates and narrows down a list of items as a user makes sugestions.</p>
+      
+      <label for="searchbar">Search Bar:</label>
+      <input type="text" id="searchbar" name="searchbar">
+      <p>For testing purposes try typing whoopiee cusion, joke book, or shock button.</p>
+
+    </section>
   </main>
+
+       <footer>
+    <p>&copy; 2026 Lauren von Niederhausern</p>
+  </footer>
 
   <script src="patterns.js" defer></script>
 </body>
