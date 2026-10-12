@@ -118,9 +118,9 @@ function setActiveTab(tabs, panels, newIndex) {
 
 // Pattern 3: Live filter
 // A list of at least eight items (cards, names, products — your choice) with a text input that filters visible items as the user types. Rules:
-// Filtering updates the DOM without a full re-render (use CSS class hidden + classList.toggle) TODO:
+// Filtering updates the DOM without a full re-render (use CSS class hidden + classList.toggle)
 // A count element below the input reads "Showing X of Y items" and updates on every keystroke
-// The count element has aria-live="polite" TODO:
+// The count element has aria-live="polite"
 // Empty state: if no items match, display a "No results" message
 // Input is labelled with a <label> (not just a placeholder)
 // last lab orginizing live data. use event handlers, event listeners, and sutch. lab 05 has great resources. 
@@ -137,8 +137,10 @@ function initFilter() {
   { id: 7,  name: 'Clingwrap',            category: "d" },
   { id: 8,  name: 'Jumpscare kit',        category: "d" }
 ];
-    const search = document.getElementById('searchbar');    
+    const search = document.getElementById('searchbar'); 
+    const Counter = document.getElementById('counter');   
     //console.log(search);
+    Counter.hidden = true;
     search.addEventListener('change', (event) => { 
         container.replaceChildren();
          const searchText = event.target.value;
@@ -193,19 +195,26 @@ function initFilter() {
             if (searchText.toLowerCase() === prankName.toLowerCase()){
                 console.log("matched through name: "+prankName);
                 console.log(searchText);
+                Counter.hidden = false;
                 const Products = document.createElement('p');
                      Products.textContent = item.name;
                      container.appendChild(Products);
             
-                const Counter = document.createElement('p');
+                //const Counter = document.getElementById('counter');
                      Counter.textContent = " Showing "+item.id +" of 8 items.";
                      container.appendChild(Counter);
             }
             else if (Number(searchText) === item.id){
                 console.log("matched through id: "+prankName);
+                Counter.hidden = false;
                 const Products = document.createElement('p');
                      Products.textContent = item.name;
                      container.appendChild(Products);
+                     
+
+                //const Counter = document.getElementById('counter');
+                     Counter.textContent = " Showing "+item.id +" of 8 items.";
+                     container.appendChild(Counter);
             }
             else{
                 console.log("no matches");
