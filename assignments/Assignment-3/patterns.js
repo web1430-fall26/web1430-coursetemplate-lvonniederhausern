@@ -109,18 +109,18 @@ function setActiveTab(tabs, panels, newIndex) {
   tabs.forEach((tab, i) => {
     const selected = i === newIndex;
     tab.setAttribute("aria-selected", String(selected));
-    tab.tabIndex = selected ? 0 : -1;      // roving tabindex
+    tab.tabIndex = selected ? 0 : -1; // roving tabindex
     panels[i].hidden = !selected;
   });
-  tabs[newIndex].focus();                   // move focus with the selection
+  tabs[newIndex].focus(); // move focus with the selection
 }
 
 
 // Pattern 3: Live filter
 // A list of at least eight items (cards, names, products — your choice) with a text input that filters visible items as the user types. Rules:
-// Filtering updates the DOM without a full re-render (use CSS class hidden + classList.toggle)
+// Filtering updates the DOM without a full re-render (use CSS class hidden + classList.toggle) TODO:
 // A count element below the input reads "Showing X of Y items" and updates on every keystroke
-// The count element has aria-live="polite"
+// The count element has aria-live="polite" TODO:
 // Empty state: if no items match, display a "No results" message
 // Input is labelled with a <label> (not just a placeholder)
 // last lab orginizing live data. use event handlers, event listeners, and sutch. lab 05 has great resources. 
@@ -138,56 +138,86 @@ function initFilter() {
   { id: 8,  name: 'Jumpscare kit',        category: "d" }
 ];
     const search = document.getElementById('searchbar');    
-    console.log(search);
+    //console.log(search);
     search.addEventListener('change', (event) => { 
+        container.replaceChildren();
          const searchText = event.target.value;
          console.log(searchText);
-
+         let noMatch =0
         prankItems.forEach ((item) => {
-            //use prankItems.includes()
-            if (Number(searchText)<9 && Number(searchText)>0){
-                if (item.id == Number(searchText)){
-                    const Products = document.createElement('p');
-                    Products.textContent = item.name;
-                    container.appendChild(Products);
-                     console.log("triggered: 1");
-                }
-                else{
-                     const noProducts = document.createElement('p');
-                     noProducts.textContent = 'No products found.';
-                    container.appendChild(noProducts);
-                     console.log("triggered: 2");
-                }
-            }
-            else {
-                // if (prankItems.includes(searchText.lowercase )){
-                //     console.log('triggered');
-                // }
-                if (item.name.lowercase === searchText.lowercase){
-                    const Products = document.createElement('p');
-                    Products.textContent = item.name;
-                    container.appendChild(Products);
-                     console.log("triggered: 3");
-                }
-                else if (item.category == searchText.lowercase){
-                    const Products = document.createElement('p');
-                    Products.textContent = item.name;
-                    container.appendChild(Products);
-                     console.log("triggered: 4");
-
-                }else{
-                    const noProducts = document.createElement('p');
-                     noProducts.textContent = 'No products found.';
-                    container.appendChild(noProducts);
-                     console.log("triggered: 5");
-                }
-
-            } //else {
-            //      const noProducts = document.createElement('p');
-            //      noProducts.textContent = 'No products found.';
-            //      container.appendChild(noProducts);
+            // //use prankItems.includes()
+            // if (Number(searchText)<9 && Number(searchText)>0){
+            //     if (item.id == Number(searchText)){
+            //         const Products = document.createElement('p');
+            //         Products.textContent = item.name;
+            //         container.appendChild(Products);
+            //          console.log("1");
+            //     }
+            //     else{
+            //          const noProducts = document.createElement('p');
+            //          noProducts.textContent = 'No products found.';
+            //         container.appendChild(noProducts);
+            //          console.log("2");
+            //     }
             // }
+            // else {
+            //     // if (prankItems.includes(searchText.lowercase )){
+            //     //     console.log('triggered');
+            //     // }
+            //     if (item.name.lowercase == searchText.lowercase){
+            //         const Products = document.createElement('p');
+            //         Products.textContent = item.name;
+            //         container.appendChild(Products);
+            //          console.log("3");
+            //     }
+            //     else if (item.category.lowercase == searchText.lowercase){
+            //         const Products = document.createElement('p');
+            //         Products.textContent = item.name;
+            //         container.appendChild(Products);
+            //          console.log("4");
+
+            //     }else{
+            //         const noProducts = document.createElement('p');
+            //          noProducts.textContent = 'No products found.';
+            //         container.appendChild(noProducts);
+            //          console.log("5");
+            //     }
+
+            // } //else {
+            // //      const noProducts = document.createElement('p');
+            // //      noProducts.textContent = 'No products found.';
+            // //      container.appendChild(noProducts);
+            // // }
+            const prankName = item.name.toLowerCase();
+            //console.log(prankName);
+            if (searchText.toLowerCase() === prankName.toLowerCase()){
+                console.log("matched through name: "+prankName);
+                console.log(searchText);
+                const Products = document.createElement('p');
+                     Products.textContent = item.name;
+                     container.appendChild(Products);
+            
+                const Counter = document.createElement('p');
+                     Counter.textContent = " Showing "+item.id +" of 8 items.";
+                     container.appendChild(Counter);
+            }
+            else if (Number(searchText) === item.id){
+                console.log("matched through id: "+prankName);
+                const Products = document.createElement('p');
+                     Products.textContent = item.name;
+                     container.appendChild(Products);
+            }
+            else{
+                console.log("no matches");
+                noMatch += 1;
+            } 
         });
+
+        if (noMatch == 8){
+            const Products = document.createElement('p');
+            Products.textContent = "No results";
+            container.appendChild(Products);
+        }
 
     });
 
