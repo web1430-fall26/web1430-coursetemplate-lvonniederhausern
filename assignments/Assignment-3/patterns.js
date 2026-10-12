@@ -125,6 +125,7 @@ function setActiveTab(tabs, panels, newIndex) {
 // Input is labelled with a <label> (not just a placeholder)
 // last lab orginizing live data. use event handlers, event listeners, and sutch. lab 05 has great resources. 
 //TODO: still need help here
+const container = document.getElementById('product-container');
 function initFilter() {
     const prankItems = [
   { id: 1,  name: 'Plastic Spider',       category: "a" },
@@ -142,27 +143,28 @@ function initFilter() {
          const searchText = event.target.value;
          console.log(searchText);
 
-        for (item in prankItems){
-            if (item.isFinite(), true){
-                if (item.name() == searchText.lowercase() || item.category == searchText.lowercase()){
+        prankItems.forEach ((item) => {
+            //use prankItems.includes()
+            if (Number(searchText)<9 && Number(searchText)>0){
+                if (item.id == searchText){
                     const Products = document.createElement('p');
-                    Products.textContent = item.name();
+                    Products.textContent = item.name;
                     container.appendChild(Products);
                 }
                 else{
-                    const noProducts = document.createElement('p');
+                     const noProducts = document.createElement('p');
                      noProducts.textContent = 'No products found.';
                     container.appendChild(noProducts);
                 }
             }
             else {
-                if (item.id() == searchText){
+                if (item.name == searchText.lowercase || item.category == searchText.lowercase){
                     const Products = document.createElement('p');
-                    Products.textContent = item.name();
+                    Products.textContent = item.name;
                     container.appendChild(Products);
                 }
                 else{
-                     const noProducts = document.createElement('p');
+                    const noProducts = document.createElement('p');
                      noProducts.textContent = 'No products found.';
                     container.appendChild(noProducts);
                 }
@@ -172,7 +174,7 @@ function initFilter() {
             //      noProducts.textContent = 'No products found.';
             //      container.appendChild(noProducts);
             // }
-        }
+        });
 
     });
 
