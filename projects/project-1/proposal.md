@@ -3,10 +3,10 @@ Project context — the fictional product or organization, and its audience
 My fictional product will be painted rocks sold as paperweights for desks and other surfaces. The audience would mainly be desk workers. Workers, people who are at their desk for long periods of time and want some decoration to make it feel a bit more homey. It will also add some much-needed decoration and a burst of color to their otherwise paper-covered desks.
 
 Colour palette — at least four named colours with hex values and confirmed contrast ratios
-#4AAFD5 Contrast Ratio 2.5:1
-#91B187 Contrast Ratio 2.37:1
-#E7A339 Contrast Ratio 2.16:1
-#F88379 Contrast Ratio 2.46:1
+• Spartan Green (#18453B): Contrast ratio of 9.01:1 against white 
+• Kelly Green (#008208): Contrast ratio of 4.64:1 against white 
+• Excellence Green (#0B9A6D): Contrast ratio of 4.69:1 against white 
+• Black (#000000): Contrast ratio of 21:1 against white
 
 Typography plan — font families and a scale in rem
   Consolas, Courier New, and monospace. 
@@ -17,11 +17,11 @@ Typography plan — font families and a scale in rem
   --font-size-xl: 2rem;      /* 32px */
 
 Component list — the five components you will document
-button - for checkout. aria="checoutButton"
-checkbox - for multi selection of products. aria="multiSelect"
-card - holds products. aria="productCard"
-text input - address imput for shipping. aria="adressHolder"
-nav menu - navagate the site. aria="NAV"
+button - for checkout. role="button"
+checkbox - for multi selection of products. aria-multiselectable="true"
+card - holds products. aria="productCard" , aria-live="polite" 
+text input - address imput for shipping. aria-describedby, aria-required="true" (to make it a requirement)
+nav menu - navagate the site. role="menu", role="menuitem",  aria-current="page" 
 
 the funcions may change based on future need.
 
