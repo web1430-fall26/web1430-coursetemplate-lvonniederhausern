@@ -1,0 +1,6 @@
+/*In labs/lab07/style.css:
+.error-msg should be visually distinct (red text, small font) — 
+but also non-empty spans should have an icon or prefix so color is not the only indicator
+.input-error should show a visible border change on the input
+:focus-visible should show a clear focus ring on all interactive elements
+The form should be readable on mobile (single column) and centered on desktop*/

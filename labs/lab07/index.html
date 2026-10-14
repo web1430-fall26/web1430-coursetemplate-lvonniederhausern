@@ -8,6 +8,10 @@
 </head>
 <body>
   <main>
+    <!--A <label> connected with matching for/id attributes
+An associated <span> with a unique id for the error message (id="[field]-error")
+aria-describedby="[field]-error" on the input pointing to that span
+An empty error span by default (content is injected by JavaScript)-->
     <form id="registration-form" novalidate>
       <h1>Workshop Registration</h1>
       <p class="required-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
