@@ -36,6 +36,14 @@ function initFaq(faqContainer) {
 // check user text imputs for email and address.
 
 //add code for check out button, print recipt, and thanks for buying message
+const checkoutButton = document.getElementById('checkoutButton');
+checkoutButton.addEventListener('click', (event) => {
+        if (event.target.matches('.checkoutButton')) { 
+            const ThankYouMessage = document.getElementById('ThankYouMessage');
+            ThankYouMessage.replaceChildren();
+            ThankYouMessage.append("Thank you for your purchase!");
+        }
+    });
 
 // DOM listener
 document.addEventListener("DOMContentLoaded", (event) => {
