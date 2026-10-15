@@ -4,8 +4,8 @@ My fictional product will be painted rocks sold as paperweights for desks and ot
 
 Colour palette — at least four named colours with hex values and confirmed contrast ratios
 • Spartan Green (#18453B): Contrast ratio of 9.01:1 against white 
-• Kelly Green (#008208): Contrast ratio of 4.64:1 against white 
-• Excellence Green (#0B9A6D): Contrast ratio of 4.69:1 against white 
+• Rose Pink (#A80073): Contrast ratio of 7.21:1 against white 
+• Navy Blue (#181944): Contrast ratio of 16.64:1 against white 
 • Black (#000000): Contrast ratio of 21:1 against white
 
 Typography plan — font families and a scale in rem
