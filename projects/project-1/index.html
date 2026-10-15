@@ -21,10 +21,98 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <body>
+  <!--TODO: add navigation menu--><!--Component 1: nav menu - navagate the site. role="menu", role="menuitem",  aria-current="page"-->
+  <header>
+    <nav class="navbar">
+      <ul class="nav-menu">
+        <li><a href="#main-content">Painted Rock Paperweights</a></li>
+        <li><a href="#aboutUs">About Us</a></li>
+        <li><a href="#accordionFaq">Frequently Asked Questions</a></li>
+        <li><a href="#product">Products</a></li>
+        <li><a href="#checkoutInfo">Checkout</a></li>
+      </ul>
+    </nav>
+  </header>
   <main>
-      <h1 class="roboto-condensed-fontStyle">Project 1: Interactive Style Guide</h1>
+      <h1 class="roboto-condensed-fontStyle" id="main-content">Project 1: Interactive Style Guide: Painted Rock Paperweights</h1>
+      
+      <!--add general overview-->
+      <section class="overview">
+      <h2 class="roboto-condensed-fontStyle" id ="aboutUs">About Us! (placeholder)</h2>
+      <p class="roboto-condensed-fontStyle">Add a general description about the product here. just a paragraph of info.</p>
+      </section>
+
       <!--At least two interactive components functional, even if unpolished-->
+      <!--2 interactive conponents a button glows when hovered. accordian menu. -->
+       <!--Accordion FAQ--> <!--Interactive component 1: accordian menu.-->
+    <section class="faq" >
+      <h2 class="roboto-condensed-fontStyle" id="accordionFaq">Accordion Menu: Frequently Asked Questions</h2>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-1" >
+          Why do I paint rocks?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-1" hidden>
+          <p class="roboto-condensed-fontStyle">I find it a very fun and relaxing activity. I love to paint and prefer to paint iregular objects. I feel like it gives my art more personality and character.</p>
+        </h3>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-2">
+          What kinds of designs and colors are there?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-2" hidden>
+          <p class="roboto-condensed-fontStyle">There are many different designs and colors. They can be anything from a landscape to a motivational message. There are no limits to the design, and I have access to every color in the rainbow.</p>
+        </h3>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-3">
+          What are the sizes of rocks?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-3" hidden>
+          <p class="roboto-condensed-fontStyle">Rocks come in small, medium, and large sizes. Small rocks are smaller than your palm, Medium rocks are about the size of your palm, and large rocks are larger than your fist.</p>
+        </h3>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false" aria-controls="faq-answer-4">
+          How are prices calculated?
+        </button>
+        <h3 class="faq-answer" id="faq-answer-4" hidden>
+          <p class="roboto-condensed-fontStyle">Pricing is based on the amount of resources used, when it was made, and how long it took to make. Rocks with more intricate designs, including text or a specific image, tend to cost more.</p>
+        </h3>
+      </div>
+    </section>
+
+    <!--product cards go here! so you can look through the options of rocks-->
+    <!--contains name, design/color, size, and price. hopefully also a photo but that is dependent on my skills. -->
+    <section class="products" id="product">
+      <h2 class="roboto-condensed-fontStyle">Products (placeholder)</h2>
+      <p>CARDS GO HERE</p>
+      <!--Component 2: card - holds products. aria="productCard" , aria-live="polite" -->
+
+
+    </section>
+
+    <!--checkout-->
+    <!--should be able to select chosen product here. dependent on my skills.-->
+    <!--has input for product, email, adress, and a checkout button-->
+    <section class="checkout" id="checkoutInfo">
+      <h2 class="roboto-condensed-fontStyle">Checkout (placeholder)</h2>
+      <p>ADD USER INPUTS HERE. PRODUCT SELECTER, EMAIL AND ADRESS IMPUTS</p>
+      <!--Component 3: checkbox - for multi selection of products. aria-multiselectable="true"-->
+      <!--Component 4: text input - address imput for shipping. aria-describedby, aria-required="true" (to make it a requirement) -->
+      <!--also there will be an email input.-->
+      <button class="checkoutButton" role="button">Checkout</button> <!--Component 5: button - for checkout. role="button"--> <!--Interactive component 2: button glows when hovered.-->
+    </section>
+
+
   </main>
+
+  <footer>
+    <p>&copy; 2026 Lauren von Niederhausern</p>
+  </footer>
 
   <script src="js\project1.js" defer></script>
 </body>
