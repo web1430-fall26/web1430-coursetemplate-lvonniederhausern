@@ -14,15 +14,56 @@ const confirmDetails = document.getElementById('confirmation-details');
 // Each returns an error string if invalid, or null if valid.
 // write these pure validation functions that return an error string if invalid or null if valid:
 
+function ariaInvalidReset() {
+  nameInput.setAttribute('aria-invalid', 'false');
+  emailInput.setAttribute('aria-invalid', 'false');
+  phoneInput.setAttribute('aria-invalid', 'false');
+  studentIdInput.setAttribute('aria-invalid', 'false');
+  eventSelect.setAttribute('aria-invalid', 'false');
+}
+
 function validateName(value) {
-  if (!value.trim()) return 'Full name is required.';
-  if (value.trim().length < 2) return 'Name must be at least 2 characters.';
+  ariaInvalidReset(); // reset all aria-invalid attributes to false before validating
+  if (!value.trim()){
+    nameInput.setAttribute('aria-invalid', 'true');
+    nameInput.setAttribute('aria-describedby', 'Error: Full name is required.');
+    return 'Full name is required.';
+  } else {
+    nameInput.setAttribute('aria-invalid', 'false');
+    nameInput.setAttribute('aria-describedby', 'full-name-error');
+  }
+
+  if (value.trim().length < 2){
+  nameInput.setAttribute('aria-invalid', 'true');
+  nameInput.setAttribute('aria-describedby', 'Error: Name must be at least 2 characters.');
+  return 'Name must be at least 2 characters.';
+  } else {
+    nameInput.setAttribute('aria-invalid', 'false');
+    nameInput.setAttribute('aria-describedby', 'full-name-error');
+  }
+
   return null;
 }
 
 function validateEmail(value) {
-  if (!value.trim()) return 'Email address is required.';
-  if (!value.includes('@') || !value.includes('.')) return 'Please enter a valid email address.';
+  if (!value.trim()){ 
+    emailInput.setAttribute('aria-invalid', 'true');
+    emailInput.setAttribute('aria-describedby', 'Error: Email address is required.');
+    return 'Email address is required.';
+  } else {
+    emailInput.setAttribute('aria-invalid', 'false');
+    emailInput.setAttribute('aria-describedby', 'email-error');
+  }
+
+  if (!value.includes('@') || !value.includes('.')){ 
+    emailInput.setAttribute('aria-invalid', 'true');
+    emailInput.setAttribute('aria-describedby', 'Error: Please enter a valid email address.');
+    return 'Please enter a valid email address.';
+  } else {
+    emailInput.setAttribute('aria-invalid', 'false');
+    emailInput.setAttribute('aria-describedby', 'email-error');
+  } 
+
   return null;
 }
 
@@ -30,18 +71,51 @@ function validatePhone(value) {
   // Optional — only validate format if a value was entered
   if (!value.trim()) return null;
   const digitsOnly = value.replace(/\D/g, '');
-  if (digitsOnly.length < 10) return 'Phone number must have at least 10 digits.';
+  if (digitsOnly.length < 10){
+    phoneInput.setAttribute('aria-invalid', 'true');
+    phoneInput.setAttribute('aria-describedby', 'Error: Phone number must have at least 10 digits.');
+    return 'Phone number must have at least 10 digits.';
+  } else {
+    phoneInput.setAttribute('aria-invalid', 'false');
+    phoneInput.setAttribute('aria-describedby', 'phone-error');
+  }
+
   return null;
 }
 
 function validateStudentId(value) {
-  if (!value.trim()) return 'Student ID is required.';
-  if (!/^\d{7,9}$/.test(value.trim())) return 'Student ID must be 7–9 digits.';
+  if (!value.trim()){
+    studentIdInput.setAttribute('aria-invalid', 'true'); // when clicked again for some reason this is changes to false but aria describedby stays? it still works though, just odd. 
+    studentIdInput.setAttribute('aria-describedby', 'Error: Student ID is required.');
+    return 'Student ID is required.';
+  } else {
+    studentIdInput.setAttribute('aria-invalid', 'false');
+    studentIdInput.setAttribute('aria-describedby', 'student-id-error');
+  }
+
+  if (!/^\d{7,9}$/.test(value.trim())){
+    studentIdInput.setAttribute('aria-invalid', 'true'); // when clicked again for some reason this is changes to false but aria describedby stays? it still works though, just odd. 
+    studentIdInput.setAttribute('aria-describedby', 'Error: Student ID must be 7–9 digits.');
+    return 'Student ID must be 7–9 digits.';
+  } else {
+    studentIdInput.setAttribute('aria-invalid', 'false');
+    studentIdInput.setAttribute('aria-describedby', 'student-id-error');
+  }
+
   return null;
 }
 
 function validateEvent(value) {
-  if (!value) return 'Please select a workshop.';
+  if (!value){
+    eventSelect.setAttribute('aria-invalid', 'true'); // when clicked again for some reason this is changes to false but aria describedby stays? it still works though, just odd.
+    eventSelect.setAttribute('aria-describedby', 'Error: Please select a workshop.');
+    return 'Please select a workshop.';
+  } else {
+    eventSelect.setAttribute('aria-invalid', 'false'); // when clicked again for some reason this is changes to false but aria describedby stays? it still works though, just odd. 
+    eventSelect.setAttribute('aria-describedby', 'event-select-error');
+
+  }
+
   return null;
 }
 
@@ -49,7 +123,7 @@ function validateEvent(value) {
 
 function showError(inputEl, message) {
   const errorEl = document.getElementById(`${inputEl.id}-error`);
-  errorEl.textContent = message;
+  errorEl.textContent = "⚠️ ERROR: " + message;
   inputEl.setAttribute('aria-invalid', 'true');
   inputEl.classList.add('input-error');
 }
@@ -64,28 +138,27 @@ function clearError(inputEl) {
 // Part 4: Validation timing
 // On blur (early feedback)
 // For the Name and Email fields, add a blur listener that validates when the user leaves the field. 
-// Only show an error if the field was touched and is invalid — do not show errors on fields the user has not interacted with yet.
+// TODO: Only show an error if the field was touched and is invalid — do not show errors on fields the user has not interacted with yet.
 
 // ─── Part 4a: Blur validation (early feedback on name + email) ────────────
-// TODO: Add blur listeners for nameInput and emailInput.
+// Add blur listeners for nameInput and emailInput.
 // Show the error if invalid, clear it if valid.
 
-// const nameInput = document.getElementById('full-name');
-// nameInput.addEventListener('blur', () => {
-//   const error = validateName(nameInput.value);
-//   if (error) showError(nameInput, error);
-//   else clearError(nameInput);
-// });
+//const nameInput = document.getElementById('full-name');
+nameInput.addEventListener('blur', () => {
+  const error = validateName(nameInput.value);
+  if (error) showError(nameInput, error);
+  else clearError(nameInput);
+});
 
-// On submit The form's submit handler should:
-// Call event.preventDefault()
-// Validate all required fields
-// Show errors for all invalid fields
-// If any field is invalid, move focus to the first invalid field
-// If all fields are valid, hide the form, populate #confirmation-details with a summary, show #confirmation, and move focus to #confirmation
+emailInput.addEventListener('blur', () => {
+  const error = validateEmail(emailInput.value);
+  if (error) showError(emailInput, error);
+  else clearError(emailInput);
+});
 
 // ─── Part 4b: Submit handler ──────────────────────────────────────────────
-// TODO: Add a submit listener to `form`.
+// Add a submit listener to `form`.
 // 1. event.preventDefault()
 // 2. Validate all five required fields
 // 3. Show errors on invalid fields; clear errors on valid fields
@@ -93,50 +166,42 @@ function clearError(inputEl) {
 // 5. If all valid: hide the form, show confirmation with a summary, move focus to confirmation
 
 
-// const form = document.getElementById('registration-form');
-// form.addEventListener('submit', (event) => {
-//   event.preventDefault();
+//const form = document.getElementById('registration-form');
+form.addEventListener('submit', (event) => { // On submit The form's submit handler should:
+  event.preventDefault(); // Call event.preventDefault()
 
-//   const fields = [
-//     { el: nameInput, validate: validateName },
-//     { el: emailInput, validate: validateEmail },
-//     { el: phoneInput, validate: validatePhone },
-//     { el: studentIdInput, validate: validateStudentId },
-//     { el: eventSelect, validate: validateEvent },
-//   ];
+  const fields = [
+    { el: nameInput, validate: validateName },
+    { el: emailInput, validate: validateEmail },
+    { el: phoneInput, validate: validatePhone },
+    { el: studentIdInput, validate: validateStudentId },
+    { el: eventSelect, validate: validateEvent },
+  ];
 
-//   let firstError = null;
+  let firstError = null;
 
-//   fields.forEach(({ el, validate }) => {
-//     const error = validate(el.value);
-//     if (error) {
-//       showError(el, error);
-//       if (!firstError) firstError = el;
-//     } else {
-//       clearError(el);
-//     }
-//   });
+  fields.forEach(({ el, validate }) => { // Validate all required fields
+    const error = validate(el.value);
+    if (error) {
+      showError(el, error); // Show errors for all invalid fields
 
-//   if (firstError) {
-//     firstError.focus();
-//     return;
-//   }
+      if (!firstError) firstError = el;
+    } else {
+      clearError(el); 
+    }
+  });
 
-//   // All valid — show confirmation
-//   const confirmation = document.getElementById('confirmation');
-//   const details = document.getElementById('confirmation-details');
-//   details.textContent = `${nameInput.value.trim()} has been registered for ${eventSelect.options[eventSelect.selectedIndex].text}.`;
-//   form.hidden = true;
-//   confirmation.hidden = false;
-//   confirmation.focus();
-// });
+  if (firstError) {
+    firstError.focus(); // If any field is invalid, move focus to the first invalid field
+    return;
+  }
 
-// Testing requirements
-// Test each of the following manually:
-
-// [ ] Submit with all fields empty → errors appear on all required fields
-// [ ] Focus moves to first invalid field on failed submit
-// [ ] Fix all errors and resubmit → confirmation appears and receives focus
-// [ ] Tab through the entire form using keyboard only — all fields reachable
-// [ ] Check that error spans are announced by enabling a screen reader (VoiceOver on Mac, NVDA on Windows)
-// [ ] Phone field: leave blank → no error; enter "555" → error appears
+  // If all fields are valid, hide the form, populate #confirmation-details with a summary, show #confirmation, and move focus to #confirmation
+  // All valid — show confirmation
+  const confirmation = document.getElementById('confirmation');
+  const details = document.getElementById('confirmation-details');
+  details.textContent = `${nameInput.value.trim()} has been registered for ${eventSelect.options[eventSelect.selectedIndex].text}.`;
+  form.hidden = true;
+  confirmation.hidden = false;
+  confirmation.focus();
+});

@@ -17,51 +17,51 @@ An empty error span by default (content is injected by JavaScript)-->
       <p class="required-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
 
       <div class="field-group">
-        <label for="full-name">Full Name <span aria-hidden="true">*</span></label>
+        <label for="full-name">Full Name: <span aria-hidden="true">*</span></label>
         <input type="text" id="full-name" name="full-name"
-               aria-describedby="full-name-error" autocomplete="name">
-        <span id="full-name-error" class="error-msg" aria-live="polite"></span>
+               aria-describedby="full-name-error" aria-invalid="false" autocomplete="name">
+        <span class="mobile-break"><br></span> <span id="full-name-error" class="error-msg" aria-live="polite"></span>
       </div>
 
       <div class="field-group">
-        <label for="email">Email Address <span aria-hidden="true">*</span></label>
+        <label for="email">Email Address: <span aria-hidden="true">*</span></label>
         <input type="email" id="email" name="email"
-               aria-describedby="email-error" autocomplete="email">
-        <span id="email-error" class="error-msg" aria-live="polite"></span>
+               aria-describedby="email-error" aria-invalid="false" autocomplete="email">
+        <span class="mobile-break"><br></span> <span id="email-error" class="error-msg" aria-live="polite"></span>
       </div>
 
       <div class="field-group">
-        <label for="phone">Phone Number <span class="optional">(optional)</span></label>
+        <label for="phone">Phone Number <span class="optional">(optional):</span></label>
         <input type="tel" id="phone" name="phone"
-               aria-describedby="phone-error" autocomplete="tel">
-        <span id="phone-error" class="error-msg" aria-live="polite"></span>
+               aria-describedby="phone-error" aria-invalid="false" autocomplete="tel">
+        <span class="mobile-break"><br></span> <span id="phone-error" class="error-msg" aria-live="polite"></span>
       </div>
 
       <div class="field-group">
-        <label for="student-id">Student ID <span aria-hidden="true">*</span></label>
+        <label for="student-id">Student ID: <span aria-hidden="true">*</span></label>
         <input type="text" id="student-id" name="student-id"
-               aria-describedby="student-id-error student-id-hint">
+               aria-describedby="student-id-error" aria-invalid="false">
         <span id="student-id-hint" class="field-hint">7–9 digits</span>
-        <span id="student-id-error" class="error-msg" aria-live="polite"></span>
+        <span class="mobile-break"><br></span> <span id="student-id-error" class="error-msg" aria-live="polite"></span>
       </div>
 
       <div class="field-group">
-        <label for="event-select">Select Workshop <span aria-hidden="true">*</span></label>
+        <label for="event-select">Select Workshop: <span aria-hidden="true">*</span></label>
         <select id="event-select" name="event-select"
-                aria-describedby="event-select-error">
+                aria-describedby="event-select-error" aria-invalid="false">
           <option value="">-- Choose a workshop --</option>
           <option value="web-basics">Web Basics</option>
           <option value="intro-python">Intro to Python</option>
           <option value="ux-design">UX Design Fundamentals</option>
         </select>
-        <span id="event-select-error" class="error-msg" aria-live="polite"></span>
+        <span class="mobile-break"><br></span> <span id="event-select-error" class="error-msg" aria-live="polite"></span>
       </div>
 
       <div class="field-group">
-        <label for="dietary">Dietary Restrictions <span class="optional">(optional)</span></label>
+        <label for="dietary">Dietary Restrictions <span class="optional">(optional):</span></label><br>
         <textarea id="dietary" name="dietary" rows="3"
-                  aria-describedby="dietary-error"></textarea>
-        <span id="dietary-error" class="error-msg" aria-live="polite"></span>
+                  aria-describedby="dietary-error" aria-invalid="false"></textarea>
+        <span id="dietary-error" class="error-msg" aria-live="polite"></span> <!--Why is there an error message here? what error happens with dietary restrictions?-->
       </div>
 
       <button type="submit">Register</button>

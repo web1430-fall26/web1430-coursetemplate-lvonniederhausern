@@ -4,3 +4,64 @@ but also non-empty spans should have an icon or prefix so color is not the only 
 .input-error should show a visible border change on the input
 :focus-visible should show a clear focus ring on all interactive elements
 The form should be readable on mobile (single column) and centered on desktop*/
+
+
+/*.error-msg should be visually distinct (red text, small font) — 
+but also non-empty spans should have an icon or prefix so color is not the only indicator  "⚠️ ERROR: " */
+
+.error-msg{
+    color: red;
+    font-size: small;
+}
+
+/*.input-error should show a visible border change on the input*/
+.input-error{
+    border: 3px dashed red;
+}
+
+/*:focus-visible should show a clear focus ring on all interactive elements*/
+
+/* Accessible focus rings using :focus-visible */
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 3px solid #005fcc;
+  outline-offset: 2px;
+}
+
+/* Hide default outline ONLY when :focus-visible is supported and active */
+input:focus:not(:focus-visible), select:focus:not(:focus-visible), textarea:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/*The form should be readable on mobile (single column) and centered on desktop*/
+/* Centered layout on desktop, single-column on mobile */
+
+.mobile-break {
+  display: inline;
+}
+
+@media (min-width: 900px) {
+body {
+  display: flex;
+  justify-content: center; /* Centers horizontally */
+  align-items: center;     /* Centers vertically */
+}
+
+.mobile-break {
+  display: none;
+}
+
+}
+
+input, select, textarea {
+    /* display: block; */
+    margin-top: 10px;
+    margin-bottom: 5px;
+} 
+
+#student-id-hint{
+    font-size: small;
+}
+
+button{
+    margin-top: 10px;
+}
