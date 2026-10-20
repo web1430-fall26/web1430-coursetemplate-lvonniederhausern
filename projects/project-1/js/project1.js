@@ -1,6 +1,15 @@
 //At least two interactive components functional, even if unpolished
 //2 interactive conponents a button glows when hovered. accordian menu. 
 
+//FEEDBACK: Good progress on the :root tokens, and the FAQ accordion works with aria-expanded. 
+// Two things are missing for this milestone. (1) http://127.0.0.1:5500 only loads on your own computer, 
+// so the project isn't deployed yet; publish it and submit the public URL. 
+// (2) Project 1 is a style guide that documents your design system, not a store page. 
+// You still need a Design tokens section (a color swatch for each --color-* variable with its name and hex value, 
+// plus spacing and font-size samples) and a Typography section (h1-h4, a body paragraph, a blockquote, ol/ul, and code/pre).
+//  See "Required sections" in the Project 1 brief. Also, the css\style.css and js\project1.js paths use backslashes; 
+// change them to forward slashes (css/style.css) so they work on a web server.
+
 // accordian menu
 function initFaq(faqContainer) {
     // Adds a single click listener to faqContainer (event delegation)
