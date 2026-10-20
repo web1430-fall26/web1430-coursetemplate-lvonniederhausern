@@ -10,7 +10,7 @@
 //  See "Required sections" in the Project 1 brief. Also, the css\style.css and js\project1.js paths use backslashes; 
 // change them to forward slashes (css/style.css) so they work on a web server.
 
-// accordian menu
+//-----------------------accordian menu-----------------------
 function initFaq(faqContainer) {
     // Adds a single click listener to faqContainer (event delegation)
     faqContainer.addEventListener('click', (event) => {
@@ -43,8 +43,55 @@ function initFaq(faqContainer) {
 //add check boxs for product selection
 
 // check user text imputs for email and address.
+//-----------------------checks user input for email-----------------------
+const emailInput = document.getElementById('email');
+
+function validateEmail(value) {
+emailInput.setAttribute('aria-invalid', 'false');  
+    if (!value.trim()){ 
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'Error: Email address is required.');
+        return 'Email address is required.';
+    } else {
+        emailInput.setAttribute('aria-invalid', 'false');
+        emailInput.setAttribute('aria-describedby', 'email-error');
+    }
+    if (!value.includes('@') || !value.includes('.')){ 
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'Error: Please enter a valid email address.');
+        return 'Please enter a valid email address.';
+    } else {
+        emailInput.setAttribute('aria-invalid', 'false');
+        emailInput.setAttribute('aria-describedby', 'email-error');
+    } 
+    return null;
+}
+
+emailInput.addEventListener('blur', () => {
+  const error = validateEmail(emailInput.value);
+  if (error) showError(emailInput, error);
+  else clearError(emailInput);
+});
+
+
+
+
+function showError(inputEl, message) {
+  const errorEl = document.getElementById(`${inputEl.id}-error`);
+  errorEl.textContent = "⚠️ ERROR: " + message;
+  inputEl.setAttribute('aria-invalid', 'true');
+  inputEl.classList.add('input-error');
+}
+
+function clearError(inputEl) {
+  const errorEl = document.getElementById(`${inputEl.id}-error`);
+  errorEl.textContent = '';
+  inputEl.removeAttribute('aria-invalid');
+  inputEl.classList.remove('input-error');
+}
 
 //add code for check out button, print recipt, and thanks for buying message
+//-----------------------checkout button-----------------------
 const checkoutButton = document.getElementById('checkoutButton');
 checkoutButton.addEventListener('click', (event) => {
         if (event.target.matches('.checkoutButton')) { 

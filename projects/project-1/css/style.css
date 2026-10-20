@@ -147,3 +147,13 @@ a{
 a:hover{
     background-color: var(--color-nav);
 }
+
+.error-msg{
+    color: red;
+    font-size: small;
+}
+
+/*.input-error should show a visible border change on the input*/
+.input-error{
+    border: 3px dashed red;
+}

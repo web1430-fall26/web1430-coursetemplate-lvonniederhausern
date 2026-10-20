@@ -104,6 +104,20 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <!--Component 3: checkbox - for multi selection of products. aria-multiselectable="true"-->
       <!--Component 4: text input - address imput for shipping. aria-describedby, aria-required="true" (to make it a requirement) -->
       <!--also there will be an email input.-->
+      <div class="field-group"> <!--Email input-->
+        <label for="email">Email Address: <span aria-hidden="true"></span></label>
+        <input type="email" id="email" name="email"
+               aria-describedby="email-error" aria-invalid="false" autocomplete="email">
+        <span class="mobile-break"><br></span> <span id="email-error" class="error-msg" aria-live="polite"></span>
+      </div>
+
+      <div class="field-group"><!-- Address input-->
+        <label for="full-name">Address: <span aria-hidden="true">*</span></label>
+        <input type="text" id="full-name" name="full-name"
+               aria-describedby="full-name-error" aria-invalid="false" autocomplete="name">
+        <span class="mobile-break"><br></span> <span id="full-name-error" class="error-msg" aria-live="polite"></span>
+      </div>
+      
       <button class="checkoutButton" role="button" id ="checkoutButton">Checkout</button> <!--Component 5: button - for checkout. role="button"--> <!--Interactive component 2: button glows when hovered.-->
       <h3 id="ThankYouMessage"></h3>
     </section>
