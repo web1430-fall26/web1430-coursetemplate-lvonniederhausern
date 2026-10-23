@@ -47,7 +47,7 @@ function initFaq(faqContainer) {
 const emailInput = document.getElementById('email');
 
 function validateEmail(value) {
-emailInput.setAttribute('aria-invalid', 'false');  
+    emailInput.setAttribute('aria-invalid', 'false');  
     if (!value.trim()){ 
         emailInput.setAttribute('aria-invalid', 'true');
         emailInput.setAttribute('aria-describedby', 'Error: Email address is required.');
@@ -73,8 +73,28 @@ emailInput.addEventListener('blur', () => {
   else clearError(emailInput);
 });
 
+//-----------------------checks user input for address-----------------------
+const addressInput = document.getElementById('address');
 
+function validateAddress(value) {
+    addressInput.setAttribute('aria-invalid', 'false');  
+  if (!value.trim()){
+    addressInput.setAttribute('aria-invalid', 'true');
+    addressInput.setAttribute('aria-describedby', 'Error: Full address is required.');
+    return 'Full address is required.';
+  } else {
+    addressInput.setAttribute('aria-invalid', 'false');
+    addressInput.setAttribute('aria-describedby', 'full-Address-error');
+  }
 
+  return null;
+}
+
+addressInput.addEventListener('blur', () => {
+  const error = validateAddress(addressInput.value);
+  if (error) showError(addressInput, error);
+  else clearError(addressInput);
+});
 
 function showError(inputEl, message) {
   const errorEl = document.getElementById(`${inputEl.id}-error`);
@@ -94,12 +114,25 @@ function clearError(inputEl) {
 //-----------------------checkout button-----------------------
 const checkoutButton = document.getElementById('checkoutButton');
 checkoutButton.addEventListener('click', (event) => {
-        if (event.target.matches('.checkoutButton')) { 
-            const ThankYouMessage = document.getElementById('ThankYouMessage');
-            ThankYouMessage.replaceChildren();
-            ThankYouMessage.append("Thank you for your purchase!");
-        }
+    event.preventDefault(); // Call event.preventDefault()
+
+    const fields = [
+    { el: addressInput, validate: validateAddress },
+    { el: emailInput, validate: validateEmail },
+    ];
+     fields.forEach(({ el, validate }) => { // Validate all required fields
+    const error = validate(el.value);
+    if (error) {
+      showError(el, error); // Show errors for all invalid fields
+    } else {
+      clearError(el); 
+       const ThankYouMessage = document.getElementById('ThankYouMessage');
+        ThankYouMessage.replaceChildren();
+        ThankYouMessage.append("Thank you for your purchase!");
+    }
     });
+});
+
 
 // DOM listener
 document.addEventListener("DOMContentLoaded", (event) => {

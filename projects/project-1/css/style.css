@@ -40,7 +40,7 @@ Typography plan — font families and a scale in rem
     --color-h3:         #A80073; /*Rose Pink*/
     --color-highlight:  #ff9800; /*Notice Me Orange*/
     --color-nav:        #80FFD4; /*Notice Me Teal*/
-    --color-gray:       gray;
+    --color-gray:       #808080;
 
     /*any other changes or colors will be added as i go.*/
 
@@ -83,6 +83,11 @@ h2{
 h3{
     color: var(--color-h3);
     font-size: var(--font-size-base);
+}
+
+h4{
+  font-size: var(--font-size-sm);
+  font-weight: bold;
 }
 
 p{
@@ -157,3 +162,88 @@ a:hover{
 .input-error{
     border: 3px dashed red;
 }
+
+.colorBrand{
+  color: var(--color-brand);
+}
+
+.colorH2{
+  color: var(--color-h2);
+}
+
+.colorH3{
+  color: var(--color-h3);
+}
+
+.colorHighlight{
+  color: var(--color-highlight);
+}
+
+.colorNav{
+  color: var(--color-nav);
+}
+
+.colorGray{
+  color: var(--color-gray);
+}
+
+li{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.color-block {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-brand);
+}
+.color-block2 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-text);
+}
+.color-block3 {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--color-text);
+  background-color: var(--color-bg);
+}
+.color-block4 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-h2);
+}
+.color-block5 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-h3);
+}
+.color-block6 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-highlight);
+}
+.color-block7 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-nav);
+}
+.color-block8 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-gray);
+}
+
+.fontSm{
+  font-size: var(--font-size-sm)
+}
+.fontBase{
+  font-size: var(--font-size-base)
+}
+.fontMd{
+  font-size: var(--font-size-md)
+}
+.fontLg{
+  font-size: var(--font-size-lg)
+}
+

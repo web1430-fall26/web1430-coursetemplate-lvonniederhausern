@@ -26,6 +26,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
     <nav class="navbar">
       <ul class="nav-menu">
         <li><a href="#main-content">Painted Rock Paperweights</a></li>
+        <li><a href="#styleGuide">Style Guide</a></li>
         <li><a href="#aboutUs">About Us</a></li>
         <li><a href="#accordionFaq">Frequently Asked Questions</a></li>
         <li><a href="#product">Products</a></li>
@@ -36,10 +37,58 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   <main>
       <h1 class="roboto-condensed-fontStyle" id="main-content">Project 1: Interactive Style Guide: Painted Rock Paperweights</h1>
       
+      <section class="style guide" >
+      <h2 class="roboto-condensed-fontStyle" id="styleGuide">Style Guide</h2>
+      <h3 class="roboto-condensed-fontStyle">Colors:</h3>
+      <ul>
+        <li>--color-brand:      #18453B <span class="colorBrand">Spartan Green</span></li><div class="color-block"></div>
+        <li>--color-text:       #000000 Black</li><div class="color-block2"></div>
+        <li>--color-bg:         #ffffff White</li><div class="color-block3"></div>
+        <li>--color-h2:         #181944 <span class="colorH2">Navy Blue</span></li><div class="color-block4"></div>
+        <li>--color-h3:         #A80073 <span class="colorH3">Rose Pink</span></li><div class="color-block5"></div>
+        <li>--color-highlight:  #ff9800 <span class="colorHighlight">Notice Me Orange</span></li><div class="color-block6"></div>
+        <li>--color-nav:        #80FFD4 <span class="colorNav">Notice Me Teal</span></li><div class="color-block7"></div>
+        <li>--color-gray:       #808080 <span class="colorGray">Gray</span></li><div class="color-block8"></div>
+      </ul>
+
+      <h3 class="roboto-condensed-fontStyle">Spacing:</h3>
+      <ul>
+        <li>--space-sm:  0.5rem</li>
+        <li>--space-md:  1rem</li>
+        <li>--space-lg:  2rem</li>
+        <li>--space-xl:  4rem</li>
+      </ul>
+
+      <h3 class="roboto-condensed-fontStyle">Type Scale:</h3>
+      <ol>
+        <li class="fontSm">--font-size-sm: 1rem</li>
+        <li class="fontBase">--font-size-base: 1.25rem</li>
+        <li class="fontMd">--font-size-md: 1.5rem</li>
+        <li class="fontLg">--font-size-lg: 2rem</li>
+      </ol>
+
+      <h3 class="roboto-condensed-fontStyle">Typography:</h3>
+      <p class="roboto-condensed-fontStyle"> font-family: "Roboto Condensed", sans-serif<br>font-optical-sizing: auto<br>font-weight: 400<br>font-style: normal</p>
+      <h1 class="roboto-condensed-fontStyle">Header 1</h1>
+      <h2 class="roboto-condensed-fontStyle">Header 2</h2>
+      <h3 class="roboto-condensed-fontStyle">Header 3</h3>
+      <h4 class="roboto-condensed-fontStyle">Header 4</h4>
+      <p class="roboto-condensed-fontStyle">Paragraph text</p>
+
+
+      <h3 class="roboto-condensed-fontStyle">Buttons:</h3>
+      <p class="roboto-condensed-fontStyle">FAQ Button: <button class="faq-question">FAQ Button</button></p>
+      <p class="roboto-condensed-fontStyle">Checkout Button: <button class="checkoutButton">Checkout</button></p>
+
+      </section>
+
       <!--add general overview-->
       <section class="overview">
-      <h2 class="roboto-condensed-fontStyle" id ="aboutUs">About Us! (placeholder)</h2>
-      <p class="roboto-condensed-fontStyle">Add a general description about the product here. just a paragraph of info.</p>
+      <h2 class="roboto-condensed-fontStyle" id ="aboutUs">About Us!</h2>
+      <p class="roboto-condensed-fontStyle">My fictional product is painted rocks sold as paperweights for desks and other surfaces. 
+        Sold to people who are at their desk for long periods of time and want something to make it feel a bit more homey. 
+        It will also add some much-needed decoration and a burst of color to otherwise paper-covered desks. 
+        They are hand selected and painted by me. They come in a large variety of colors and designs, no two rocks are the same! They add the fun to functional.</p>
       </section>
 
       <!--At least two interactive components functional, even if unpolished-->
@@ -88,10 +137,9 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
     <!--product cards go here! so you can look through the options of rocks-->
     <!--contains name, design/color, size, and price. hopefully also a photo but that is dependent on my skills. -->
     <section class="products" id="product">
-      <h2 class="roboto-condensed-fontStyle">Products (placeholder)</h2>
+      <h2 class="roboto-condensed-fontStyle">Products:</h2>
       <p>CARDS GO HERE</p>
       <!--Component 2: card - holds products. aria="productCard" , aria-live="polite" -->
-
 
     </section>
 
@@ -99,26 +147,27 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
     <!--should be able to select chosen product here. dependent on my skills.-->
     <!--has input for product, email, adress, and a checkout button-->
     <section class="checkout" id="checkoutInfo">
-      <h2 class="roboto-condensed-fontStyle">Checkout (placeholder)</h2>
-      <p>ADD USER INPUTS HERE. PRODUCT SELECTER, EMAIL AND ADRESS IMPUTS</p>
+      <h2 class="roboto-condensed-fontStyle">Checkout:</h2>
+      <p class="required-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only"> with an asterisk</span> are required.</p>
+      <p>ADD USER INPUTS HERE. PRODUCT SELECTER</p>
       <!--Component 3: checkbox - for multi selection of products. aria-multiselectable="true"-->
       <!--Component 4: text input - address imput for shipping. aria-describedby, aria-required="true" (to make it a requirement) -->
       <!--also there will be an email input.-->
       <div class="field-group"> <!--Email input-->
-        <label for="email">Email Address: <span aria-hidden="true"></span></label>
+        <label for="email">Email Address: <span aria-hidden="true">*</span></label>
         <input type="email" id="email" name="email"
                aria-describedby="email-error" aria-invalid="false" autocomplete="email">
         <span class="mobile-break"><br></span> <span id="email-error" class="error-msg" aria-live="polite"></span>
-      </div>
+      </div><br>
 
       <div class="field-group"><!-- Address input-->
-        <label for="full-name">Address: <span aria-hidden="true">*</span></label>
-        <input type="text" id="full-name" name="full-name"
-               aria-describedby="full-name-error" aria-invalid="false" autocomplete="name">
-        <span class="mobile-break"><br></span> <span id="full-name-error" class="error-msg" aria-live="polite"></span>
-      </div>
+        <label for="address">Address: <span aria-hidden="true">*</span></label>
+        <input type="text" id="address" name="address"
+               aria-describedby="address-error" aria-invalid="false" autocomplete="address">
+        <span class="mobile-break"><br></span> <span id="address-error" class="error-msg" aria-live="polite"></span>
+      </div><br>
       
-      <button class="checkoutButton" role="button" id ="checkoutButton">Checkout</button> <!--Component 5: button - for checkout. role="button"--> <!--Interactive component 2: button glows when hovered.-->
+      <button class="checkoutButton" role="button" id="checkoutButton">Checkout</button> <!--Component 5: button - for checkout. role="button"--> <!--Interactive component 2: button glows when hovered.-->
       <h3 id="ThankYouMessage"></h3>
     </section>
 
