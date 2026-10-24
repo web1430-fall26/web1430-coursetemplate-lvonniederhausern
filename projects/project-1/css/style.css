@@ -41,7 +41,11 @@ Typography plan — font families and a scale in rem
     --color-h4:         #442418; /*Coco Brown*/
     --color-highlight:  #ff9800; /*Notice Me Orange*/
     --color-nav:        #80FFD4; /*Notice Me Teal*/
-    --color-gray:       #808080;
+    --color-gray:       #808080; /*gray*/
+    /*TODO: recently added*/
+    --color-error:      #ff0000; /*red*/
+    --color-card:       #e6e3ff; /*periwinkle*/
+    --color-focus:      #0000ff; /*blue*/
 
     /*any other changes or colors will be added as i go.*/
 
@@ -58,7 +62,6 @@ Typography plan — font families and a scale in rem
     --border-radius: 0.375rem;
     --max-width: 1100px;
 
-    /*color-scheme: light dark; */
 }
 
 /*Typography. AKA Font: Roboto Condensed*/
@@ -103,12 +106,6 @@ body {
   line-height: 1.5; /* Unitless value scales with font size */
 }
 
-
-/* .faq-item {
-  display: grid;
-  gap: 15px;
-} */
-
 button{
     font-family: "Roboto Condensed", sans-serif;
     font-optical-sizing: auto;
@@ -128,7 +125,6 @@ button{
   background-color: var(--color-highlight); /* Changes background to orange on hover */
   color: var(--color-text);
   text-decoration: underline;
-  
 }
 
 footer {
@@ -160,18 +156,33 @@ a{
     font-weight: 400; /*<weight>: Use a value from 100 to 900*/
     font-size: var(--font-size-base);
 }
+
 a:hover{
     background-color: var(--color-nav);
 }
 
+/*:focus-visible should show a clear focus ring on all interactive elements*/
+
+/* Accessible focus rings using :focus-visible */
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Hide default outline ONLY when :focus-visible is supported and active */
+input:focus:not(:focus-visible), select:focus:not(:focus-visible), textarea:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+
 .error-msg{
-    color: red;
+    color: var(--color-error);
     font-size: small;
 }
 
 /*.input-error should show a visible border change on the input*/
 .input-error{
-    border: 3px dashed red;
+    border: 3px dashed var(--color-error);
 }
 
 .colorBrand{
@@ -203,88 +214,6 @@ li{
   margin-bottom: 10px;
 }
 
-.color-block-brand {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-brand);
-}
-.color-block-text {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-text);
-}
-.color-block-bg {
-  width: 50px;
-  height: 50px;
-  border: 2px solid var(--color-text);
-  background-color: var(--color-bg);
-}
-.color-block-h2 {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-h2);
-}
-.color-block-h3 {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-h3);
-}
-.color-block-h4 {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-h4);
-}
-
-.color-block-high {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-highlight);
-}
-.color-block-nav {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-nav);
-}
-.color-gray {
-  width: 50px;
-  height: 50px;
-  background-color: var(--color-gray);
-}
-
-.fontSm{
-  font-size: var(--font-size-sm)
-}
-.fontBase{
-  font-size: var(--font-size-base)
-}
-.fontMd{
-  font-size: var(--font-size-md)
-}
-.fontLg{
-  font-size: var(--font-size-lg)
-}
-
-.spaceSm{
-  white-space: pre-wrap; 
-  word-spacing: var(--space-sm);
-  background-color: var(--color-nav);
-}
-.spaceMd{
-  white-space: pre-wrap; 
-  word-spacing: var(--space-md);
-  background-color: var(--color-nav);
-}
-.spaceLg{
-  white-space: pre-wrap; 
-  word-spacing: var(--space-lg);
-  background-color: var(--color-nav);
-}
-.spaceXl{
-  white-space: pre-wrap; 
-  word-spacing: var(--space-xl);
-  background-color: var(--color-nav);
-}
-
 /*product cards*/
 .product-grid {
   display: grid;
@@ -307,34 +236,10 @@ li{
 }
 
 .product-card{
-  background-color: #e6e3ff;
+  background-color: var( --color-card);
   max-width: 330px;
   width: 100%;
 }
 
-.button-grid {
-  display: grid;
-  /* Creates 5 equal columns */
-  grid-template-columns: repeat(5, 1fr); 
-  /* Creates 5 equal rows */
-  grid-template-rows: repeat(5, 1fr);    
-  /* Adds a 10px gap between items (optional) */
-  gap: 10px;                             
-  
-  /* Give the overall grid a size (optional)
-  width: 900px;
-  height: 900px; */
-}
 
-/* Optional styling just to make the grid items visible */
-.grid-item {
-  background-color: #3498db;
-  color: var(--color-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
-  font-weight: bold;
-  border-radius: 2px;
-}
 /*TODO: CODE FOR CHECKBOX TO CHANGE COLOR BASED ON SELECTION*/

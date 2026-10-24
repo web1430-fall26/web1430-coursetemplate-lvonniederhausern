@@ -189,20 +189,29 @@ checkoutButton.addEventListener('click', (event) => {
     event.preventDefault(); // Call event.preventDefault()
 
     const fields = [
-    { el: addressInput, validate: validateAddress },
     { el: emailInput, validate: validateEmail },
+    { el: addressInput, validate: validateAddress },
     ];
+
+    let firstError = null;
+
      fields.forEach(({ el, validate }) => { // Validate all required fields
     const error = validate(el.value);
     if (error) {
-      showError(el, error); // Show errors for all invalid fields
+        showError(el, error); // Show errors for all invalid fields
+        if (!firstError) firstError = el;
     } else {
       clearError(el); 
-       const ThankYouMessage = document.getElementById('ThankYouMessage');
+        const ThankYouMessage = document.getElementById('ThankYouMessage');
         ThankYouMessage.replaceChildren();
         ThankYouMessage.append("Thank you for your purchase!");
     }
     });
+    if (firstError) {
+    firstError.focus(); // If any field is invalid, move focus to the first invalid field
+    return;
+  }
+
 });
 
 

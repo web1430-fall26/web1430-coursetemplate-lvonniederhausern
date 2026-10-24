@@ -1,0 +1,133 @@
+/*components css. all the style sheet css things*/
+
+/*color swatches*/
+.color-block-brand {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-brand);
+}
+.color-block-text {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-text);
+}
+.color-block-bg {
+  width: 50px;
+  height: 50px;
+  border: 2px solid var(--color-text);
+  background-color: var(--color-bg);
+}
+.color-block-h2 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-h2);
+}
+.color-block-h3 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-h3);
+}
+.color-block-h4 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-h4);
+}
+
+.color-block-high {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-highlight);
+}
+.color-block-nav {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-nav);
+}
+.color-gray {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-gray);
+}
+
+
+/*font examples*/
+.fontSm{
+  font-size: var(--font-size-sm)
+}
+.fontBase{
+  font-size: var(--font-size-base)
+}
+.fontMd{
+  font-size: var(--font-size-md)
+}
+.fontLg{
+  font-size: var(--font-size-lg)
+}
+
+/*spacing examples*/
+.spaceSm{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-sm);
+  background-color: var(--color-nav);
+}
+.spaceMd{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-md);
+  background-color: var(--color-nav);
+}
+.spaceLg{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-lg);
+  background-color: var(--color-nav);
+}
+.spaceXl{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-xl);
+  background-color: var(--color-nav);
+}
+
+/*button examples*/
+.checkoutButtonExample{
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  border-width: 3px;
+  border-color: var(--color-text);
+}
+
+.checkoutButtonExampleHover{
+  font-size: var(--font-size-base);
+  font-weight: bold;
+  border-width: 3px;
+  border-color: var(--color-text);
+  background-color: var(--color-highlight);
+  color: var(--color-text);
+  text-decoration: underline;
+}
+
+
+/*button examples display*/
+.button-grid {
+  display: grid;
+  /* Creates 5 equal columns */
+  grid-template-columns: repeat(5, 1fr); 
+  /* Creates 5 equal rows */
+  grid-template-rows: repeat(5, 1fr);    
+  /* Adds a 10px gap between items (optional) */
+  gap: 10px;                             
+  
+  /* Give the overall grid a size (optional)
+  width: 900px;
+  height: 900px; */
+}
+
+/* Optional styling just to make the grid items visible */
+.grid-item {
+  background-color: #3498db;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 2px;
+}
