@@ -1,5 +1,5 @@
-// Lab 05 – Product data (do not modify)
-// Reference this array in lab05.js
+// Lab 05 – Product data 
+
 
 const products = [
   { id: 1,  name: 'WEB 1430 Textbook',       description: 'Books',       price: 54.99, inStock: true },

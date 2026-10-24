@@ -311,6 +311,30 @@ li{
   max-width: 330px;
   width: 100%;
 }
-/* .checkBox{
 
-} */
+.button-grid {
+  display: grid;
+  /* Creates 5 equal columns */
+  grid-template-columns: repeat(5, 1fr); 
+  /* Creates 5 equal rows */
+  grid-template-rows: repeat(5, 1fr);    
+  /* Adds a 10px gap between items (optional) */
+  gap: 10px;                             
+  
+  /* Give the overall grid a size (optional)
+  width: 900px;
+  height: 900px; */
+}
+
+/* Optional styling just to make the grid items visible */
+.grid-item {
+  background-color: #3498db;
+  color: var(--color-text);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  font-weight: bold;
+  border-radius: 2px;
+}
+/*TODO: CODE FOR CHECKBOX TO CHANGE COLOR BASED ON SELECTION*/
