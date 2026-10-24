@@ -41,22 +41,23 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <h2 class="roboto-condensed-fontStyle" id="styleGuide">Style Guide</h2>
       <h3 class="roboto-condensed-fontStyle">Colors:</h3>
       <ul>
-        <li>--color-brand:      #18453B <span class="colorBrand">Spartan Green</span></li><div class="color-block"></div>
-        <li>--color-text:       #000000 Black</li><div class="color-block2"></div>
-        <li>--color-bg:         #ffffff White</li><div class="color-block3"></div>
-        <li>--color-h2:         #181944 <span class="colorH2">Navy Blue</span></li><div class="color-block4"></div>
-        <li>--color-h3:         #A80073 <span class="colorH3">Rose Pink</span></li><div class="color-block5"></div>
-        <li>--color-highlight:  #ff9800 <span class="colorHighlight">Notice Me Orange</span></li><div class="color-block6"></div>
-        <li>--color-nav:        #80FFD4 <span class="colorNav">Notice Me Teal</span></li><div class="color-block7"></div>
-        <li>--color-gray:       #808080 <span class="colorGray">Gray</span></li><div class="color-block8"></div>
+        <li>--color-brand:      #18453B <span class="colorBrand">Spartan Green</span></li><div class="color-block-brand"></div>
+        <li>--color-text:       #000000 Black</li><div class="color-block-text"></div>
+        <li>--color-bg:         #ffffff White</li><div class="color-block-bg"></div>
+        <li>--color-h2:         #181944 <span class="colorH2">Navy Blue</span></li><div class="color-block-h2"></div>
+        <li>--color-h3:         #A80073 <span class="colorH3">Rose Pink</span></li><div class="color-block-h3"></div>
+        <li>--color-h4:       #442418 <span class="colorH4">Coco Brown</span></li><div class="color-block-h4"></div>
+        <li>--color-highlight:  #ff9800 <span class="colorHighlight">Notice Me Orange</span></li><div class="color-block-high"></div>
+        <li>--color-nav:        #80FFD4 <span class="colorNav">Notice Me Teal</span></li><div class="color-block-nav"></div>
+        <li>--color-gray:       #808080 <span class="colorGray">Gray</span></li><div class="color-gray"></div>
       </ul>
 
       <h3 class="roboto-condensed-fontStyle">Spacing:</h3>
       <ul>
-        <li>--space-sm:  0.5rem</li>
-        <li>--space-md:  1rem</li>
-        <li>--space-lg:  2rem</li>
-        <li>--space-xl:  4rem</li>
+        <li>--space-sm:  0.1rem <span class="spaceSm"> </span></li>
+        <li>--space-md:  0.3rem <span class="spaceMd"> </span></li>
+        <li>--space-lg:  0.7rem <span class="spaceLg"> </span></li>
+        <li>--space-xl:  1rem <span class="spaceXl"> </span></li>
       </ul>
 
       <h3 class="roboto-condensed-fontStyle">Type Scale:</h3>
@@ -77,6 +78,10 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
 
 
       <h3 class="roboto-condensed-fontStyle">Buttons:</h3>
+      <p>Primary button
+Secondary button
+Destructive/danger button
+Icon button (button with an icon and a visible or visually-hidden label)</p>
       <p class="roboto-condensed-fontStyle">FAQ Button: <button class="faq-question">FAQ Button</button></p>
       <p class="roboto-condensed-fontStyle">Checkout Button: <button class="checkoutButton">Checkout</button></p>
 
@@ -139,6 +144,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
     <section class="products" id="product">
       <h2 class="roboto-condensed-fontStyle">Products:</h2>
       <p>CARDS GO HERE</p>
+      <div id="product-grid" class="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
       <!--Component 2: card - holds products. aria="productCard" , aria-live="polite" -->
 
     </section>
@@ -179,5 +185,6 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   </footer>
 
   <script src="js/project1.js" defer></script>
+  <script src="js/data.js" defer></script>
 </body>
 </html>

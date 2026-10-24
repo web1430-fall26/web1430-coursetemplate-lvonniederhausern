@@ -39,6 +39,77 @@ function initFaq(faqContainer) {
 }
 
 // add place to generate product cards
+//-----------------------generate product cards-----------------------
+
+const productGrid = document.getElementById('product-grid');
+
+function renderProductCard(product) {
+    const card = document.createElement('article');
+    card.classList.add('product-card');
+
+    // Product name in an <h2>
+    const name = document.createElement('h2');
+    name.textContent = product.name;
+    card.appendChild(name);
+    
+    // description in a <p> with class product-description
+    const description = document.createElement('p');
+    description.classList.add('product-description');
+    description.textContent = product.description;
+    card.appendChild(description);
+
+    // Formatted price in a <p> with class product-price
+    const price = document.createElement('p');
+    price.classList.add('product-price');
+    price.textContent = formatPrice(product.price);
+    card.appendChild(price);
+
+    // A stock status indicator: a <span> reading "In Stock" or "Out of Stock", with class in-stock or out-of-stock accordingly
+    const stockStatus = document.createElement('span');
+    if (product.inStock) {
+        stockStatus.classList.add('in-stock');
+        stockStatus.textContent = 'In Stock  ';
+    } else {
+        stockStatus.classList.add('out-of-stock');
+        stockStatus.textContent = 'Out of Stock  ';
+    }
+    card.appendChild(stockStatus);
+
+    // A <button> reading "Add to Cart" that is disabled when inStock is false
+    const checkBox = document.createElement('button');
+    checkBox.textContent = 'Add to Cart';
+    if (!product.inStock) {
+        checkBox.disabled = true;
+    } else {
+        checkBox.disabled = false;
+    }
+    card.appendChild(checkBox);
+
+    return card;
+}
+//check box code
+// checkBox.addEventListener('click', (event) => {
+
+// });
+
+function renderProductList(productList, container) {
+    container.innerHTML = '';
+    if (productList.length === 0) {
+        const noProducts = document.createElement('p');
+        noProducts.textContent = 'No products found.';
+        container.appendChild(noProducts);
+        return;
+    }
+    const fragment = document.createDocumentFragment();
+    productList.forEach(product => {
+        fragment.appendChild(renderProductCard(product));
+    });
+    container.appendChild(fragment);
+}
+
+function formatPrice (amount) {
+  return `$${amount.toFixed(2)}`;
+}
 
 //add check boxs for product selection
 
@@ -96,6 +167,7 @@ addressInput.addEventListener('blur', () => {
   else clearError(addressInput);
 });
 
+//-----------------------checks user input for errors-----------------------
 function showError(inputEl, message) {
   const errorEl = document.getElementById(`${inputEl.id}-error`);
   errorEl.textContent = "⚠️ ERROR: " + message;
@@ -138,4 +210,5 @@ checkoutButton.addEventListener('click', (event) => {
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log('content loaded');
     initFaq(document.querySelector('.faq'));
+    renderProductList(products, productGrid);
 });

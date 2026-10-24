@@ -38,16 +38,17 @@ Typography plan — font families and a scale in rem
     --color-bg:         #ffffff; /*White*/
     --color-h2:         #181944; /*Navy Blue*/
     --color-h3:         #A80073; /*Rose Pink*/
+    --color-h4:         #442418; /*Coco Brown*/
     --color-highlight:  #ff9800; /*Notice Me Orange*/
     --color-nav:        #80FFD4; /*Notice Me Teal*/
     --color-gray:       #808080;
 
     /*any other changes or colors will be added as i go.*/
 
-    --space-sm:  0.5rem;
-    --space-md:  1rem;
-    --space-lg:  2rem;
-    --space-xl:  4rem;
+    --space-sm:  0.1rem;
+    --space-md:  0.4rem;
+    --space-lg:  0.7rem;
+    --space-xl:  1rem;
 
     --font-size-sm: 1rem;    
     --font-size-base: 1.25rem;     
@@ -85,14 +86,23 @@ h3{
     font-size: var(--font-size-base);
 }
 
-h4{
+h4{ /*make h4 bold*/
+  color: var(--color-h4);
   font-size: var(--font-size-sm);
   font-weight: bold;
 }
 
 p{
     font-size: var(--font-size-sm);
+    word-spacing: var(--space-sm);
+      max-width: 75ch;   /* Body text paragraph with proper line height and measure (45–75 characters per line)*/
 }
+
+body {
+  font-size: 16px;
+  line-height: 1.5; /* Unitless value scales with font size */
+}
+
 
 /* .faq-item {
   display: grid;
@@ -117,6 +127,7 @@ button{
 .checkoutButton:hover {
   background-color: var(--color-highlight); /* Changes background to orange on hover */
   color: var(--color-text);
+  text-decoration: underline;
   
 }
 
@@ -192,43 +203,49 @@ li{
   margin-bottom: 10px;
 }
 
-.color-block {
+.color-block-brand {
   width: 50px;
   height: 50px;
   background-color: var(--color-brand);
 }
-.color-block2 {
+.color-block-text {
   width: 50px;
   height: 50px;
   background-color: var(--color-text);
 }
-.color-block3 {
+.color-block-bg {
   width: 50px;
   height: 50px;
   border: 2px solid var(--color-text);
   background-color: var(--color-bg);
 }
-.color-block4 {
+.color-block-h2 {
   width: 50px;
   height: 50px;
   background-color: var(--color-h2);
 }
-.color-block5 {
+.color-block-h3 {
   width: 50px;
   height: 50px;
   background-color: var(--color-h3);
 }
-.color-block6 {
+.color-block-h4 {
+  width: 50px;
+  height: 50px;
+  background-color: var(--color-h4);
+}
+
+.color-block-high {
   width: 50px;
   height: 50px;
   background-color: var(--color-highlight);
 }
-.color-block7 {
+.color-block-nav {
   width: 50px;
   height: 50px;
   background-color: var(--color-nav);
 }
-.color-block8 {
+.color-gray {
   width: 50px;
   height: 50px;
   background-color: var(--color-gray);
@@ -247,3 +264,53 @@ li{
   font-size: var(--font-size-lg)
 }
 
+.spaceSm{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-sm);
+  background-color: var(--color-nav);
+}
+.spaceMd{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-md);
+  background-color: var(--color-nav);
+}
+.spaceLg{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-lg);
+  background-color: var(--color-nav);
+}
+.spaceXl{
+  white-space: pre-wrap; 
+  word-spacing: var(--space-xl);
+  background-color: var(--color-nav);
+}
+
+/*product cards*/
+.product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+
+}
+
+@media (min-width: 900px){
+  .product-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+.out-of-stock{
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+.product-card{
+  background-color: #e6e3ff;
+  max-width: 330px;
+  width: 100%;
+}
+/* .checkBox{
+
+} */
