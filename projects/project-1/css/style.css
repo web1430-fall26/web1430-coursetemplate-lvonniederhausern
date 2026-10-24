@@ -95,10 +95,11 @@ h4{ /*make h4 bold*/
   font-weight: bold;
 }
 
+/*Body text paragraph with proper line height and measure (45–75 characters per line)*/
 p{
     font-size: var(--font-size-sm);
     word-spacing: var(--space-sm);
-      max-width: 75ch;   /* Body text paragraph with proper line height and measure (45–75 characters per line)*/
+      max-width: 75ch;
 }
 
 body {
@@ -109,7 +110,7 @@ body {
 button{
     font-family: "Roboto Condensed", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400; /*<weight>: Use a value from 100 to 900*/
+    font-weight: 400; 
     font-size: var(--font-size-base);
     margin-bottom: 10px;
 }
@@ -153,7 +154,7 @@ footer {
 a{
     font-family: "Roboto Condensed", sans-serif;
     font-optical-sizing: auto;
-    font-weight: 400; /*<weight>: Use a value from 100 to 900*/
+    font-weight: 400; 
     font-size: var(--font-size-base);
 }
 
