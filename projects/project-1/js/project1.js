@@ -53,6 +53,77 @@ function initFaq(faqContainer) {
     });
 }
 
+//-----------------------tabs-----------------------
+//  Tabs At least three tabs. Correct ARIA roles (tablist, tab, tabpanel). Arrow key navigation between tabs.
+function initTabs(tabListContainer) {
+    // Add a click listener to tabListContainer
+    tabListContainer.addEventListener('click', (event) => {
+        // When a [role="tab"] button is clicked:
+        if (event.target.matches('[role="tab"]')) {
+            // Set aria-selected="false" on all tab buttons
+            const tabs = tabListContainer.querySelectorAll('[role="tab"]');
+            tabs.forEach(tab => {
+                tab.setAttribute('aria-selected', 'false');
+                tab.tabIndex = -1; // Remove from tab order
+                // Hide all tab panels (set hidden = true) TODO: simplify this
+                const button = document.getElementById("panel-button");
+                button.hidden = true;
+                const scale = document.getElementById("panel-scale");
+                scale.hidden = true;
+                const space = document.getElementById("panel-space");
+                space.hidden = true;
+            });
+            event.target.setAttribute('aria-selected', 'true'); // Set aria-selected="true" on the clicked tab
+            const tabId = event.target.getAttribute('aria-controls');
+            tabId.tabIndex = 0; // Keep exactly one tab in the tab order: the selected tab gets tabIndex = 0, every other tab gets tabIndex = -1. Update this every time the selection changes — including on click.
+            const panelEl = document.getElementById(tabId);
+            console.log(tabId, panelEl);
+            if (panelEl.hidden){
+                panelEl.hidden = false; // Show the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
+            }else{
+                panelEl.hidden = true;
+            }
+
+        }
+
+        });
+
+    tabListContainer.addEventListener("keydown", (event) => {
+        const tabs = Array.from(tabListContainer.querySelectorAll('[role="tab"]'));
+        const current = tabs.indexOf(document.activeElement);
+        if (current === -1) return;
+
+        let next = null;
+        if (event.key === "ArrowRight") next = (current + 1) % tabs.length;
+        if (event.key === "ArrowLeft")  next = (current - 1 + tabs.length) % tabs.length;
+        if (event.key === "Home")       next = 0;
+        if (event.key === "End")        next = tabs.length - 1;
+
+        if (next !== null) {
+            event.preventDefault();   // stop the arrow key from scrolling the page
+            const panels = [document.getElementById("panel-button"),document.getElementById("panel-scale"),document.getElementById("panel-space")]
+            setActiveTab(tabs, panels, next);
+        }
+    });
+}
+// Add a keydown listener to tabListContainer. On ArrowRight / ArrowLeft, move the selection one tab forward or backward and wrap around at the ends. On Home / End, jump to the first or last tab.
+// Call event.preventDefault() when you handle an arrow key, so the page does not scroll.
+// Call .focus() on the newly selected tab, so focus and selection stay together.
+// Factor the shared work into one selectTab(index) helper and call it from both the click and the keydown paths — the two should not have separate copies of the logic.
+
+// Only the active tab is reachable by Tab; the rest are removed from the tab order.
+// tabindex="-1" means "not in the tab order, but still focusable by script".
+function setActiveTab(tabs, panels, newIndex) {
+  tabs.forEach((tab, i) => {
+    const selected = i === newIndex;
+    tab.setAttribute("aria-selected", String(selected));
+    tab.tabIndex = selected ? 0 : -1;      // roving tabindex
+    panels[i].hidden = !selected;
+  });
+  tabs[newIndex].focus();                   // move focus with the selection
+}
+
+
 // add place to generate product cards
 //-----------------------generate product cards-----------------------
 
@@ -293,4 +364,5 @@ document.addEventListener("DOMContentLoaded", (event) => {
     initFaq(document.querySelector('.faq'));
     renderProductList( exampleProduct, productGridExample);
     renderProductList(products, productGrid);
+    initTabs(document.querySelector('.tab-list'));
 });

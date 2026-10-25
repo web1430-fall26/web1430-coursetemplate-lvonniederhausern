@@ -59,14 +59,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
         <li>--color-focus:      #0000ff <span class="colorFocus">Blue</span></li><div class="color-focus"></div></li>
       </ul>
 
-      <!--Spacing: Each spacing token shown as a colored bar whose width or height equals the token value, labeled with the variable name and computed value-->
-      <h3 class="roboto-condensed-fontStyle">Spacing:</h3>
-      <ul><!--An <ul> in body context-->
-        <li>--space-sm:  0.1rem <span class="spaceSm"> </span></li>
-        <li>--space-md:  0.3rem <span class="spaceMd"> </span></li>
-        <li>--space-lg:  0.7rem <span class="spaceLg"> </span></li>
-        <li>--space-xl:  1rem <span class="spaceXl"> </span></li>
-      </ul>
+      
 
       <!--Typography: Each font-size token shown as sample text at that size-->
       
@@ -87,24 +80,23 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   font-style: normal;
 }</code></pre> <!-- <code> inline and a <pre><code> block-->
       
-  <h3 class="roboto-condensed-fontStyle">Type Scale:</h3>
-      <ol><!--An <ol> in body context-->
-        <li class="fontSm">--font-size-sm: 1rem</li>
-        <li class="fontBase">--font-size-base: 1.25rem</li>
-        <li class="fontMd">--font-size-md: 1.5rem</li>
-        <li class="fontLg">--font-size-lg: 2rem</li>
-      </ol>
 
-      <!--All heading levels (<h1> through <h4>) using your type scale-->
-      <h1 class="roboto-condensed-fontStyle">Header 1</h1>
-      <h2 class="roboto-condensed-fontStyle">Header 2</h2>
-      <h3 class="roboto-condensed-fontStyle">Header 3</h3>
-      <h4 class="roboto-condensed-fontStyle">Header 4</h4>
-      <p class="roboto-condensed-fontStyle">Paragraph text</p>
 
-      <!--At minimum four button variants, each shown in default, hover, focus, and disabled states:-->
-      <h3 class="roboto-condensed-fontStyle">Buttons:</h3>
-      <div class="button-grid">
+       <!-- ─── Tabbed panel ─────────────────────────────────────────── -->
+    <section class="tabs-section">
+      <h2 class="roboto-condensed-fontStyle">Typography Tabs</h2>
+
+      <div class="tab-list" role="tablist" aria-label="Campus resource tabs" class="roboto-condensed-fontStyle">
+        <button role="tab" aria-selected="true"  aria-controls="panel-button" id="tab-button">Buttons</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-scale" id="tab-scale">Type Scale</button>
+        <button role="tab" aria-selected="false" aria-controls="panel-space"  id="tab-space">Spacing</button>
+      </div>
+      
+
+      <div role="tabpanel" id="panel-button" aria-labelledby="tab-button">
+        <!--At minimum four button variants, each shown in default, hover, focus, and disabled states:-->
+        <h3 class="roboto-condensed-fontStyle">Buttons:</h3>
+        <div class="button-grid">
       <!-- Row 1 -->
       <div class="grid-item">Four button variants:</div>
       <div class="grid-item">Default:</div>
@@ -139,8 +131,40 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <div class="grid-item"><button class="checkbox-example-hover">☐</button></div>
       <div class="grid-item"><button class="checkbox-example-focus">☐</button></div>
       <div class="grid-item"><button class="checkbox-example" disabled>☐</button></div>
-    </div>
+        </div>
+      </div>
 
+      <div role="tabpanel" id="panel-scale" aria-labelledby="tab-scale" hidden>
+         <h3 class="roboto-condensed-fontStyle">Type Scale:</h3>
+      <ol><!--An <ol> in body context-->
+        <li class="fontSm">--font-size-sm: 1rem</li>
+        <li class="fontBase">--font-size-base: 1.25rem</li>
+        <li class="fontMd">--font-size-md: 1.5rem</li>
+        <li class="fontLg">--font-size-lg: 2rem</li>
+      </ol>
+
+      <!--All heading levels (<h1> through <h4>) using your type scale-->
+      <h1 class="roboto-condensed-fontStyle">Header 1</h1>
+      <h2 class="roboto-condensed-fontStyle">Header 2</h2>
+      <h3 class="roboto-condensed-fontStyle">Header 3</h3>
+      <h4 class="roboto-condensed-fontStyle">Header 4</h4>
+      <p class="roboto-condensed-fontStyle">Paragraph text</p>
+      </div>
+
+      <div role="tabpanel" id="panel-space" aria-labelledby="tab-space" hidden>
+        <!--Spacing: Each spacing token shown as a colored bar whose width or height equals the token value, labeled with the variable name and computed value-->
+      <h3 class="roboto-condensed-fontStyle">Spacing:</h3>
+      <ul><!--An <ul> in body context-->
+        <li>--space-sm:  0.1rem <span class="spaceSm"> </span></li>
+        <li>--space-md:  0.3rem <span class="spaceMd"> </span></li>
+        <li>--space-lg:  0.7rem <span class="spaceLg"> </span></li>
+        <li>--space-xl:  1rem <span class="spaceXl"> </span></li>
+      </ul>
+      </div>
+
+    </section>
+
+      
     <!--A reusable card component shown in at minimum two configurations: 
     A basic card (image, title, body text, action) A horizontal card (image beside text)-->
       <h3 class="roboto-condensed-fontStyle">Cards:</h3>
@@ -207,14 +231,17 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       </div>
     </section>
 
+   
+    <!-- ─── product cards─────────────────────────────────────────── -->
     <!--product cards go here! so you can look through the options of rocks-->
     <!--contains name, design/color, size, and price. hopefully also a photo but that is dependent on my skills. -->
     <section class="products" id="product">
       <h2 class="roboto-condensed-fontStyle">Products:</h2>
       <div id="product-grid" class="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
       <!--Component 2: card - holds products. aria="productCard" , aria-live="polite" -->
-
     </section>
+
+    
 
     <!--checkout-->
     <!--should be able to select chosen product here. dependent on my skills.-->
