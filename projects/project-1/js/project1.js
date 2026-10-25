@@ -11,16 +11,13 @@
 // change them to forward slashes (css/style.css) so they work on a web server.
 
 //-----------------------nav menu-----------------------
-//A mobile-friendly state: at narrow viewport, links collapse (can be CSS-only or JavaScript-toggled)
-//If JavaScript-toggled: aria-expanded on the toggle button, keyboard-accessible open/close
 const mobileMenu = document.getElementById('mobile-menu');
 const navLinks = document.getElementById('nav-links');
 
 mobileMenu.addEventListener('click', () => {
-    navLinks.style.display ='';
   navLinks.classList.toggle('active');
-    navLinks.addEventListener('click', () => {
-        navLinks.style.display = 'none';
+  navLinks.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
   
     });
 });

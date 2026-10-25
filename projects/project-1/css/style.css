@@ -141,6 +141,7 @@ footer {
   padding: 0;       
   margin: 0;   
 }
+@media (max-width: 500px){
  .nav-links {
     display: none; /* Hide desktop links */
     flex-direction: column;
@@ -157,6 +158,7 @@ footer {
   .nav-links.active {
     display: flex;
   }
+}
 
 @media  (min-width: 500px){
   .menu-toggle {
