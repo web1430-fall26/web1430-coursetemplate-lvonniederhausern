@@ -256,3 +256,6 @@ li{
 
 
 /*TODO: CODE FOR CHECKBOX TO CHANGE COLOR BASED ON SELECTION*/
+.checkbox:hover{
+  background-color: var(--color-focus);
+}

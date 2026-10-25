@@ -158,7 +158,14 @@
     outline-offset: 2px;
 }
 
+.checkbox-example-hover{
+  background-color: var(--color-focus);
+}
 
+.checkbox-example-focus{
+   outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
 
 
 /*button examples display*/
@@ -168,19 +175,29 @@
   grid-template-columns: repeat(5, 1fr); 
   /* Creates 5 equal rows */
   grid-template-rows: repeat(5, 1fr);    
+  gap: 1px;
+}
+
+@media  (min-width: 900px){
+.button-grid {
+  display: grid;
+  /* Creates 5 equal columns */
+  grid-template-columns: repeat(5, 1fr); 
+  /* Creates 5 equal rows */
+  grid-template-rows: repeat(5, 1fr);    
   /* Adds a 10px gap between items (optional) */
   gap: 10px;
-  border: 1px solid var(--color-text); 
   /* Give the overall grid a size (optional)
   width: 900px;
   height: 900px; */
 }
 
-/* Optional styling just to make the grid items visible */
+}
+
+
 .grid-item {
     color: var(--color-text);
     font-family: "Roboto Condensed", sans-serif;
-    font-optical-sizing: auto;
     font-weight: 400; 
     display: flex;
     justify-content: center;

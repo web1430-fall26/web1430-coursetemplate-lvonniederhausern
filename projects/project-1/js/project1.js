@@ -78,6 +78,7 @@ function renderProductCard(product) {
     //add check boxs for product selection
     
     const checkBox = document.createElement('button');
+    checkBox.classList.add('checkbox');
     checkBox.textContent = '☐';
     if (!product.inStock) {
         checkBox.disabled = true;
