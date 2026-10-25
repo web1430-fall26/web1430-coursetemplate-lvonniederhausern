@@ -108,13 +108,7 @@ function initTabs(tabListContainer) {
         }
     });
 }
-// Add a keydown listener to tabListContainer. On ArrowRight / ArrowLeft, move the selection one tab forward or backward and wrap around at the ends. On Home / End, jump to the first or last tab.
-// Call event.preventDefault() when you handle an arrow key, so the page does not scroll.
-// Call .focus() on the newly selected tab, so focus and selection stay together.
-// Factor the shared work into one selectTab(index) helper and call it from both the click and the keydown paths — the two should not have separate copies of the logic.
 
-// Only the active tab is reachable by Tab; the rest are removed from the tab order.
-// tabindex="-1" means "not in the tab order, but still focusable by script".
 function setActiveTab(tabs, panels, newIndex) {
   tabs.forEach((tab, i) => {
     const selected = i === newIndex;
@@ -126,7 +120,6 @@ function setActiveTab(tabs, panels, newIndex) {
 }
 
 
-// add place to generate product cards
 //-----------------------generate product cards-----------------------
 
 const productGrid = document.getElementById('product-grid');
@@ -137,6 +130,11 @@ function renderProductCard(product) {
     const card = document.createElement('article');
     card.classList.add('product-card');
 
+    if(!product.image){
+        product.image='images/paintedrockfox.jpg'
+        product.alt='rock with fox painted on it'
+    }
+
     if(product.horizontal){
         card.classList.add('horiz-card');
         console.log('horiz')
@@ -144,15 +142,14 @@ function renderProductCard(product) {
         //product image first for horiz
         const img = document.createElement('img');
         img.classList.add('horiz-card-image');
-        img.src = 'images/paintedrockfox.jpg';
-        img.alt = 'rock with fox painted on it';
+        img.src = product.image;
+        img.alt = product.alt;
         img.width = 200;  // Sets the width attribute to 200px
         img.height = 200; // Sets the height attribute to 200px
         card.appendChild(img);
 
         // Product name second for horiz
         const name = document.createElement('h2');
-        name.classList.add('horiz-card-name');
         name.textContent = product.name;
         card.appendChild(name);
     } else {
@@ -163,8 +160,8 @@ function renderProductCard(product) {
 
         //product image
         const img = document.createElement('img');
-        img.src = 'images/paintedrockfox.jpg';
-        img.alt = 'rock with fox painted on it';
+        img.src = product.image;
+        img.alt = product.alt;
         img.width = 200;  // Sets the width attribute to 200px
         img.height = 200; // Sets the height attribute to 200px
         card.appendChild(img);
@@ -224,7 +221,6 @@ function renderProductCard(product) {
     card.appendChild(checkBox);
     return card;
 }
-
 
 function renderProductList(productList, container) {
     container.innerHTML = '';
