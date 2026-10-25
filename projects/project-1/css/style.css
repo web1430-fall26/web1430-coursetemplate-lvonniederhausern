@@ -175,7 +175,6 @@ input:focus:not(:focus-visible), select:focus:not(:focus-visible), textarea:focu
   outline: none;
 }
 
-
 .error-msg{
     color: var(--color-error);
     font-size: small;
@@ -186,6 +185,7 @@ input:focus:not(:focus-visible), select:focus:not(:focus-visible), textarea:focu
     border: 3px dashed var(--color-error);
 }
 
+/*colors*/
 .colorBrand{
   color: var(--color-brand);
 }
@@ -208,6 +208,14 @@ input:focus:not(:focus-visible), select:focus:not(:focus-visible), textarea:focu
 
 .colorGray{
   color: var(--color-gray);
+}
+
+.colorError{
+  color: var(--color-error);
+}
+
+.colorFocus{
+  color: var(--color-focus);
 }
 
 li{
