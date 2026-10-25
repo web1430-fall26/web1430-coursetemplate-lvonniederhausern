@@ -57,16 +57,47 @@ function initFaq(faqContainer) {
 //-----------------------generate product cards-----------------------
 
 const productGrid = document.getElementById('product-grid');
+const productGridExample = document.getElementById('product-grid-example');
 const mapTable = new Map();
 
 function renderProductCard(product) {
     const card = document.createElement('article');
     card.classList.add('product-card');
 
-    // Product name in an <h2>
-    const name = document.createElement('h2');
-    name.textContent = product.name;
-    card.appendChild(name);
+    if(product.horizontal){
+        card.classList.add('horiz-card');
+        console.log('horiz')
+
+        //product image first for horiz
+        const img = document.createElement('img');
+        img.classList.add('horiz-card-image');
+        img.src = 'images/paintedrockfox.jpg';
+        img.alt = 'rock with fox painted on it';
+        img.width = 200;  // Sets the width attribute to 200px
+        img.height = 200; // Sets the height attribute to 200px
+        card.appendChild(img);
+
+        // Product name second for horiz
+        const name = document.createElement('h2');
+        name.classList.add('horiz-card-name');
+        name.textContent = product.name;
+        card.appendChild(name);
+    } else {
+         // Product name in an <h2>
+        const name = document.createElement('h2');
+        name.textContent = product.name;
+        card.appendChild(name);
+
+        //product image
+        const img = document.createElement('img');
+        img.src = 'images/paintedrockfox.jpg';
+        img.alt = 'rock with fox painted on it';
+        img.width = 200;  // Sets the width attribute to 200px
+        img.height = 200; // Sets the height attribute to 200px
+        card.appendChild(img);
+    }
+
+   
     
     // size in a <p> with class product-size
     const size = document.createElement('p');
@@ -260,5 +291,6 @@ checkoutButton.addEventListener('click', (event) => {
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log('content loaded');
     initFaq(document.querySelector('.faq'));
+    renderProductList( exampleProduct, productGridExample);
     renderProductList(products, productGrid);
 });

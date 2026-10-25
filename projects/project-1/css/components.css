@@ -193,8 +193,6 @@
 }
 
 }
-
-
 .grid-item {
     color: var(--color-text);
     font-family: "Roboto Condensed", sans-serif;
@@ -205,4 +203,33 @@
     font-weight: bold;
     border-radius: 2px;
     border: 1px solid var(--color-text); 
+}
+
+/*card examples*/
+.product-grid-example {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 10px;
+
+}
+
+@media (min-width: 900px){
+  .product-grid-example {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 10px;
+  }
+}
+
+.horiz-card{
+  max-width: 500px;
+  max-height: 270px;
+  text-align: center;
+  
+}
+.horiz-card-image{
+  float: left;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
 }
