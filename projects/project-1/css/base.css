@@ -1,0 +1,7 @@
+/*base css. all the style sheet css things*/
+/*This file handles your global, low-level foundation. It doesn't style specific UI layout pieces, but 
+rather sets the groundwork for the entire site.
+• Reset (or Normalize): Overrides default browser styling (like stripping away default margins, paddings, a
+nd list bullet styles) so your site looks consistent across Chrome, Safari, and Edge.
+• Tokens (Design Tokens): Holds your global variables—usually written as CSS Custom Properties
+ (e.g., --color-primary: #0070f3;, --font-main: 'Helvetica', sans-serif;, --spacing-md: 16px;).*/

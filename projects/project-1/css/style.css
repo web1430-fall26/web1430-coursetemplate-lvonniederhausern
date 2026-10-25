@@ -17,6 +17,17 @@ Repository progress only, nothing deployed (8) — deployment is the thing this 
 Not submitted (0)
 If your live URL does not load, you have found exactly the problem this milestone is for. Post in Help & Questions before the deadline rather than submitting a broken link.*/
 
+
+/* main.css */
+
+/* 1. Establish foundation first */
+@import url("base.css");
+
+/* 2. Layer components on top */
+@import url("components.css");
+
+
+
 :root {
 /*Colour palette — at least four named colours with hex values and confirmed contrast ratios
 • Spartan Green (#18453B): Contrast ratio of 9.01:1 against white 

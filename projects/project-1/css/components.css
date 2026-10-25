@@ -1,4 +1,7 @@
 /*components css. all the style sheet css things*/
+/*This file contains the styles for discrete, reusable UI elements.
+• It targets specific "chunks" of your interface rather than raw HTML tags.
+• Examples include styles for classes like .btn, .card, .nav-bar, .modal, or .input-field.*/
 
 /*color swatches*/
 .color-block-brand {
