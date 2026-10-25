@@ -137,23 +137,51 @@ footer {
 }
 
 .nav-menu {
-  list-style: none; /* Removes the bullet points */
-  padding: 0;       /* Removes default browser left indentation */
-  margin: 0;        /* Removes default top/bottom spacing */
+  list-style: none; 
+  padding: 0;       
+  margin: 0;   
 }
+ .nav-links {
+    display: none; /* Hide desktop links */
+    flex-direction: column;
+    width: 100%;
+    position: absolute;
+    top: 60px;
+    left: 0;
+    background-color: var(--color-card);
+    padding: 1rem 0;
+    text-align: center;
+  }
 
-.navbar ul {
-  display: flex;         /* Makes the items horizontal */
-  gap: 20px;             /* Adds space between the list items */
-}
+  /* When JS toggles this class, the menu opens */
+  .nav-links.active {
+    display: flex;
+  }
+
+@media  (min-width: 500px){
+  .menu-toggle {
+    display: none; /* Hidden on desktop */
+    background: none;
+    border: none;
+    color: var(--color-bg);
+    font-size: 2rem;
+    cursor: pointer;
+  }
+
+  .navbar ul {
+    display: flex;         /* Makes the items horizontal */
+    gap: 20px;             /* Adds space between the list items */
+  }
 
 /* 2. Optional: Style the links for better look and click area */
-.navbar a {
-
-  text-decoration: none; /* Removes underline */
-  color: var(--color-text);           /* Dark text */
-  padding: 8px 12px;
+  .navbar a {
+    text-decoration: none; /* Removes underline */
+    color: var(--color-text);           /* Dark text */
+    padding: 8px 12px;
+  }
 }
+
+
 
 a{
     font-family: "Roboto Condensed", sans-serif;

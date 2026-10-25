@@ -25,7 +25,8 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   <!--TODO: add navigation menu--><!--Component 1: nav menu - navagate the site. role="menu", role="menuitem",  aria-current="page"-->
   <header>
     <nav class="navbar">
-      <ul class="nav-menu">
+      <button class="menu-toggle" id="mobile-menu">☰</button>
+      <ul class="nav-menu nav-links" id="nav-links">
         <li><a href="#main-content">Painted Rock Paperweights</a></li>
         <li><a href="#styleGuide">Style Guide</a></li>
         <li><a href="#aboutUs">About Us</a></li>
@@ -139,10 +140,13 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <div class="grid-item"><button class="checkbox-example" disabled>☐</button></div>
     </div>
 
+    <!--A reusable card component shown in at minimum two configurations: 
+    A basic card (image, title, body text, action) A horizontal card (image beside text)-->
+      <h3 class="roboto-condensed-fontStyle">Cards:</h3>
+
       </section> 
       <!--TODO: 
-      <code> inline and a <pre><code> block
-      add button examples, 
+     
       finish the checkbox coding,
        work on product card information, 
        add example of product cards,

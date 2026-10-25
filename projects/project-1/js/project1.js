@@ -10,6 +10,21 @@
 //  See "Required sections" in the Project 1 brief. Also, the css\style.css and js\project1.js paths use backslashes; 
 // change them to forward slashes (css/style.css) so they work on a web server.
 
+//-----------------------nav menu-----------------------
+//A mobile-friendly state: at narrow viewport, links collapse (can be CSS-only or JavaScript-toggled)
+//If JavaScript-toggled: aria-expanded on the toggle button, keyboard-accessible open/close
+const mobileMenu = document.getElementById('mobile-menu');
+const navLinks = document.getElementById('nav-links');
+
+mobileMenu.addEventListener('click', () => {
+    navLinks.style.display ='';
+  navLinks.classList.toggle('active');
+    navLinks.addEventListener('click', () => {
+        navLinks.style.display = 'none';
+  
+    });
+});
+
 //-----------------------accordian menu-----------------------
 function initFaq(faqContainer) {
     // Adds a single click listener to faqContainer (event delegation)
