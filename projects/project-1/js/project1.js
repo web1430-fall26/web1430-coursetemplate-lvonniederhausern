@@ -66,6 +66,8 @@ function initTabs(tabListContainer) {
                 tab.setAttribute('aria-selected', 'false');
                 tab.tabIndex = -1; // Remove from tab order
                 // Hide all tab panels (set hidden = true) TODO: simplify this
+                const typo = document.getElementById("panel-typo");
+                typo.hidden = true;
                 const button = document.getElementById("panel-button");
                 button.hidden = true;
                 const scale = document.getElementById("panel-scale");
@@ -101,7 +103,7 @@ function initTabs(tabListContainer) {
 
         if (next !== null) {
             event.preventDefault();   // stop the arrow key from scrolling the page
-            const panels = [document.getElementById("panel-button"),document.getElementById("panel-scale"),document.getElementById("panel-space")]
+            const panels = [document.getElementById("panel-typo"),document.getElementById("panel-button"),document.getElementById("panel-scale"),document.getElementById("panel-space")]
             setActiveTab(tabs, panels, next);
         }
     });

@@ -61,39 +61,41 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
 
       
 
-      <!--Typography: Each font-size token shown as sample text at that size-->
-      
-      <h3 class="roboto-condensed-fontStyle">Typography:</h3>
-    
-      <figure>
-        <blockquote cite="https://fonts.google.com/specimen/Roboto+Condensed">
-          <h4 class="roboto-condensed-fontStyle fontLg">Google Fonts: Roboto Condensed</h4>
-        </blockquote><!--A <blockquote> with attribution-->
-        <figcaption class="roboto-condensed-fontStyle">Designed by: <cite>Christian Robertson</cite></figcaption>
-      </figure>
-      <p class="roboto-condensed-fontStyle">To change the font the HTML element must be in the <code>class="roboto-condensed-fontStyle"</code> class.</p><!--<code> inline and a <pre><code> block-->
-      <pre><code>
-.roboto-condensed-fontStyle {
-  font-family: "Roboto Condensed", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400; /*<weight>: Use a value from 100 to 900*/
-  font-style: normal;
-}</code></pre> <!-- <code> inline and a <pre><code> block-->
+     
       
 
 
        <!-- ─── Tabbed panel ─────────────────────────────────────────── -->
     <section class="tabs-section">
       <h2 class="roboto-condensed-fontStyle">Typography Tabs</h2>
-
+      <!--Option B – Tabs At least three tabs. Correct ARIA roles (tablist, tab, tabpanel). Arrow key navigation between tabs.-->
       <div class="tab-list" role="tablist" aria-label="Campus resource tabs" class="roboto-condensed-fontStyle">
-        <button role="tab" aria-selected="true"  aria-controls="panel-button" id="tab-button">Buttons</button>
+        <button role="tab" aria-selected="true"  aria-controls="panel-typo" id="tab-typo">Typography</button>
+        <button role="tab" aria-selected="false"  aria-controls="panel-button" id="tab-button">Buttons</button>
         <button role="tab" aria-selected="false" aria-controls="panel-scale" id="tab-scale">Type Scale</button>
         <button role="tab" aria-selected="false" aria-controls="panel-space"  id="tab-space">Spacing</button>
       </div>
-      
 
-      <div role="tabpanel" id="panel-button" aria-labelledby="tab-button">
+      <div role="tabpanel" id="panel-typo" aria-labelledby="tab-typo" >
+        <!--Typography: Each font-size token shown as sample text at that size-->
+        <h3 class="roboto-condensed-fontStyle">Typography:</h3>
+        <figure>
+          <blockquote cite="https://fonts.google.com/specimen/Roboto+Condensed">
+            <h4 class="roboto-condensed-fontStyle fontLg">Google Fonts: Roboto Condensed</h4>
+          </blockquote><!--A <blockquote> with attribution-->
+          <figcaption class="roboto-condensed-fontStyle">Designed by: <cite>Christian Robertson</cite></figcaption>
+        </figure>
+        <p class="roboto-condensed-fontStyle">To change the font the HTML element must be in the <code>class="roboto-condensed-fontStyle"</code> class.</p><!--<code> inline and a <pre><code> block-->
+        <pre><code>
+.roboto-condensed-fontStyle {
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /*<weight>: Use a value from 100 to 900*/
+  font-style: normal;
+}</code></pre> <!-- <code> inline and a <pre><code> block-->
+      </div>
+      
+      <div role="tabpanel" id="panel-button" aria-labelledby="tab-button" hidden>
         <!--At minimum four button variants, each shown in default, hover, focus, and disabled states:-->
         <h3 class="roboto-condensed-fontStyle">Buttons:</h3>
         <div class="button-grid">

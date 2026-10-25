@@ -285,12 +285,27 @@ li{
   width: 100%;
 }
 
-
-/*TODO: CODE FOR CHECKBOX TO CHANGE COLOR BASED ON SELECTION*/
 .checkbox{
   max-width: 100px;
   max-height: 100px;
 }
 .checkbox:hover{
   background-color: var(--color-focus);
+}
+
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
+[role="tabpanel"]{
+  border: 3px solid var(--color-highlight);
+}
+
+[role="tab"][aria-selected="true"] {
+  /* active tab styling */
+  background-color: var(--color-highlight);
+}
+
+[role="tab"][aria-selected="false"] {
+  background-color: var(--color-nav);
 }
