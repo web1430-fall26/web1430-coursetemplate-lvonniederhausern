@@ -52,11 +52,11 @@ function renderProductCard(product) {
     name.textContent = product.name;
     card.appendChild(name);
     
-    // description in a <p> with class product-description
-    const description = document.createElement('p');
-    description.classList.add('product-description');
-    description.textContent = product.description;
-    card.appendChild(description);
+    // size in a <p> with class product-size
+    const size = document.createElement('p');
+    size.classList.add('product-size');
+    size.textContent = "Rock Size: "+product.size;
+    card.appendChild(size);
 
     // Formatted price in a <p> with class product-price
     const price = document.createElement('p');
@@ -75,22 +75,31 @@ function renderProductCard(product) {
     }
     card.appendChild(stockStatus);
 
-    // A <button> reading "Add to Cart" that is disabled when inStock is false
+    //add check boxs for product selection
+    
     const checkBox = document.createElement('button');
-    checkBox.textContent = 'Add to Cart';
+    checkBox.textContent = '☐';
     if (!product.inStock) {
         checkBox.disabled = true;
     } else {
         checkBox.disabled = false;
     }
+    //check box code
+    checkBox.addEventListener('click', () => {
+        //  checkBox.textContent = '☑';
+        checkBox.classList.toggle('active');
+  
+        // Optional: Change the text based on the current state
+        if (checkBox.classList.contains('active')) {
+            checkBox.textContent = '☑';            
+        } else {
+            checkBox.textContent = '☐';
+        }
+    });
     card.appendChild(checkBox);
-
     return card;
 }
-//check box code
-// checkBox.addEventListener('click', (event) => {
 
-// });
 
 function renderProductList(productList, container) {
     container.innerHTML = '';
@@ -111,7 +120,7 @@ function formatPrice (amount) {
   return `$${amount.toFixed(2)}`;
 }
 
-//add check boxs for product selection
+
 
 // check user text imputs for email and address.
 //-----------------------checks user input for email-----------------------
@@ -195,22 +204,30 @@ checkoutButton.addEventListener('click', (event) => {
 
     let firstError = null;
 
-     fields.forEach(({ el, validate }) => { // Validate all required fields
-    const error = validate(el.value);
-    if (error) {
-        showError(el, error); // Show errors for all invalid fields
-        if (!firstError) firstError = el;
-    } else {
-      clearError(el); 
-        const ThankYouMessage = document.getElementById('ThankYouMessage');
-        ThankYouMessage.replaceChildren();
-        ThankYouMessage.append("Thank you for your purchase!");
-    }
+    fields.forEach(({ el, validate }) => { // Validate all required fields
+        const error = validate(el.value);
+        if (error) {
+            showError(el, error); // Show errors for all invalid fields
+            if (!firstError) firstError = el;
+        } else {
+        clearError(el); 
+            const ThankYouMessage = document.getElementById('ThankYouMessage');
+            ThankYouMessage.replaceChildren();
+            ThankYouMessage.append("Thank you for your purchase!");
+            for(product in products){
+                if (select = true){
+                    console.log('object was slected');
+                } else{
+                    console.log('object');
+                }
+            }
+
+        }
     });
     if (firstError) {
-    firstError.focus(); // If any field is invalid, move focus to the first invalid field
-    return;
-  }
+        firstError.focus(); // If any field is invalid, move focus to the first invalid field
+        return;
+    }
 
 });
 

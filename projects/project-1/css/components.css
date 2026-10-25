@@ -105,14 +105,14 @@
 }
 
 /*button examples*/
-.checkoutButtonExample{
+.checkout-button-example{
   font-size: var(--font-size-base);
   font-weight: bold;
   border-width: 3px;
   border-color: var(--color-text);
 }
 
-.checkoutButtonExampleHover{
+.checkout-button-example-hover{
   font-size: var(--font-size-base);
   font-weight: bold;
   border-width: 3px;
@@ -121,6 +121,44 @@
   color: var(--color-text);
   text-decoration: underline;
 }
+
+.checkout-button-example-focus{
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    border-width: 3px;
+    border-color: var(--color-text);
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.faq-button-example-hover{
+    background-color: var(--color-nav);
+}
+.faq-button-example-focus{
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+.danger-button{
+    font-weight: bold;
+    background-color: var(--color-error);
+}
+
+.danger-button-hover{
+    font-weight: bold;
+    background-color: var(--color-error);
+    text-decoration: underline;
+
+}
+
+.danger-button-focus{
+    font-weight: bold;
+    background-color: var(--color-error);
+    outline: 3px solid var(--color-focus);
+    outline-offset: 2px;
+}
+
+
 
 
 /*button examples display*/
@@ -131,8 +169,8 @@
   /* Creates 5 equal rows */
   grid-template-rows: repeat(5, 1fr);    
   /* Adds a 10px gap between items (optional) */
-  gap: 10px;                             
-  
+  gap: 10px;
+  border: 1px solid var(--color-text); 
   /* Give the overall grid a size (optional)
   width: 900px;
   height: 900px; */
@@ -140,12 +178,14 @@
 
 /* Optional styling just to make the grid items visible */
 .grid-item {
-  background-color: #3498db;
-  color: var(--color-text);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-family: sans-serif;
-  font-weight: bold;
-  border-radius: 2px;
+    color: var(--color-text);
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-size-base);
+    font-weight: bold;
+    border-radius: 2px;
+    border: 1px solid var(--color-text); 
 }
