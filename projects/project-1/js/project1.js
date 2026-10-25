@@ -57,6 +57,7 @@ function initFaq(faqContainer) {
 //-----------------------generate product cards-----------------------
 
 const productGrid = document.getElementById('product-grid');
+const mapTable = new Map();
 
 function renderProductCard(product) {
     const card = document.createElement('article');
@@ -107,9 +108,13 @@ function renderProductCard(product) {
   
         // Optional: Change the text based on the current state
         if (checkBox.classList.contains('active')) {
-            checkBox.textContent = '☑';            
+            checkBox.textContent = '☑';
+            mapTable.set(product.name, product.price);
+            //console.log(mapTable);            
         } else {
             checkBox.textContent = '☐';
+            mapTable.delete(product.name);
+            //console.log(mapTable); 
         }
     });
     card.appendChild(checkBox);
@@ -228,16 +233,19 @@ checkoutButton.addEventListener('click', (event) => {
         } else {
         clearError(el); 
             const ThankYouMessage = document.getElementById('ThankYouMessage');
+            const recipt = document.getElementById('recipt');
+            let total = 0;
             ThankYouMessage.replaceChildren();
+            recipt.replaceChildren();
             ThankYouMessage.append("Thank you for your purchase!");
-            for(product in products){
-                if (select = true){
-                    console.log('object was slected');
-                } else{
-                    console.log('object');
-                }
-            }
-
+            recipt.style.whiteSpace = "pre-line"; // Tells HTML to render \n as a line break
+            recipt.append('Recipt:\n');
+            mapTable.forEach((value, key) => {
+                console.log(`Key: ${key}, Value: ${value}`);
+                total+=value;
+                recipt.append(key +' Price: $' +value+'\n');
+            });
+            recipt.append('Total: $'+ total.toFixed(2))
         }
     });
     if (firstError) {

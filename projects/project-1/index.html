@@ -146,17 +146,15 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
 
       </section> 
       <!--TODO: 
-     
-      finish the checkbox coding,
        work on product card information, 
        add example of product cards,
-       make nav mobile friendly
-       program checkbox to make recipt and make it print with thx
-       divide css into base css and components css
+       add Tabs At least three tabs. Correct ARIA roles (tablist, tab, tabpanel). Arrow key navigation between tabs.
+      add images to cards
+       
        divide js into one for rendering utilities, one for interactive pattern initialization
        Each JS file has a one-sentence comment at the top stating its responsibility
        HTML validates with no errors at validator.w3.org
-       add focus for elements-->
+       -->
 
       <section class="overview">
       <h2 class="roboto-condensed-fontStyle" id ="aboutUs">About Us!</h2>
@@ -224,7 +222,6 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
     <section class="checkout" id="checkoutInfo">
       <h2 class="roboto-condensed-fontStyle">Checkout:</h2>
       <p class="required-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only"> with an asterisk</span> are required.</p>
-      <p>ADD USER INPUTS HERE. PRODUCT SELECTER</p>
       <!--Component 3: checkbox - for multi selection of products. aria-multiselectable="true"-->
       <!--Component 4: text input - address imput for shipping. aria-describedby, aria-required="true" (to make it a requirement) -->
       <!--also there will be an email input.-->
@@ -244,6 +241,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       
       <button class="checkoutButton" role="button" id="checkoutButton">Checkout</button> <!--Component 5: button - for checkout. role="button"--> <!--Interactive component 2: button glows when hovered.-->
       <h3 id="ThankYouMessage"></h3>
+      <p class="roboto-condensed-fontStyle recipt " id="recipt"></p>
     </section>
 
 
