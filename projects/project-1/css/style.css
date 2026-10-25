@@ -42,9 +42,8 @@ Typography plan — font families and a scale in rem
     --color-highlight:  #ff9800; /*Notice Me Orange*/
     --color-nav:        #80FFD4; /*Notice Me Teal*/
     --color-gray:       #808080; /*gray*/
-    /*TODO: recently added*/
     --color-error:      #ff0000; /*red*/
-    --color-card:       #e6e3ff; /*periwinkle*/
+    --color-card:       #e3fdff; /*Light Teal*/
     --color-focus:      #0000ff; /*blue*/
 
     /*any other changes or colors will be added as i go.*/
