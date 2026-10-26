@@ -1,4 +1,4 @@
-// project 1 – Product data 
+// data.js holds the Product data for project 1. this is used for making the product cards and the example product cards.
 const products = [
   { id: 1,  name: 'American Flag ',         size: 'Large',      price: 4.99, inStock: true, image:'images/americanflag.jpg', alt: 'rock with american flag painted on it' },
   { id: 2,  name: 'Pickle',                 size: 'Medium',     price: 9.99, inStock: true, image:'images/pickle.jpg', alt: 'rock painted like a pickle' },
