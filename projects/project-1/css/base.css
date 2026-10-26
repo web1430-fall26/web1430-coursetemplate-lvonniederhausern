@@ -1,3 +1,5 @@
+/*base.css: groundwork for the entire site, Overrides default browser styling, Holds your global variables*/
+
 /*base css. all the style sheet css things*/
 /*This file handles your global, low-level foundation. It doesn't style specific UI layout pieces, but 
 rather sets the groundwork for the entire site.
@@ -5,3 +7,152 @@ rather sets the groundwork for the entire site.
 nd list bullet styles) so your site looks consistent across Chrome, Safari, and Edge.
 • Tokens (Design Tokens): Holds your global variables—usually written as CSS Custom Properties
  (e.g., --color-primary: #0070f3;, --font-main: 'Helvetica', sans-serif;, --spacing-md: 16px;).*/
+
+ :root {
+/*Colour palette — at least four named colours with hex values and confirmed contrast ratios
+• Spartan Green (#18453B): Contrast ratio of 9.01:1 against white 
+• Rose Pink (#A80073): Contrast ratio of 7.21:1 against white 
+• Navy Blue (#181944): Contrast ratio of 16.64:1 against white 
+• Black (#000000): Contrast ratio of 21:1 against white
+
+Typography plan — font families and a scale in rem
+  Consolas, Courier New, and monospace. 
+  --font-size-sm: 0.75rem;    12px 
+  --font-size-base: 1rem;     16px 
+  --font-size-md: 1.25rem;    20px 
+  --font-size-lg: 1.5rem;     24px 
+  --font-size-xl: 2rem;       32px */
+
+  /*All CSS custom properties defined in :root*/
+    --color-brand:      #18453B; /*Spartan Green*/
+    --color-text:       #000000; /*Black*/
+    --color-bg:         #ffffff; /*White*/
+    --color-h2:         #181944; /*Navy Blue*/
+    --color-h3:         #A80073; /*Rose Pink*/
+    --color-h4:         #442418; /*Coco Brown*/
+    --color-highlight:  #ff9800; /*Notice Me Orange*/
+    --color-nav:        #80FFD4; /*Notice Me Teal*/
+    --color-gray:       #808080; /*Gray*/
+    --color-error:      #ff0000; /*Red*/
+    --color-card:       #e3fdff; /*Light Teal*/
+    --color-focus:      #0000ff; /*Blue*/
+
+
+    --space-sm:  0.1rem;
+    --space-md:  0.4rem;
+    --space-lg:  0.7rem;
+    --space-xl:  1rem;
+
+    --font-size-sm: 1rem;    
+    --font-size-base: 1.25rem;     
+    --font-size-md: 1.5rem;    
+    --font-size-lg: 2rem;  
+
+    --border-radius: 0.375rem;
+    --max-width: 1100px;
+
+}
+
+/*Typography. AKA Font: Roboto Condensed*/
+/*The typography section and color swatch section complete*/
+
+.roboto-condensed-fontStyle { /*.roboto-condensed-<uniquifier>: Use a unique and descriptive class name */
+  font-family: "Roboto Condensed", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400; /*<weight>: Use a value from 100 to 900*/
+  font-style: normal;
+}
+
+h1{
+    color: var(--color-brand);
+    font-size: var(--font-size-lg);
+}
+
+h2{
+    color: var(--color-h2);
+    font-size: var(--font-size-md);
+}
+
+h3{
+    color: var(--color-h3);
+    font-size: var(--font-size-base);
+}
+
+h4{ /*make h4 bold*/
+  color: var(--color-h4);
+  font-size: var(--font-size-sm);
+  font-weight: bold;
+}
+
+/*Body text paragraph with proper line height and measure (45–75 characters per line)*/
+p{
+    font-size: var(--font-size-sm);
+    word-spacing: var(--space-sm);
+      max-width: 75ch;
+}
+
+body {
+  font-size: 16px;
+  line-height: 1.5; /* Unitless value scales with font size */
+}
+
+a{
+    font-family: "Roboto Condensed", sans-serif;
+    font-optical-sizing: auto;
+    font-weight: 400; 
+    font-size: var(--font-size-base);
+}
+
+a:hover{
+    background-color: var(--color-nav);
+}
+
+/*:focus-visible should show a clear focus ring on all interactive elements*/
+/* Accessible focus rings using :focus-visible */
+input:focus-visible, select:focus-visible, textarea:focus-visible, button:focus-visible {
+  outline: 3px solid var(--color-focus);
+  outline-offset: 2px;
+}
+
+/* Hide default outline ONLY when :focus-visible is supported and active */
+input:focus:not(:focus-visible), select:focus:not(:focus-visible), textarea:focus:not(:focus-visible), button:focus:not(:focus-visible) {
+  outline: none;
+}
+
+li{
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+
+[role="tabpanel"][hidden] {
+  display: none;
+}
+
+[role="tabpanel"]{
+  border: 3px solid var(--color-highlight);
+}
+
+[role="tab"][aria-selected="true"] {
+  /* active tab styling */
+  background-color: var(--color-highlight);
+}
+
+[role="tab"][aria-selected="false"] {
+  background-color: var(--color-nav);
+}
+
+/*font examples*/
+.fontSm{
+  font-size: var(--font-size-sm)
+}
+.fontBase{
+  font-size: var(--font-size-base)
+}
+.fontMd{
+  font-size: var(--font-size-md)
+}
+.fontLg{
+  font-size: var(--font-size-lg)
+}
+

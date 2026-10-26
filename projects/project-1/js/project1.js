@@ -79,7 +79,6 @@ function initTabs(tabListContainer) {
             const tabId = event.target.getAttribute('aria-controls');
             tabId.tabIndex = 0; // Keep exactly one tab in the tab order: the selected tab gets tabIndex = 0, every other tab gets tabIndex = -1. Update this every time the selection changes — including on click.
             const panelEl = document.getElementById(tabId);
-            console.log(tabId, panelEl);
             if (panelEl.hidden){
                 panelEl.hidden = false; // Show the panel whose id matches event.target.getAttribute('aria-controls') (remove hidden)
             }else{
@@ -137,7 +136,6 @@ function renderProductCard(product) {
 
     if(product.horizontal){
         card.classList.add('horiz-card');
-        console.log('horiz')
 
         //product image first for horiz
         const img = document.createElement('img');
@@ -211,11 +209,9 @@ function renderProductCard(product) {
         if (checkBox.classList.contains('active')) {
             checkBox.textContent = '☑';
             mapTable.set(product.name, product.price);
-            //console.log(mapTable);            
         } else {
             checkBox.textContent = '☐';
             mapTable.delete(product.name);
-            //console.log(mapTable); 
         }
     });
     card.appendChild(checkBox);
@@ -341,7 +337,6 @@ checkoutButton.addEventListener('click', (event) => {
             recipt.style.whiteSpace = "pre-line"; // Tells HTML to render \n as a line break
             recipt.append('Recipt:\n');
             mapTable.forEach((value, key) => {
-                console.log(`Key: ${key}, Value: ${value}`);
                 total+=value;
                 recipt.append(key +' Price: $' +value+'\n');
             });
