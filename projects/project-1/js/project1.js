@@ -120,7 +120,6 @@ function setActiveTab(tabs, panels, newIndex) {
 
 
 //-----------------------generate product cards-----------------------
-
 const productGrid = document.getElementById('product-grid');
 const productGridExample = document.getElementById('product-grid-example');
 const mapTable = new Map();
