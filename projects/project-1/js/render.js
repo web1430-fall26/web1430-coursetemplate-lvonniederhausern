@@ -1,7 +1,6 @@
 // render.js (rendering utilities) is for visual presintation, contains pure functions and classes, 
 // takes data and outputs it on the screen, formats things for display
 
-
 //-----------------------nav menu-----------------------
 //on project1.js
 //-----------------------accordian menu-----------------------
@@ -172,4 +171,4 @@ function clearError(inputEl) {
 
 //-----------------------checkout button-----------------------
 //on project1.js
-console.log('works on render side');
+console.log('render.js works');

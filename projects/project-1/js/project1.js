@@ -1,8 +1,6 @@
 // project1.js (interactive pattern initialization) is for setting up interactive elements when the page loads, holding event listeners, 
 // and calls functions from render.js, update the screen based on user input.
 
-
-
 //-----------------------nav menu-----------------------
 //A mobile-friendly state: at narrow viewport, links collapse (can be CSS-only or JavaScript-toggled)
 //If JavaScript-toggled: aria-expanded on the toggle button, keyboard-accessible open/close
@@ -58,7 +56,7 @@ function initTabs(tabListContainer) {
             tabs.forEach(tab => {
                 tab.setAttribute('aria-selected', 'false');
                 tab.tabIndex = -1; // Remove from tab order
-                // Hide all tab panels (set hidden = true) TODO: simplify this
+                // Hide all tab panels (set hidden = true) 
                 const typo = document.getElementById("panel-typo");
                 typo.hidden = true;
                 const button = document.getElementById("panel-button");
@@ -105,12 +103,11 @@ function setActiveTab(tabs, panels, newIndex) {
   tabs.forEach((tab, i) => {
     const selected = i === newIndex;
     tab.setAttribute("aria-selected", String(selected));
-    tab.tabIndex = selected ? 0 : -1;      // roving tabindex
+    tab.tabIndex = selected ? 0 : -1; // roving tabindex
     panels[i].hidden = !selected;
   });
-  tabs[newIndex].focus();                   // move focus with the selection
+  tabs[newIndex].focus(); // move focus with the selection
 }
-
 
 //-----------------------generate product cards-----------------------
 const productGrid = document.getElementById('product-grid');
@@ -122,11 +119,8 @@ function formatPrice (amount) {
   return `$${amount.toFixed(2)}`;
 }
 
-// check user text imputs for email and address.
 //-----------------------checks user input for email-----------------------
 const emailInput = document.getElementById('email');
-
-
 
 emailInput.addEventListener('blur', () => {
   const error = validateEmail(emailInput.value);
@@ -137,8 +131,6 @@ emailInput.addEventListener('blur', () => {
 //-----------------------checks user input for address-----------------------
 const addressInput = document.getElementById('address');
 
-
-
 addressInput.addEventListener('blur', () => {
   const error = validateAddress(addressInput.value);
   if (error) showError(addressInput, error);
@@ -148,9 +140,8 @@ addressInput.addEventListener('blur', () => {
 //-----------------------checks user input for errors-----------------------
 //on render.js
 
-
 //-----------------------checkout button-----------------------
-//add code for check out button, print recipt, and thanks for buying message
+// code for check out button, print recipt, and thanks for buying message
 const checkoutButton = document.getElementById('checkoutButton');
 checkoutButton.addEventListener('click', (event) => {
     event.preventDefault(); // Call event.preventDefault()
@@ -191,7 +182,6 @@ checkoutButton.addEventListener('click', (event) => {
 
 });
 
-
 // DOM listener
 document.addEventListener("DOMContentLoaded", (event) => {
     console.log('content loaded');
@@ -201,4 +191,4 @@ document.addEventListener("DOMContentLoaded", (event) => {
     initTabs(document.querySelector('.tab-list'));
 });
 
-console.log('works on project1 side');
+console.log('project1.js works');

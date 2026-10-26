@@ -1,13 +1,6 @@
-<!--
-Milestone 2 — Build Checkpoint
-Due: End of Week 7
-
-A deployed, in-progress version with:
-
-All CSS custom properties defined in :root
-The typography section and color swatch section complete
-At least two interactive components functional (even if not polished)
-Submit the live URL and repo URL to Canvas with a brief note on what is remaining.-->
+ <!--TODO: 
+       HTML validates with no errors at validator.w3.org (it has 5 errors but they are mainly about having a p right below a h3 on my faq.)
+       -->
 
 <!DOCTYPE html>
 <html lang="en">
@@ -16,13 +9,14 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Project 1 – Interactive Style Guide</title>
   <link rel="stylesheet" href="css/style.css">
-  <!-- <link rel="stylesheet" href="css/components.css"> -->
   <!--Typography AKA Font: Roboto Condensed-->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Roboto+Condensed:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet">
 <body>
-  <!--TODO: add navigation menu--><!--Component 1: nav menu - navagate the site. role="menu", role="menuitem",  aria-current="page"-->
+
+  <!-- nav menu ─────────────────────────────────────────── -->
+  <!-- navigation menu--><!--Component 1: nav menu - navagate the site. role="menu", role="menuitem",  aria-current="page"-->
   <header>
     <nav class="navbar">
       <button class="menu-toggle" id="mobile-menu">☰</button>
@@ -37,9 +31,10 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       </ul>
     </nav>
   </header>
+
   <main>
       <h1 class="roboto-condensed-fontStyle" id="main-content">Project 1: Interactive Style Guide: Painted Rock Paperweights</h1>
-      
+      <!-- style guide ─────────────────────────────────────────── -->
       <section class="style guide" >
       <h2 class="roboto-condensed-fontStyle" id="styleGuide">Style Guide</h2>
       <!--Colors: Each color displayed as a swatch (a <div> with background-color set to the variable) with its variable name and hex value labeled-->
@@ -59,7 +54,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
         <li>--color-focus:      #0000ff <span class="colorFocus">Blue</span><div class="color-focus"></div>
       </ul>
 
-      <!-- ─── Tabbed panel ─────────────────────────────────────────── -->
+    <!--Tabbed panel ─────────────────────────────────────────── -->
     <section class="tabs-section">
       <h2 class="roboto-condensed-fontStyle">Typography Tabs</h2>
       <!--Option B – Tabs At least three tabs. Correct ARIA roles (tablist, tab, tabpanel). Arrow key navigation between tabs.-->
@@ -160,18 +155,13 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
 
     </section>
 
-      
-    <!--A reusable card component shown in at minimum two configurations: 
+      <!--product card example--> 
+      <!--A reusable card component shown in at minimum two configurations: 
     A basic card (image, title, body text, action) A horizontal card (image beside text)-->
       <h3 class="roboto-condensed-fontStyle">Cards:</h3>
       <div id="product-grid-example" class="product-grid-example" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
 
-      </section> 
-      <!--TODO: 
-       divide js into one for rendering utilities, one for interactive pattern initialization
-       Each JS file has a one-sentence comment at the top stating its responsibility
-       HTML validates with no errors at validator.w3.org (it has 5 errors but they are mainly about having a p right below a h3.)
-       -->
+      </section><!--this goes to style guide--> 
 
       <section class="overview">
       <h2 class="roboto-condensed-fontStyle" id ="aboutUs">About Us!</h2>
@@ -181,9 +171,9 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
         They are hand selected and painted by me. They come in a large variety of colors and designs, no two rocks are the same! They add the fun to functional.</p>
       </section>
 
-      <!--At least two interactive components functional, even if unpolished-->
-      <!--2 interactive conponents a button glows when hovered. accordian menu. -->
-       <!--Accordion FAQ--> <!--Interactive component 1: accordian menu.-->
+    <!--At least two interactive components functional, even if unpolished-->
+    <!--2 interactive conponents a button glows when hovered. accordian menu. -->
+    <!-- Accordion FAQ ─────────────────────────────────────────── --> <!--Interactive component 1: accordian menu.-->
     <section class="faq" >
       <h2 class="roboto-condensed-fontStyle" id="accordionFaq">Accordion Menu: Frequently Asked Questions</h2>
 
@@ -224,8 +214,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       </div>
     </section>
 
-   
-    <!-- ─── product cards─────────────────────────────────────────── -->
+    <!-- product cards ─────────────────────────────────────────── -->
     <!--product cards go here! so you can look through the options of rocks-->
     <!--contains name, design/color, size, and price. also a photo. -->
     <section class="products" id="product">
@@ -234,7 +223,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <!--Component 2: card - holds products. aria="productCard" , aria-live="polite" -->
     </section>
 
-    <!--checkout-->
+    <!-- checkout ─────────────────────────────────────────── -->
     <section class="checkout" id="checkoutInfo">
       <h2 class="roboto-condensed-fontStyle">Checkout:</h2>
       <p class="required-note">Fields marked <span aria-hidden="true">*</span><span class="sr-only"> with an asterisk</span> are required.</p>
@@ -265,7 +254,8 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
   <footer>
     <p>&copy; 2026 Lauren von Niederhausern</p>
   </footer>
-
+  
+  <!-- my js files-->
   <script src="js/project1.js" defer></script>
   <script src="js/render.js" defer></script>
   <script src="js/data.js" defer></script>
