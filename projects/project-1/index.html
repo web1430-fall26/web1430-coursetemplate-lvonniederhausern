@@ -170,7 +170,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <!--TODO: 
        divide js into one for rendering utilities, one for interactive pattern initialization
        Each JS file has a one-sentence comment at the top stating its responsibility
-       HTML validates with no errors at validator.w3.org
+       HTML validates with no errors at validator.w3.org (it has 5 errors but they are mainly about having a p right below a h3.)
        -->
 
       <section class="overview">
@@ -227,7 +227,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
    
     <!-- ─── product cards─────────────────────────────────────────── -->
     <!--product cards go here! so you can look through the options of rocks-->
-    <!--contains name, design/color, size, and price. hopefully also a photo but that is dependent on my skills. -->
+    <!--contains name, design/color, size, and price. also a photo. -->
     <section class="products" id="product">
       <h2 class="roboto-condensed-fontStyle">Products:</h2>
       <div id="product-grid" class="product-grid" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
@@ -251,7 +251,7 @@ Submit the live URL and repo URL to Canvas with a brief note on what is remainin
       <div class="field-group"><!-- Address input-->
         <label for="address">Address: <span aria-hidden="true">*</span></label>
         <input type="text" id="address" name="address"
-               aria-describedby="address-error" aria-invalid="false" autocomplete="address">
+               aria-describedby="address-error" aria-invalid="false" autocomplete="street-address">
         <span class="mobile-break"><br></span> <span id="address-error" class="error-msg" aria-live="polite"></span>
       </div><br>
       
