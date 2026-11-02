@@ -1,0 +1,7 @@
+/*
+In labs/lab08/style.css:
+Book cards display in a responsive grid (one column mobile, two or three columns desktop)
+.status-loading, .status-error, and .status-empty are visually distinct from each other and from card content
+The search form is accessible at all viewport sizes
+Cards have a consistent height/structure even when author or year is missing
+*/

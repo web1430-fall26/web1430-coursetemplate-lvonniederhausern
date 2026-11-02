@@ -12,11 +12,23 @@ const resultsRegion = document.getElementById('results-region');
 // fetchBooks(query)
 // Async function that:
 //   1. Fetches the Open Library search endpoint for the given query (encodeURIComponent)
-//   2. Checks response.ok — if false, throws new Error(`Request failed: ${response.status}`)
+//Fetches https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=12   
+//2. Checks response.ok — if false, throws new Error(`Request failed: ${response.status}`)
 //   3. Parses and returns the JSON
 // Response shape: { numFound: N, docs: [ { title, author_name, first_publish_year }, ... ] }
 async function fetchBooks(query) {
   // TODO
+//The response shape is:
+// {
+//   "numFound": 123,
+//   "docs": [
+//     {
+//       "title": "Dune",
+//       "author_name": ["Frank Herbert"],
+//       "first_publish_year": 1965
+//     }
+//   ]
+// }
 }
 
 // normalizeBooks(docs)
@@ -29,6 +41,14 @@ async function fetchBooks(query) {
 //   year:   doc.first_publish_year || 'Unknown Year'
 function normalizeBooks(docs) {
   // TODO
+// function normalizeBooks(docs) {
+//   return docs.map(doc => ({
+//     title: doc.title || 'Unknown Title',
+//     author: doc.author_name ? doc.author_name[0] : 'Unknown Author',
+//     year: doc.first_publish_year || 'Unknown Year',
+//   }));
+// }
+
 }
 
 // ─── Part 3: UI state functions ───────────────────────────────────────────
@@ -61,6 +81,10 @@ function renderBooks(books) {
 }
 
 // ─── Part 4: Search handler ───────────────────────────────────────────────
+// const form = document.getElementById('search-form');
+// const input = document.getElementById('search-input');
+// const resultsRegion = document.getElementById('results-region');
+
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
   const query = input.value.trim();
@@ -71,7 +95,15 @@ form.addEventListener('submit', async (event) => {
   }
 
   showLoading();
+//  try {
+//     const data = await fetchBooks(query);
+//     const books = normalizeBooks(data.docs);
 
+//     if (books.length === 0) {
+//       showEmpty();
+//     } else {
+//       renderBooks(books);
+//     }
   try {
     // TODO: call fetchBooks, normalizeBooks, then renderBooks or showEmpty
   } catch (error) {
