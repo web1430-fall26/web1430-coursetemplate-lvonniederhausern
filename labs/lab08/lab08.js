@@ -67,6 +67,8 @@ function showLoading() {
   const loadingMessage = document.createElement('p');
   loadingMessage.className = 'status-loading';
   loadingMessage.textContent = 'Searching for books…';
+  loadingMessage.classList.add('aria-describedby');
+  loadingMessage.setAttribute('aria-describedby', 'status: searching for books');
   resultsRegion.appendChild(loadingMessage);
 }
 
@@ -77,6 +79,8 @@ function showError(message) {
   const errorMessage = document.createElement('p');
   errorMessage.className = 'status-error';
   errorMessage.textContent = message;
+  errorMessage.classList.add('aria-describedby');
+  errorMessage.setAttribute('aria-describedby', message);
   resultsRegion.appendChild(errorMessage);
 }
 
@@ -86,6 +90,8 @@ function showEmpty() {
   resultsRegion.replaceChildren();
   const emptyMessage = document.createElement('p');
   emptyMessage.className = 'status-empty';
+  emptyMessage.classList.add('aria-describedby');
+  emptyMessage.setAttribute('aria-describedby', 'error: no books found');
   emptyMessage.textContent = 'No books found. Try a different search.';
   resultsRegion.appendChild(emptyMessage);
 }
