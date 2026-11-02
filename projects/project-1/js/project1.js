@@ -1,6 +1,15 @@
 // project1.js (interactive pattern initialization) is for setting up interactive elements when the page loads, holding event listeners, 
 // and calls functions from render.js, update the screen based on user input.
-
+// nav to tabs, cards, and colors 41, 59, 70, 89 anywhere i have h3 or 
+//margines cannot be hardcoded. 
+//--space-md is labeled 0.3rem but defined as 0.4rem
+// button table overflows the 375px viewport to 552px;
+//change th aria lable when they change. aria expanded needs to change.
+//e mobile toggle has no aria-expanded, and FAQ triggers retain stale expanded states. 
+//@ media quieries should be in base
+//base should have brand color things. 
+//swap these There is still mixing: render.js validates email/address while project1.js contains formatPrice, 
+//faq accordian make sure aria expanded changes
 //-----------------------nav menu-----------------------
 //A mobile-friendly state: at narrow viewport, links collapse (can be CSS-only or JavaScript-toggled)
 //If JavaScript-toggled: aria-expanded on the toggle button, keyboard-accessible open/close
