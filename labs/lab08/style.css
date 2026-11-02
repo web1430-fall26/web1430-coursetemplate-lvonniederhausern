@@ -5,3 +5,29 @@ Book cards display in a responsive grid (one column mobile, two or three columns
 The search form is accessible at all viewport sizes
 Cards have a consistent height/structure even when author or year is missing
 */
+
+.book-card {
+  border: 1px solid #ccc;
+  padding: 16px;
+  margin: 8px;
+  border-radius: 4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.results-region {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+}
+.status-loading {
+  color: blue;
+  font-weight: bold;
+}
+.status-error {
+  color: red;
+  font-weight: bold;
+}
+.status-empty {
+  color: gray;
+  font-style: italic;
+}

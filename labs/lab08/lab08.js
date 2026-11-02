@@ -17,7 +17,14 @@ const resultsRegion = document.getElementById('results-region');
 //   3. Parses and returns the JSON
 // Response shape: { numFound: N, docs: [ { title, author_name, first_publish_year }, ... ] }
 async function fetchBooks(query) {
-  // TODO
+
+  const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=12`);
+
+  if (!response.ok) {
+    throw new Error(`Request failed: ${response.status}`);
+  }
+// Parses and returns the JSON
+  return await response.json();
 //The response shape is:
 // {
 //   "numFound": 123,
@@ -40,14 +47,12 @@ async function fetchBooks(query) {
 //   author: doc.author_name?.[0] ?? 'Unknown Author'
 //   year:   doc.first_publish_year || 'Unknown Year'
 function normalizeBooks(docs) {
-  // TODO
-// function normalizeBooks(docs) {
-//   return docs.map(doc => ({
-//     title: doc.title || 'Unknown Title',
-//     author: doc.author_name ? doc.author_name[0] : 'Unknown Author',
-//     year: doc.first_publish_year || 'Unknown Year',
-//   }));
-// }
+
+  return docs.map(doc => ({
+    title: doc.title || 'Unknown Title',
+    author: doc.author_name ? doc.author_name[0] : 'Unknown Author',
+    year: doc.first_publish_year || 'Unknown Year',
+  }));
 
 }
 
@@ -57,17 +62,32 @@ function normalizeBooks(docs) {
 
 function showLoading() {
   // Clear resultsRegion, append a <p class="status-loading"> reading "Searching for books…"
-  // TODO
+
+  resultsRegion.replaceChildren();
+  const loadingMessage = document.createElement('p');
+  loadingMessage.className = 'status-loading';
+  loadingMessage.textContent = 'Searching for books…';
+  resultsRegion.appendChild(loadingMessage);
 }
 
 function showError(message) {
   // Clear resultsRegion, append a <p class="status-error"> with the provided message
-  // TODO
+
+  resultsRegion.replaceChildren();
+  const errorMessage = document.createElement('p');
+  errorMessage.className = 'status-error';
+  errorMessage.textContent = message;
+  resultsRegion.appendChild(errorMessage);
 }
 
 function showEmpty() {
   // Clear resultsRegion, append a <p class="status-empty"> reading "No books found. Try a different search."
-  // TODO
+
+  resultsRegion.replaceChildren();
+  const emptyMessage = document.createElement('p');
+  emptyMessage.className = 'status-empty';
+  emptyMessage.textContent = 'No books found. Try a different search.';
+  resultsRegion.appendChild(emptyMessage);
 }
 
 function renderBooks(books) {
@@ -77,13 +97,21 @@ function renderBooks(books) {
   //   - author in a <p class="book-author">
   //   - year in a <p class="book-year">
   // Append all cards to resultsRegion.
-  // TODO
+
+  resultsRegion.replaceChildren();
+  books.forEach(book => {
+    const bookCard = document.createElement('article');
+    bookCard.className = 'book-card';
+    bookCard.innerHTML = `
+      <h2>${book.title}</h2>
+      <p class="book-author">by ${book.author}</p>
+      <p class="book-year">${book.year}</p>
+    `;
+    resultsRegion.appendChild(bookCard);
+  });
 }
 
 // ─── Part 4: Search handler ───────────────────────────────────────────────
-// const form = document.getElementById('search-form');
-// const input = document.getElementById('search-input');
-// const resultsRegion = document.getElementById('results-region');
 
 form.addEventListener('submit', async (event) => {
   event.preventDefault();
@@ -95,17 +123,17 @@ form.addEventListener('submit', async (event) => {
   }
 
   showLoading();
-//  try {
-//     const data = await fetchBooks(query);
-//     const books = normalizeBooks(data.docs);
 
-//     if (books.length === 0) {
-//       showEmpty();
-//     } else {
-//       renderBooks(books);
-//     }
   try {
-    // TODO: call fetchBooks, normalizeBooks, then renderBooks or showEmpty
+    // call fetchBooks, normalizeBooks, then renderBooks or showEmpty
+    const data = await fetchBooks(query);
+    const books = normalizeBooks(data.docs);
+
+    if (books.length === 0) {
+      showEmpty();
+    } else {
+      renderBooks(books);
+    }
   } catch (error) {
     showError('Unable to load results. Please check your connection and try again.');
     console.error(error);
