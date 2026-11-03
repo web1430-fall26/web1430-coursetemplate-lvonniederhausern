@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Assignment 4 – API Data Story</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+
+  </header>
+
+  <main>
+    <h1>API Data Story:</h1>
+<!--1. Initial load view When the page opens, automatically fetch a meaningful starting dataset and render it.
+ Do not require the user to take an action before seeing any data.
+
+2. Search or filter control A form input (search field, dropdown, or set of filter buttons) that lets users narrow, sort, or explore the dataset. 
+This control must trigger a new fetch or filter the already-loaded data — at minimum one of the two.
+
+3. Detail view (one of the following)
+Clicking a result card reveals additional details about that item (expand in place, or render to a dedicated panel)
+A second fetch triggered by clicking an item retrieves and displays additional data for that specific item
+
+4. Three async UI states Every fetch must handle all three:
+Loading — a visible loading indicator while the request is in flight
+Success — the data rendered
+Error — a visible, descriptive error message (not just a console log)-->
+
+    <form id="search-bar">
+      <label for="search-input">Search by title</label>
+      <input type="search" id="search-input" placeholder="e.g. something" autocomplete="off">
+      <button type="submit">Search</button>
+    </form>
+
+    <div id="results-place" aria-live="polite" aria-label="Search results">
+      <!-- Status messages (loading, error, empty) and result cards are injected here -->
+    </div>
+    
+  </main>
+
+       <footer>
+    <p>&copy; 2026 Lauren von Niederhausern</p>
+  </footer>
+
+  <script src="app.js" defer></script>
+</body>
+</html>
