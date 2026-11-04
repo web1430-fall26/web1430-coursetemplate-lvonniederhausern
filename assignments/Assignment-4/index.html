@@ -27,16 +27,22 @@ A second fetch triggered by clicking an item retrieves and displays additional d
 Loading — a visible loading indicator while the request is in flight
 Success — the data rendered
 Error — a visible, descriptive error message (not just a console log)-->
-
+<section id="loading-site" class="status-loading" aria-describedby="loading site"><h2>Loading Site...</h2></section>
+    <section id="page-site" hidden>
+      <h2>Open Library Search API</h2>
     <form id="search-bar">
       <label for="search-input">Search by title</label>
       <input type="search" id="search-input" placeholder="e.g. something" autocomplete="off">
       <button type="submit">Search</button>
     </form>
 
-    <div id="results-place" aria-live="polite" aria-label="Search results">
+    <div id="results-place" class="card-grid" aria-live="polite" aria-label="Search results">
       <!-- Status messages (loading, error, empty) and result cards are injected here -->
     </div>
+
+    <h2>Book Details: </h2>
+    <section id="detail-view"></section>
+    </section>
     
   </main>
 
