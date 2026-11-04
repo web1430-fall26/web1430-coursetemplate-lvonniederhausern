@@ -1,0 +1,17 @@
+/*Part 2: CSS
+In labs/lab09/style.css, define the visual effect of each preference via classes on <main id="article">:*/
+
+/* Themes */
+.theme-light  { background: #ffffff; color: #1a1a1a; }
+.theme-dark   { background: #1a1a1a; color: #e8e8e8; }
+.theme-sepia  { background: #f4ecd8; color: #3b2f2f; }
+
+/* Font sizes */
+.font-small  { font-size: 14px; }
+.font-medium { font-size: 16px; }
+.font-large  { font-size: 20px; }
+
+/* Line spacing */
+.spacing-compact  { line-height: 1.4; }
+.spacing-normal   { line-height: 1.7; }
+.spacing-relaxed  { line-height: 2.0; }

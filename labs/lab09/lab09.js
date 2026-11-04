@@ -1,6 +1,7 @@
 // Lab 09 – Preference Panels and Saved UI Settings
 
 // ─── Constants ────────────────────────────────────────────────────────────
+//Default preferences constant
 const DEFAULTS = {
   theme:    'light',
   fontSize: 'medium',
@@ -26,7 +27,27 @@ function loadPreferences() {
 // savePreferences(prefs)
 // Serializes the prefs object and writes it to localStorage.
 function savePreferences(prefs) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+//  localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+ try {
+    localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+  } catch (err) {
+    if (err.name === 'QuotaExceededError') {
+      //Testing quota exceeded: You cannot easily fill storage in a lab setting, 
+      // but you can verify your code handles the path correctly by temporarily replacing localStorage.setItem(...) 
+      // with throw Object.assign(new Error(), { name: 'QuotaExceededError' }) inside savePreferences, reloading,
+      //  and confirming the warning appears without a JavaScript crash.
+      // Storage is full — preferences will not persist this session.
+      // Show a non-intrusive warning rather than crashing.
+      console.warn('localStorage quota exceeded. Preferences will not be saved this session.');
+      showStorageWarning(); // implement below
+    }
+  }
+}
+
+//Add showStorageWarning() to your JS and a matching element to your HTML:
+function showStorageWarning() {
+  const warning = document.getElementById('storage-warning');
+  if (warning) warning.hidden = false;
 }
 
 // applyPreferences(prefs, articleEl)
@@ -50,6 +71,7 @@ function applyPreferences(prefs, articleEl) {
 
 // syncRadioButtons(prefs)
 // Sets the correct radio button to checked based on the prefs object.
+//After loading prefs, this function sets the correct radio button to checked:
 function syncRadioButtons(prefs) {
   document.querySelector(`[name="theme"][value="${prefs.theme}"]`).checked = true;
   document.querySelector(`[name="font-size"][value="${prefs.fontSize}"]`).checked = true;
@@ -57,6 +79,7 @@ function syncRadioButtons(prefs) {
 }
 
 // ─── Part 4: Initialize ───────────────────────────────────────────────────
+
 document.addEventListener('DOMContentLoaded', () => {
   const article = document.getElementById('article');
   const panel   = document.getElementById('preferences-panel');
@@ -71,8 +94,24 @@ document.addEventListener('DOMContentLoaded', () => {
   // TODO: Add a 'change' listener to panel.
   // When a radio changes, load the current prefs, update the changed property,
   // save the updated prefs, and apply them.
+  // Listen for changes to any radio button group
+   document.querySelector('#preferences-panel').addEventListener('change', (event) => {
+    const updated = loadPreferences();
+
+    if (event.target.name === 'theme') updated.theme = event.target.value;
+    if (event.target.name === 'font-size') updated.fontSize = event.target.value;
+    if (event.target.name === 'spacing') updated.spacing = event.target.value;
+
+    savePreferences(updated);
+    applyPreferences(updated, article);
+  });
 
   // 3. Reset button
   // TODO: Add a 'click' listener to resetBtn.
   // Save DEFAULTS, apply DEFAULTS, and sync the radio buttons.
+  document.getElementById('reset-btn').addEventListener('click', () => {
+    savePreferences({ ...DEFAULTS });
+    applyPreferences(DEFAULTS, article);
+    syncRadioButtons(DEFAULTS);
+  });
 });
