@@ -1,4 +1,4 @@
-Project 2 Proposal – Milestone 1
+Project 2 Proposal – Milestone 1 Lauren von Niederhausern
 Problem statement — who specifically, what task, why it is inconvenient today
 Problem statement: Who specifically is this for? What task does the tool help them complete? Why is that task currently inconvenient without this tool?
 
