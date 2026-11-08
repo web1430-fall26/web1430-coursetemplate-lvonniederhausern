@@ -30,6 +30,7 @@ function savePreferences(prefs) {
 //  localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
  try {
     localStorage.setItem(STORAGE_KEY, JSON.stringify(prefs));
+    //throw Object.assign(new Error(), { name: 'QuotaExceededError' })
   } catch (err) {
     if (err.name === 'QuotaExceededError') {
       //Testing quota exceeded: You cannot easily fill storage in a lab setting, 

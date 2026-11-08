@@ -15,3 +15,7 @@ In labs/lab09/style.css, define the visual effect of each preference via classes
 .spacing-compact  { line-height: 1.4; }
 .spacing-normal   { line-height: 1.7; }
 .spacing-relaxed  { line-height: 2.0; }
+
+#storage-warning{
+    color: red;
+}
