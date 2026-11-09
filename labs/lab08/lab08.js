@@ -1,3 +1,11 @@
+//TODO: add try catch finally at submit that hides loading
+//normalize books chek if undefined and set to unknown so check for null. if else or statement
+//make red text darker
+//aria-describedby contains message words rather than IDs of existing elements; input values for inner html.
+//renderBooks shouldnt use innerHTML, use createElement and textContent instead. 111
+// add class for results region and change the selector to #results-region. DONE
+//update aria lale when the screen updates
+
 // Lab 08 – Open Library Book Search
 // API endpoint: https://openlibrary.org/search.json?title=[query]&limit=12
 // No API key required.
