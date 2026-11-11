@@ -19,11 +19,14 @@
   <!-- navigation menu--><!--Component 1: nav menu - navagate the site. role="menu", role="menuitem",  aria-current="page"-->
   <header>
     <nav class="navbar">
-      <button class="menu-toggle" id="mobile-menu">☰</button>
+      <button class="menu-toggle" id="mobile-menu" aria-expanded="false">☰</button>
       <ul class="nav-menu nav-links" id="nav-links">
         <li><a href="#main-content">&#127752;</a></li>
         <li><a href="#main-content">Painted Rock Paperweights</a></li>
         <li><a href="#styleGuide">Style Guide</a></li>
+        <li><a href="#colors">Colors</a></li>
+        <li><a href="#typography-tabs">Typography Tabs</a></li>
+        <li><a href="#cards">Cards</a></li>
         <li><a href="#aboutUs">About Us</a></li>
         <li><a href="#accordionFaq">Frequently Asked Questions</a></li>
         <li><a href="#product">Products</a></li>
@@ -38,7 +41,7 @@
       <section class="style guide" >
       <h2 class="roboto-condensed-fontStyle" id="styleGuide">Style Guide</h2>
       <!--Colors: Each color displayed as a swatch (a <div> with background-color set to the variable) with its variable name and hex value labeled-->
-      <h3 class="roboto-condensed-fontStyle">Colors:</h3>
+      <h3 class="roboto-condensed-fontStyle" id="colors">Colors:</h3>
       <ul>
         <li>--color-brand:      #18453B <span class="colorBrand">Spartan Green</span><div class="color-block-brand"></div>
         <li>--color-text:       #000000 Black<div class="color-block-text"></div>
@@ -56,7 +59,7 @@
 
     <!--Tabbed panel ─────────────────────────────────────────── -->
     <section class="tabs-section">
-      <h2 class="roboto-condensed-fontStyle">Typography Tabs</h2>
+      <h2 class="roboto-condensed-fontStyle" id="typography-tabs">Typography Tabs</h2>
       <!--Option B – Tabs At least three tabs. Correct ARIA roles (tablist, tab, tabpanel). Arrow key navigation between tabs.-->
       <div class="tab-list roboto-condensed-fontStyle" role="tablist" aria-label="Campus resource tabs">
         <button role="tab" aria-selected="true"  aria-controls="panel-typo" id="tab-typo">Typography</button>
@@ -158,7 +161,7 @@
       <!--product card example--> 
       <!--A reusable card component shown in at minimum two configurations: 
     A basic card (image, title, body text, action) A horizontal card (image beside text)-->
-      <h3 class="roboto-condensed-fontStyle">Cards:</h3>
+      <h3 class="roboto-condensed-fontStyle" id="cards">Cards:</h3>
       <div id="product-grid-example" class="product-grid-example" aria-live="polite"></div> <!-- a div id="product-grid"> for the product cards -->
 
       </section><!--this goes to style guide--> 

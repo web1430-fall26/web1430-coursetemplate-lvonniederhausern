@@ -56,6 +56,28 @@ Typography plan — font families and a scale in rem
 
 }
 
+@media (max-width:500px){
+.button-grid {
+  display: grid;
+  /* Creates 5 equal columns */
+  grid-template-columns: repeat(5, 1fr); 
+  /* Creates 5 equal rows */
+  grid-template-rows: repeat(5, 1fr);    
+  gap: 1px;
+}
+
+.grid-item {
+    color: var(--color-text);
+    font-family: "Roboto Condensed", sans-serif;
+    font-weight: 200; 
+    display: flex;
+    justify-content: center;
+    font-size: var(--font-size-sm);
+    border-radius: 1px;
+    border: 1px solid var(--color-text); 
+}
+}
+
 
 @media (max-width: 500px){
  .nav-links {
@@ -243,6 +265,7 @@ li{
 
 [role="tabpanel"]{
   border: 3px solid var(--color-highlight);
+  width: 552px;
 }
 
 [role="tab"][aria-selected="true"] {

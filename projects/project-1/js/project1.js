@@ -1,12 +1,13 @@
 // project1.js (interactive pattern initialization) is for setting up interactive elements when the page loads, holding event listeners, 
 // and calls functions from render.js, update the screen based on user input.
 
-// nav to tabs, cards, and colors 41, 59, 70, 89 anywhere i have h3 or 
-// button table overflows the 375px viewport to 552px;
-//change th aria lable when they change. aria expanded needs to change.
-//e mobile toggle has no aria-expanded, and FAQ triggers retain stale expanded states. 
-//faq accordian make sure aria expanded changes
-
+//FIXED BUGS:
+//change th aria lable when they change. aria expanded needs to change. DONE
+// and FAQ triggers retain stale expanded states. DONE
+//faq accordian make sure aria expanded changes DONE 
+//e mobile toggle has no aria-expanded, DONE
+// button table overflows the 375px viewport to 552px; DONE
+// nav to tabs, cards, and colors 41, 59, 70, 89 anywhere i have h3 or DONE
 //margines cannot be hardcoded. DONE
 //--space-md is labeled 0.3rem but defined as 0.4rem DONE
 //@ media quieries should be in base DONE 
@@ -21,10 +22,11 @@ const navLinks = document.getElementById('nav-links');
 
 mobileMenu.addEventListener('click', () => {
     navLinks.style.display ='';
+    mobileMenu.setAttribute('aria-expanded', navLinks.classList.contains('active') ? 'false' : 'true');
   navLinks.classList.toggle('active');
     navLinks.addEventListener('click', () => {
         navLinks.style.display = 'none';
-  
+        
     });
 });
 
@@ -45,7 +47,11 @@ function initFaq(faqContainer) {
                 for (const answer of document.getElementsByClassName("faq-answer")) {
                     if (answer !== answerEl) {
                         answer.hidden = true;
-                        answer.setAttribute('aria-expanded', 'false');
+                        for (const question of document.getElementsByClassName("faq-question")) {
+                            if (question.getAttribute('aria-controls') === answer.id) {
+                                question.setAttribute('aria-expanded', 'false');
+                            }
+                        }
                     }
                 }
             } else { //if the answer is open, close it
