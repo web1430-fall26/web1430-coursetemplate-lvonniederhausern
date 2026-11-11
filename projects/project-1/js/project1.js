@@ -1,15 +1,18 @@
 // project1.js (interactive pattern initialization) is for setting up interactive elements when the page loads, holding event listeners, 
 // and calls functions from render.js, update the screen based on user input.
+
 // nav to tabs, cards, and colors 41, 59, 70, 89 anywhere i have h3 or 
-//margines cannot be hardcoded. 
-//--space-md is labeled 0.3rem but defined as 0.4rem
 // button table overflows the 375px viewport to 552px;
 //change th aria lable when they change. aria expanded needs to change.
 //e mobile toggle has no aria-expanded, and FAQ triggers retain stale expanded states. 
-//@ media quieries should be in base
-//base should have brand color things. 
-//swap these There is still mixing: render.js validates email/address while project1.js contains formatPrice, 
 //faq accordian make sure aria expanded changes
+
+//margines cannot be hardcoded. DONE
+//--space-md is labeled 0.3rem but defined as 0.4rem DONE
+//@ media quieries should be in base DONE 
+//base should have brand color things. DONE
+//swap these There is still mixing: render.js validates email/address while project1.js contains formatPrice, DONE
+
 //-----------------------nav menu-----------------------
 //A mobile-friendly state: at narrow viewport, links collapse (can be CSS-only or JavaScript-toggled)
 //If JavaScript-toggled: aria-expanded on the toggle button, keyboard-accessible open/close
@@ -123,11 +126,6 @@ const productGrid = document.getElementById('product-grid');
 const productGridExample = document.getElementById('product-grid-example');
 const mapTable = new Map();
 
-
-function formatPrice (amount) {
-  return `$${amount.toFixed(2)}`;
-}
-
 //-----------------------checks user input for email-----------------------
 const emailInput = document.getElementById('email');
 
@@ -136,6 +134,27 @@ emailInput.addEventListener('blur', () => {
   if (error) showError(emailInput, error);
   else clearError(emailInput);
 });
+
+function validateEmail(value) {
+    emailInput.setAttribute('aria-invalid', 'false');  
+    if (!value.trim()){ 
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'Error: Email address is required.');
+        return 'Email address is required.';
+    } else {
+        emailInput.setAttribute('aria-invalid', 'false');
+        emailInput.setAttribute('aria-describedby', 'email-error');
+    }
+    if (!value.includes('@') || !value.includes('.')){ 
+        emailInput.setAttribute('aria-invalid', 'true');
+        emailInput.setAttribute('aria-describedby', 'Error: Please enter a valid email address.');
+        return 'Please enter a valid email address.';
+    } else {
+        emailInput.setAttribute('aria-invalid', 'false');
+        emailInput.setAttribute('aria-describedby', 'email-error');
+    } 
+    return null;
+}
 
 //-----------------------checks user input for address-----------------------
 const addressInput = document.getElementById('address');

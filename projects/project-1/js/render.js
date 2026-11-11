@@ -9,6 +9,10 @@
 //on project1.js
 
 //-----------------------generate product cards-----------------------
+function formatPrice (amount) {
+  return `$${amount.toFixed(2)}`;
+}
+
 function renderProductCard(product) {
     const card = document.createElement('article');
     card.classList.add('product-card');
@@ -117,26 +121,7 @@ function renderProductList(productList, container) {
 
 //-----------------------checks user input for email-----------------------
 
-function validateEmail(value) {
-    emailInput.setAttribute('aria-invalid', 'false');  
-    if (!value.trim()){ 
-        emailInput.setAttribute('aria-invalid', 'true');
-        emailInput.setAttribute('aria-describedby', 'Error: Email address is required.');
-        return 'Email address is required.';
-    } else {
-        emailInput.setAttribute('aria-invalid', 'false');
-        emailInput.setAttribute('aria-describedby', 'email-error');
-    }
-    if (!value.includes('@') || !value.includes('.')){ 
-        emailInput.setAttribute('aria-invalid', 'true');
-        emailInput.setAttribute('aria-describedby', 'Error: Please enter a valid email address.');
-        return 'Please enter a valid email address.';
-    } else {
-        emailInput.setAttribute('aria-invalid', 'false');
-        emailInput.setAttribute('aria-describedby', 'email-error');
-    } 
-    return null;
-}
+//on project1.js
 
 //-----------------------checks user input for address-----------------------
 

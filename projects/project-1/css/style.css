@@ -24,36 +24,3 @@ If your live URL does not load, you have found exactly the problem this mileston
 
 @import url("components.css");  /*contains the styles for discrete, reusable UI elements., styles for classes like .btn, .card, .nav-bar, .modal, or .input-field.*/
 
-/*these can fit in both base.css and components.css so they stay here.*/
-/*colors*/
-.colorBrand{
-  color: var(--color-brand);
-}
-
-.colorH2{
-  color: var(--color-h2);
-}
-
-.colorH3{
-  color: var(--color-h3);
-}
-
-.colorHighlight{
-  color: var(--color-highlight);
-}
-
-.colorNav{
-  color: var(--color-nav);
-}
-
-.colorGray{
-  color: var(--color-gray);
-}
-
-.colorError{
-  color: var(--color-error);
-}
-
-.colorFocus{
-  color: var(--color-focus);
-}

@@ -9,7 +9,7 @@ button{
     font-optical-sizing: auto;
     font-weight: 400; 
     font-size: var(--font-size-base);
-    margin-bottom: 10px;
+    margin-bottom: var(--marginTen);
 }
 
 .faq-question:hover{
@@ -36,49 +36,7 @@ footer {
 .nav-menu {
   list-style: none; 
   padding: 0;       
-  margin: 0;   
-}
-
-@media (max-width: 500px){
- .nav-links {
-    display: none; /* Hide desktop links */
-    flex-direction: column;
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
-    background-color: var(--color-card);
-    padding: 1rem 0;
-    text-align: center;
-  }
-
-  /* When JS toggles this class, the menu opens */
-  .nav-links.active {
-    display: flex;
-  }
-}
-
-@media  (min-width: 500px){
-  .menu-toggle {
-    display: none; /* Hidden on desktop */
-    background: none;
-    border: none;
-    color: var(--color-bg);
-    font-size: 2rem;
-    cursor: pointer;
-  }
-
-  .navbar ul {
-    display: flex;         /* Makes the items horizontal */
-    gap: 20px;             /* Adds space between the list items */
-  }
-
-/* 2. Optional: Style the links for better look and click area */
-  .navbar a {
-    text-decoration: none; /* Removes underline */
-    color: var(--color-text);           /* Dark text */
-    padding: 8px 12px;
-  }
+  margin: var(--marginNone);   
 }
 
 .error-msg{
@@ -97,14 +55,6 @@ footer {
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 10px;
 
-}
-
-@media (min-width: 900px){
-  .product-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
-  }
 }
 
 .out-of-stock{
@@ -290,21 +240,7 @@ footer {
   gap: 1px;
 }
 
-@media  (min-width: 900px){
-.button-grid {
-  display: grid;
-  /* Creates 5 equal columns */
-  grid-template-columns: repeat(5, 1fr); 
-  /* Creates 5 equal rows */
-  grid-template-rows: repeat(5, 1fr);    
-  /* Adds a 10px gap between items (optional) */
-  gap: 10px;
-  /* Give the overall grid a size (optional)
-  width: 900px;
-  height: 900px; */
-}
 
-}
 .grid-item {
     color: var(--color-text);
     font-family: "Roboto Condensed", sans-serif;
@@ -324,15 +260,6 @@ footer {
   gap: 10px;
 
 }
-
-@media (min-width: 900px){
-  .product-grid-example {
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-    gap: 10px;
-  }
-}
-
 
 .horiz-card{
   max-width: 500px;
