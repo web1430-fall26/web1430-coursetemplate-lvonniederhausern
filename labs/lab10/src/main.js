@@ -1,0 +1,2 @@
+// main.js       — entry point: imports from events.js and initializes the app
+// serves as the entry point for the application, importing event handlers from events.js and initializing the app on DOMContentLoaded.

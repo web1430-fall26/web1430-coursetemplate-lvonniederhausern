@@ -1,0 +1,2 @@
+//events.js     — buildFilter, DOMContentLoaded handler (imports from render and utils)
+// handles the building of the filter UI and sets up the DOMContentLoaded event listeners, using functions from render.js and utils.js.
