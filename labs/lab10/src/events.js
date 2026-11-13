@@ -19,3 +19,16 @@ export function buildFilter(products, filterContainer, gridContainer) {
     filterContainer.append(btn);
   });
 }
+
+// function buildFilter() {
+//   const bar = document.getElementById('filter-bar');
+//   getCategories().forEach(cat => {
+//     const btn = document.createElement('button');
+//     btn.textContent = cat;
+//     btn.addEventListener('click', () => {
+//       activeCategory = cat;
+//       renderAll();
+//     });
+//     bar.append(btn);
+//   });
+// }
