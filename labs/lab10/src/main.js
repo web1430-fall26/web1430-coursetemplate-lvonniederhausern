@@ -16,3 +16,8 @@ document.addEventListener('DOMContentLoaded', () => {
   buildFilter(products, filterBar, productGrid);
   renderGrid(products, productGrid);
 });
+
+// document.addEventListener('DOMContentLoaded', () => {
+//   buildFilter();
+//   renderAll();
+// });
