@@ -3,7 +3,9 @@
 // Each function receives data as an argument — no direct API calls
 // DOM element references selected inside this file (not passed in from outside)
 
-const resultsPlace = document.getElementById('results-place');
+//const resultsPlace = document.getElementById('results-place');
+import { magicStringsRender } from "./constants";
+const resultsPlace = document.getElementById(magicStringsRender.RESULTS_PLACE);
 
 // showLoading()— clears the results region, shows loading message
 export function showLoading() {

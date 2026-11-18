@@ -6,9 +6,11 @@ import { fetchData } from './api.js';
 import { normalizeData } from './normalize.js';
 import { showLoading, showError, showEmpty, renderResults } from './render.js';
 
-const bar          = document.getElementById('search-bar');
-const input         = document.getElementById('search-input');
-const detailsButtons = document.getElementById('results-place');
+import {magicStringsEvents} from './constants.js'
+
+const bar          = document.getElementById(magicStringsEvents.BAR);
+const input         = document.getElementById(magicStringsEvents.INPUT);
+const detailsButtons = document.getElementById(magicStringsEvents.DETAILS_BUTTONS);
 
 // details button click handler
 detailsButtons.addEventListener('click', (event) => {
@@ -19,7 +21,7 @@ detailsButtons.addEventListener('click', (event) => {
     const allOtherCards = allCards.filter(card => card !== bookCard);
     allOtherCards.forEach(card => card.classList.remove('selected'));
     bookCard.classList.add('selected');
-   document.getElementById('detail-view').innerHTML = `
+   document.getElementById(magicStringsEvents.DETAIL_VIEW).innerHTML = `
       <h3>${bookCard.querySelector('h2').textContent}</h3>
       <p class="book-author">Author: written ${bookCard.querySelector('.book-author').textContent}</p>
       <p class="book-year">Year: ${bookCard.querySelector('.book-year').textContent}</p>
@@ -28,7 +30,7 @@ detailsButtons.addEventListener('click', (event) => {
       <p class="book-ebook-access">eBook Access: ${bookCard.querySelector('.book-ebook-access').textContent}</p>
     `;
   }
-    const detailView = document.getElementById('detail-view');
+    const detailView = document.getElementById(magicStringsEvents.DETAIL_VIEW);
     detailsButtons.addEventListener('click', () => {
     detailView.focus();
     detailView.scrollIntoView({ behavior: 'smooth' });
@@ -64,8 +66,8 @@ bar.addEventListener('submit', async (event) => {
 });
 
 export async function initSearch (){
-  document.getElementById("page-site").setAttribute("hidden", true);
-  document.getElementById("loading-site").removeAttribute("hidden");
+  document.getElementById(magicStringsEvents.PAGE_SITE).setAttribute("hidden", true);
+  document.getElementById(magicStringsEvents.LOADING_SITE).removeAttribute("hidden");
   try{
     const initalLoadView = await fetchData("A");
     const firstBooks = normalizeData(initalLoadView.docs);
@@ -74,8 +76,8 @@ export async function initSearch (){
     showError('Unable to load site. Please check your connection and try again.');
     console.error(error);
   }finally{
-    document.getElementById("loading-site").setAttribute("hidden", true);
-    document.getElementById("page-site").removeAttribute("hidden");
+    document.getElementById(magicStringsEvents.LOADING_SITE).setAttribute("hidden", true);
+    document.getElementById(magicStringsEvents.PAGE_SITE).removeAttribute("hidden");
     
   }
 }

@@ -2,3 +2,15 @@
 //  CSS class names used in JavaScript, and any limit values. 
 // No string literals for these values should appear anywhere else in the codebase.
 //exists and all magic strings are imported from it — no raw string literals for URLs, keys, or class names elsewhere
+export const magicStringsRender = {
+    RESULTS_PLACE: 'results-place'
+};
+
+export const magicStringsEvents = {
+    BAR: 'search-bar',
+    INPUT: 'search-input',
+    DETAILS_BUTTONS: 'results-place',
+    DETAIL_VIEW: 'detail-view',
+    PAGE_SITE: 'page-site',
+    LOADING_SITE: 'loading-site'
+};
