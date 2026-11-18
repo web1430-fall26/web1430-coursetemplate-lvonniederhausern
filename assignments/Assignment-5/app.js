@@ -153,7 +153,6 @@ bar.addEventListener('submit', async (event) => {
 });
 
 
-
 document.addEventListener("DOMContentLoaded", async (event) => {
   document.getElementById("page-site").setAttribute("hidden", true);
   document.getElementById("loading-site").removeAttribute("hidden");
