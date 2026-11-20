@@ -3,25 +3,50 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Lab 08 – Book Search</title>
+  <title>Project 2 – Data-Driven Micro-App</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <h1>Open Library Book Search</h1>
+    <main>
+    <h1>API Data Story:</h1>
 
-    <form id="search-form">
+<section id="loading-site" class="status-loading" aria-describedby="loading site"><h2>Loading Site...</h2></section>
+    <section id="page-site" hidden>
+      <h2>Open Library Search API</h2>
+    <form id="search-bar">
       <label for="search-input">Search by title</label>
-      <input type="search" id="search-input" placeholder="e.g. Dune" autocomplete="off">
+      <input type="search" id="search-input" placeholder="e.g. something" autocomplete="off">
       <button type="submit">Search</button>
     </form>
 
-    <!-- aria-live="polite" means screen readers will announce changes here -->
-    <div id="results-region" class="results-region" aria-live="polite" aria-label="Search results">
+    <div id="results-place" class="card-grid" aria-live="polite" aria-label="Search results">
       <!-- Status messages (loading, error, empty) and result cards are injected here -->
     </div>
+
+    <h2>Book Details: </h2>
+    <section id="detail-view"></section>
+    </section>
+
+    <section id="weather-api">
+        <h2>Project 2 – Data-Driven Micro-App</h2>
+
+        <label for="roleSelect">Choose a City:</label>
+        <select name="roleSelect" id="roleSelect">
+        </select>
+        <form id="search-bar">
+            <label for="coord-input">or Search by coordinates</label>
+            <input type="search" id="coord-input-lon" placeholder="longitude" autocomplete="off">
+            <input type="search" id="coord-input-lat" placeholder="latitude" autocomplete="off">
+            <button type="submit-coords">Search</button>
+        </form>
+
+    </section>
+    
   </main>
 
-  <script src="project2.js" defer></script>
+       <footer>
+    <p>&copy; 2026 Lauren von Niederhausern</p>
+  </footer>
+  <script type="module" src="src/main.js"></script>
 </body>
 </html>

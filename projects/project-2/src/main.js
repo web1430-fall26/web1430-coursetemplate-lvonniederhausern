@@ -1,133 +1,132 @@
-//TODO: add try catch finally at submit that hides loading
-//normalize books chek if undefined and set to unknown so check for null. if else or statement
-//make red text darker
-//aria-describedby contains message words rather than IDs of existing elements; input values for inner html.
-//renderBooks shouldnt use innerHTML, use createElement and textContent instead. 111
-// add class for results region and change the selector to #results-region. DONE
-//update aria lale when the screen updates
+// In a file named app.js (or organized into modules if you prefer):
 
-// Lab 08 – Open Library Book Search
-// API endpoint: https://openlibrary.org/search.json?title=[query]&limit=12
-// No API key required.
-
-// ─── DOM references ───────────────────────────────────────────────────────
-const form          = document.getElementById('search-form');
+// fetchData(query)        — async, checks response.ok, throws on failure
+// normalizeData(rawDocs)  — transforms raw API fields into clean, consistent objects
+// showLoading()           — clears the results region, shows loading message
+// showError(message)      — clears the results region, shows error
+// showEmpty()             — clears the results region, shows "no results" message
+// renderResults(items)    — renders an array of normalized objects to the DOM
+// The normalization function must provide default values for any API fields that may be absent (e.g., author: doc.author_name?.[0] ?? 'Unknown').
+const bar          = document.getElementById('search-bar');
 const input         = document.getElementById('search-input');
-const resultsRegion = document.getElementById('results-region');
+const resultsPlace = document.getElementById('results-place');
 
-// ─── Part 2: API and data functions ──────────────────────────────────────
-
-// fetchBooks(query)
-// Async function that:
-//   1. Fetches the Open Library search endpoint for the given query (encodeURIComponent)
-//Fetches https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=12   
-//2. Checks response.ok — if false, throws new Error(`Request failed: ${response.status}`)
-//   3. Parses and returns the JSON
-// Response shape: { numFound: N, docs: [ { title, author_name, first_publish_year }, ... ] }
-async function fetchBooks(query) {
-
-  const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=12`);
-
+// fetchData(query)— async, checks response.ok, throws on failure
+async function fetchData(query) {
+  //Open Library Search API — https://openlibrary.org/search.json
+  const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=20&fields=title,author_name,first_publish_year,edition_count,language,ebook_access`); 
+  //const response = await fetch(`https://openlibrary.org/search.json?title=${encodeURIComponent(query)}&limit=12`); // change the URL 
+      
   if (!response.ok) {
     throw new Error(`Request failed: ${response.status}`);
   }
 // Parses and returns the JSON
+  //console.log("allData response:", allData);
   return await response.json();
-//The response shape is:
-// {
-//   "numFound": 123,
-//   "docs": [
-//     {
-//       "title": "Dune",
-//       "author_name": ["Frank Herbert"],
-//       "first_publish_year": 1965
-//     }
-//   ]
-// }
 }
 
-// normalizeBooks(docs)
-// Accepts the docs array from the API response.
-// Returns a new array of plain objects with guaranteed properties:
-//   { title, author, year }
-// Provide defaults for missing fields:
-//   title:  doc.title || 'Unknown Title'
-//   author: doc.author_name?.[0] ?? 'Unknown Author'
-//   year:   doc.first_publish_year || 'Unknown Year'
-function normalizeBooks(docs) {
-
-  return docs.map(doc => ({
+// normalizeData(rawDocs)— transforms raw API fields into clean, consistent objects
+function normalizeData(rawDocs) {
+     return rawDocs.map(doc => ({ // transform each raw doc into a normalized object change the fields to match your API response
     title: doc.title || 'Unknown Title',
     author: doc.author_name ? doc.author_name[0] : 'Unknown Author',
     year: doc.first_publish_year || 'Unknown Year',
+    editions: doc.edition_count || 'Unknown Number of Editions',
+    language: doc.language ? doc.language[0] : 'Unknown Language',
+    ebookAccess: doc.ebook_access ? 'Available' : 'Not Available',
   }));
-
 }
 
-// ─── Part 3: UI state functions ───────────────────────────────────────────
-// All functions clear resultsRegion and insert a new element using
-// createElement + textContent (no innerHTML).
-
+// showLoading()— clears the results region, shows loading message
 function showLoading() {
-  // Clear resultsRegion, append a <p class="status-loading"> reading "Searching for books…"
-
-  resultsRegion.replaceChildren();
-  const loadingMessage = document.createElement('p');
-  loadingMessage.className = 'status-loading';
-  loadingMessage.textContent = 'Searching for books…';
-  loadingMessage.classList.add('aria-describedby');
-  loadingMessage.setAttribute('aria-describedby', 'status: searching for books');
-  resultsRegion.appendChild(loadingMessage);
+    resultsPlace.replaceChildren();
+    const loadingMessage = document.createElement('p');
+    loadingMessage.className = 'status-loading';
+    loadingMessage.textContent = 'Loading…';
+    loadingMessage.classList.add('aria-describedby');
+    loadingMessage.setAttribute('aria-describedby', 'status: searching for data');
+    resultsPlace.appendChild(loadingMessage);
 }
 
+// showError(message)— clears the results region, shows error
 function showError(message) {
-  // Clear resultsRegion, append a <p class="status-error"> with the provided message
-
-  resultsRegion.replaceChildren();
+  resultsPlace.replaceChildren();
   const errorMessage = document.createElement('p');
   errorMessage.className = 'status-error';
   errorMessage.textContent = message;
   errorMessage.classList.add('aria-describedby');
   errorMessage.setAttribute('aria-describedby', message);
-  resultsRegion.appendChild(errorMessage);
+  resultsPlace.appendChild(errorMessage);
 }
 
+// showEmpty()— clears the results region, shows "no results" message
 function showEmpty() {
-  // Clear resultsRegion, append a <p class="status-empty"> reading "No books found. Try a different search."
-
-  resultsRegion.replaceChildren();
+  resultsPlace.replaceChildren();
   const emptyMessage = document.createElement('p');
   emptyMessage.className = 'status-empty';
+  emptyMessage.textContent = 'No results found.';
   emptyMessage.classList.add('aria-describedby');
-  emptyMessage.setAttribute('aria-describedby', 'error: no books found');
-  emptyMessage.textContent = 'No books found. Try a different search.';
-  resultsRegion.appendChild(emptyMessage);
+  emptyMessage.setAttribute('aria-describedby', 'status: no results found');
+  resultsPlace.appendChild(emptyMessage);
 }
 
-function renderBooks(books) {
-  // Clear resultsRegion.
-  // For each book, create an <article class="book-card"> containing:
-  //   - title in an <h2>
-  //   - author in a <p class="book-author">
-  //   - year in a <p class="book-year">
-  // Append all cards to resultsRegion.
+// renderResults(items)    — renders an array of normalized objects to the DOM
+function renderResults(items) { //TODO change the list sections to match incoming data
+  // resultsPlace.replaceChildren();
+  // const list = document.createElement('ul');
+  // items.forEach(item => {
+  //   const listItem = document.createElement('li');
+  //   listItem.textContent = `${item.title} by ${item.author} (${item.year})`;
+  //   list.appendChild(listItem);
+  // });
+  //   resultsPlace.appendChild(list);
 
-  resultsRegion.replaceChildren();
-  books.forEach(book => {
-    const bookCard = document.createElement('article');
-    bookCard.className = 'book-card';
-    bookCard.innerHTML = `
-      <h2>${book.title}</h2>
-      <p class="book-author">by ${book.author}</p>
-      <p class="book-year">${book.year}</p>
+  resultsPlace.replaceChildren();
+  items.forEach(item => {
+    const itemCard = document.createElement('article');
+    itemCard.className = 'item-card';
+    itemCard.innerHTML = `
+      <h2>${item.title}</h2>
+      <p class="book-author">by ${item.author}</p>
+      <p class="book-year">${item.year}</p>
+      <button class="details-button">Details</button>
+      <p class="book-editions" hidden>${item.editions}</p>
+      <p class="book-language" hidden>${item.language}</p>
+      <p class="book-ebook-access" hidden>${item.ebookAccess}</p>
     `;
-    resultsRegion.appendChild(bookCard);
+    resultsPlace.appendChild(itemCard);
   });
 }
 
-// ─── Part 4: Search handler ───────────────────────────────────────────────
+// details button click handler
+const detailsButtons = document.getElementById('results-place');
+detailsButtons.addEventListener('click', (event) => {
+  if (event.target.classList.contains('details-button')) { //if details button is clicked add more info about the book
+    const bookCard = event.target.closest('.item-card');
+    const allCards = Array.from(document.querySelectorAll('.item-card'));
+    // 2. Filter out the one you currently have
+    const allOtherCards = allCards.filter(card => card !== bookCard);
+    allOtherCards.forEach(card => card.classList.remove('selected'));
+    bookCard.classList.add('selected');
+   document.getElementById('detail-view').innerHTML = `
+      <h3>${bookCard.querySelector('h2').textContent}</h3>
+      <p class="book-author">Author: written ${bookCard.querySelector('.book-author').textContent}</p>
+      <p class="book-year">Year: ${bookCard.querySelector('.book-year').textContent}</p>
+      <p class="book-editions">Number of Editions: ${bookCard.querySelector('.book-editions').textContent}</p>
+      <p class="book-language">Language: ${bookCard.querySelector('.book-language').textContent}</p>
+      <p class="book-ebook-access">eBook Access: ${bookCard.querySelector('.book-ebook-access').textContent}</p>
+    `;
+  }
+    const detailView = document.getElementById('detail-view');
+    detailsButtons.addEventListener('click', () => {
+    detailView.focus();
+    detailView.scrollIntoView({ behavior: 'smooth' });
+    
+    });
+});
 
-form.addEventListener('submit', async (event) => {
+// Search handler 
+bar.addEventListener('submit', async (event) => {
   event.preventDefault();
   const query = input.value.trim();
 
@@ -139,17 +138,56 @@ form.addEventListener('submit', async (event) => {
   showLoading();
 
   try {
-    // call fetchBooks, normalizeBooks, then renderBooks or showEmpty
-    const data = await fetchBooks(query);
-    const books = normalizeBooks(data.docs);
+    const data = await fetchData(query);
+    const books = normalizeData(data.docs);
 
     if (books.length === 0) {
       showEmpty();
     } else {
-      renderBooks(books);
+      renderResults(books);
     }
   } catch (error) {
     showError('Unable to load results. Please check your connection and try again.');
     console.error(error);
   }
+});
+
+
+document.addEventListener("DOMContentLoaded", async (event) => {
+  document.getElementById("page-site").setAttribute("hidden", true);
+  document.getElementById("loading-site").removeAttribute("hidden");
+  try{
+    const initalLoadView = await fetchData("A");
+    const firstBooks = normalizeData(initalLoadView.docs);
+    renderResults(firstBooks);
+  }catch (error){
+    showError('Unable to load site. Please check your connection and try again.');
+    console.error(error);
+  }finally{
+    document.getElementById("loading-site").setAttribute("hidden", true);
+    document.getElementById("page-site").removeAttribute("hidden");
+    
+  }
+ 
+    console.log("DOM loaded");
+    
+    // You can safely select and manipulate elements here
+   
+});
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+//WEATHER API
+const citys = [
+  { id: 1, name: "Alice", lat: 1, lon: 2 },
+  { id: 2, name: "Bob", lat: 1, lon: 2 },
+  { id: 3, name: "Charlie", lat: 1, lon: 2 }
+];
+const selectElement = document.getElementById('roleSelect');
+
+citys.forEach((city) => {
+  const option = document.createElement('option');
+  option.value = city.name;
+  option.textContent = city.name;
+  selectElement.appendChild(option);
 });
