@@ -1,9 +1,5 @@
-# Lab 11
+# Vue 3 + Vite
 
-No starter files for this lab — you scaffold it yourself with Vite. From the root of this repository:
+This template should help get you started developing with Vue 3 in Vite. The template uses Vue 3 `<script setup>` SFCs, check out the [script setup docs](https://v3.vuejs.org/api/sfc-script-setup.html#sfc-script-setup) to learn more.
 
-```bash
-npm create vite@latest lab11 -- --template vue
-```
-
-Follow the Lab 11 handout and the scaffolding/cleanup steps in the course starters README before writing any components.
+Learn more about IDE Support for Vue in the [Vue Docs Scaling up Guide](https://vuejs.org/guide/scaling-up/tooling.html#ide-support).
