@@ -1,0 +1,1 @@
+// state.js holds the data and update logic that represents what the site is doing at a given moment
