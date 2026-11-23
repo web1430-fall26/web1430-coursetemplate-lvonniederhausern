@@ -1,4 +1,3 @@
-
 // main.js - entry point: imports and initializes everything
 import { initSearch } from "./events";
 
